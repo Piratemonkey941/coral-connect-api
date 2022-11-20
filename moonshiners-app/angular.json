@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "reef-moonshiner-app": {
+    "moonshiners-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/reef-moonshiner-app",
+            "outputPath": "dist/moonshiners-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,14 +28,10 @@
               "src/assets"
             ],
             "styles": [
-
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
-            "scripts":
-            [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            "scripts": [
+              "node_modules/fullpage.js/vendors/scrolloverflow.min.js"
             ]
           },
           "configurations": {
@@ -75,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "reef-moonshiner-app:build:production"
+              "browserTarget": "moonshiners-app:build:production"
             },
             "development": {
-              "browserTarget": "reef-moonshiner-app:build:development"
+              "browserTarget": "moonshiners-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "reef-moonshiner-app:build"
+            "browserTarget": "moonshiners-app:build"
           }
         },
         "test": {
@@ -111,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": "1f3c03aa-2bf6-4a73-b016-ff9b8cab2f8c"
+    "analytics": false
   }
 }
