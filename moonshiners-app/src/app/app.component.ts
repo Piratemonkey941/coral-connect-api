@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {
 
-    // this is just an example => for more details on config please visit fullPage.js docs
+    // add to anchors if you want more buttons at top
     this.config = {
-      licenseKey: 'YOUR LICENSE KEY HERE',
-      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+      // licenseKey: 'YOUR LICENSE KEY HERE', no licence required for creating an open source application under a license compatible with the GNU GPL license v3
+      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','lastPage'],
       menu: '#menu',
       navigation: true,
       sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       }
     };
   }
-
+  
   ngOnInit() {
   }
 
@@ -44,33 +44,35 @@ export class AppComponent implements OnInit {
     this.fullpage_api = fullPageRef;
   }
 
-  addSection() {
-    // change background color
-    this.config['sectionsColor'] = Array(6).fill(0).map(x => this.randomColor());
-
-    // creating the section div
-    const section = this.renderer.createElement('div');
-    this.renderer.addClass(section, 'section');
-    this.renderer.setProperty(section, 'innerHTML', '<h3>New Section</h3>');
-    // adding section
-    this.renderer.appendChild(this.fp_directive.nativeElement, section);
-
-    this.fullpage_api.build();
-  }
-
-  removeLast() {
-    const lastSection = this.fp_directive.nativeElement.lastChild;
-
-    if (lastSection.isEqualNode(this.fullpage_api.getActiveSection().item)) {
-      this.fullpage_api.moveSectionUp();
-    }
-    lastSection.remove();
-
-    this.fullpage_api.build();
-  }
-
-  randomColor() {
-    return '#' + Math.random().toString(16).slice(-3);
-  }
 }
 
+// //adds  section
+// addSection() {
+//   // change background color
+//   this.config['sectionsColor'] = Array(6).fill(0).map(x => this.randomColor());
+
+//   // creating the section div
+//   const section = this.renderer.createElement('div');
+//   this.renderer.addClass(section, 'section');
+//   this.renderer.setProperty(section, 'innerHTML', '<h3>New Section</h3>');
+//   // adding section
+//   this.renderer.appendChild(this.fp_directive.nativeElement, section);
+
+//   this.fullpage_api.build();
+// }
+
+// //removes last section
+// removeLast() {
+//   const lastSection = this.fp_directive.nativeElement.lastChild;
+
+//   if (lastSection.isEqualNode(this.fullpage_api.getActiveSection().item)) {
+//     this.fullpage_api.moveSectionUp();
+//   }
+//   lastSection.remove();
+
+//   this.fullpage_api.build();
+// }
+// // randomColor
+// randomColor() {
+//   return '#' + Math.random().toString(16).slice(-3);
+// }
