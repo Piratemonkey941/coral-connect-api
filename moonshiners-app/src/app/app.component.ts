@@ -11,11 +11,7 @@ export class AppComponent implements OnInit {
   config;
   fullpage_api: any;
 
-
-
   constructor(private renderer: Renderer2) {
-
-
 
     // add to anchors if you want more buttons at top
     this.config = {
@@ -23,9 +19,7 @@ export class AppComponent implements OnInit {
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','lastPage'],
       menu: '#menu',
       navigation: true,
-      autoScrolling: false,
-      scrollOverflow:true,
-      // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+      sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
 
       // events callback
       afterLoad: (origin: any, destination: any, direction: any) => {
@@ -42,7 +36,7 @@ export class AppComponent implements OnInit {
       }
     };
   }
-
+  
   ngOnInit() {
   }
 

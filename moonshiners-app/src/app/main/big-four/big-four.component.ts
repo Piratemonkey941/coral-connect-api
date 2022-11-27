@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var window: any;
-
 @Component({
   selector: 'app-big-four',
   templateUrl: './big-four.component.html',
@@ -9,27 +7,10 @@ declare var window: any;
 })
 export class BigFourComponent implements OnInit {
 
-  formModal:any;
-
   constructor() { }
 
   ngOnInit(): void {
-
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("exampleModal")
-    )
   }
-
-  openModal(){
-    this.formModal.show();
-  }
-
-  closeModal(){
-    this.formModal.hide();
-  }
-
-}
-
   // (function () {
   //   (".menu-link").click(function () {
   //    (".menu-link").removeClass("is-active");
@@ -103,4 +84,4 @@ export class BigFourComponent implements OnInit {
   //  toggleButton.addEventListener('click', () => {
   //    document.body.classList.toggle('light-mode');
   //  });
-// }
+}
