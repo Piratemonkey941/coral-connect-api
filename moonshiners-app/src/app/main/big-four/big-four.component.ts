@@ -1,16 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var window: any;
+
 @Component({
   selector: 'app-big-four',
   templateUrl: './big-four.component.html',
   styleUrls: ['./big-four.component.scss']
 })
 export class BigFourComponent implements OnInit {
+  allowNewSalnity = false
+  salinityStart: string = 'The foundation of our Reef'
+  salinity: number
+  salinityFeedback: string = ''
+
+  formModal:any;
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.formModal = new window.bootstrap.Modal(
+      document.getElementById("exampleModal")
+    )
   }
+
+  openModal(){
+    this.formModal.show();
+  }
+
+  closeModal(){
+    this.formModal.hide();
+  }
+
+//   onAddSalinity() {
+
+//     this.salinityStart = ''
+
+
+// }
+
+  onAddSalinity(){
+
+    let salinity = this.salinityStart
+
+    if (this.salinity <= 35 || this.salinity >= 33){
+
+        return  'Salnity is acceptable'
+      }
+    else if ( this.salinity <= 32.9 || this.salinity >= 29 ){
+
+      return 'Salnity is lower then expected'
+      }
+    else if ( this.salinity <= 38 || this.salinity >= 35.1 ){
+
+      return 'Salnity is sligtly higher then expected'
+     }
+    else if ( this.salinity <= 45 || this.salinity >= 38.1 ){
+
+      return 'Salnity is sligtly higher then expected'
+      }
+    else ( ) => {
+
+      return 'Retest parameter'
+    }
+  }
+}
+
   // (function () {
   //   (".menu-link").click(function () {
   //    (".menu-link").removeClass("is-active");
@@ -84,4 +139,4 @@ export class BigFourComponent implements OnInit {
   //  toggleButton.addEventListener('click', () => {
   //    document.body.classList.toggle('light-mode');
   //  });
-}
+// }
