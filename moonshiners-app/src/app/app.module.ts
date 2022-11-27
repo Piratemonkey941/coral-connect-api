@@ -10,7 +10,6 @@ import { BigFourComponent } from './main/big-four/big-four.component';
 import { LandingComponent } from './main/landing/landing.component';
 import { MajorElemsComponent } from './main/major-elems/major-elems.component';
 import { MinorElemsComponent } from './main/minor-elems/minor-elems.component';
-import { MinorElemsTwoComponent } from './main/minor-elems-two/minor-elems-two.component';
 // import {} from ''
 
 @NgModule({
@@ -22,7 +21,6 @@ import { MinorElemsTwoComponent } from './main/minor-elems-two/minor-elems-two.c
     LandingComponent,
     MajorElemsComponent ,
     MinorElemsComponent,
-    MinorElemsTwoComponent,
 
   ],
   imports: [
