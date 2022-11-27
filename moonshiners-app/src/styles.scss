@@ -28,6 +28,7 @@ body {
   background-image: url('./assets/bg2.png');
   background-size: cover;
   background-position: center;
+
   display: flex;
   // justify-content: center;  // removing navbar
   // align-items: center; //adds margin to sides
@@ -42,6 +43,9 @@ body {
   }
  }
 
+ .modal-backdrop {
+  z-index: -1;
+}
 
 
 
@@ -286,6 +290,7 @@ body {
     }
 
     .fp-overflow.fp-table{
+
       display:block
     }
 
