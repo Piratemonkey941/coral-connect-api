@@ -8,10 +8,9 @@ declare var window: any;
   styleUrls: ['./big-four.component.scss']
 })
 export class BigFourComponent implements OnInit {
-  allowNewSalnity = false
-  salinityStart: string = 'The foundation of our Reef'
-  salinity: number
-  salinityFeedback: string = ''
+
+
+
 
   formModal:any;
 
@@ -32,39 +31,142 @@ export class BigFourComponent implements OnInit {
     this.formModal.hide();
   }
 
-//   onAddSalinity() {
 
-//     this.salinityStart = ''
+//SALINITY
 
-
-// }
+  salinityStart: string = 'The foundation of our Reef'
+  salinity: number
 
   onAddSalinity(){
 
     let salinity = this.salinityStart
 
-    if (this.salinity <= 35 || this.salinity >= 33){
+    if (this.salinity <= 35 && this.salinity >= 33){
 
-        return  'Salnity is acceptable'
+        this.salinityStart = 'Salnity is acceptable'
       }
-    else if ( this.salinity <= 32.9 || this.salinity >= 29 ){
+    else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
 
-      return 'Salnity is lower then expected'
+      this.salinityStart = 'Salnity is lower then expected'
       }
-    else if ( this.salinity <= 38 || this.salinity >= 35.1 ){
+    else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
 
-      return 'Salnity is sligtly higher then expected'
+      this.salinityStart = 'Salnity is sligtly higher then expected'
      }
-    else if ( this.salinity <= 45 || this.salinity >= 38.1 ){
+    else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
 
-      return 'Salnity is sligtly higher then expected'
+      this.salinityStart = 'Salnity is sligtly higher then expected'
       }
-    else ( ) => {
+    else {
 
-      return 'Retest parameter'
+      this.salinityStart = 'Retest parameter'
     }
   }
+
+  //ALKILINITY
+
+  alkilinityStart: string = 'The foundation of our Reef'
+  alkilinity: number
+
+  onAddAlkilinity(){
+
+    let salinity = this.alkilinityStart
+
+    if (this.alkilinity <= 35 && this.alkilinity >= 33){
+
+        this.alkilinityStart = 'alkilinity is acceptable'
+      }
+    else if ( this.alkilinity <= 32.9 && this.alkilinity >= 29 ){
+
+      this.alkilinityStart = 'alkilinity is lower then expected'
+      }
+    else if ( this.alkilinity <= 38  && this.alkilinity >= 35.1 ){
+
+      this.alkilinityStart = 'alkilinity is sligtly higher then expected'
+     }
+    else if ( this.alkilinity <= 45  && this.alkilinity >= 38.1 ){
+
+      this.alkilinityStart = 'alkilinity is sligtly higher then expected'
+      }
+    else {
+
+      this.alkilinityStart = 'Retest parameter'
+    }
+  }
+  //Calcium
+
+  calciumStart: string = 'The foundation of our Reef'
+  calcium: number
+
+  onAddCalcium(){
+
+    let calcium = this.calciumStart
+
+    if (this.calcium <= 35 && this.calcium >= 33){
+
+        this.calciumStart = 'calcium is acceptable'
+      }
+    else if ( this.calcium <= 32.9 && this.calcium >= 29 ){
+
+      this.calciumStart = 'calcium is lower then expected'
+      }
+    else if ( this.calcium <= 38  && this.calcium >= 35.1 ){
+
+      this.calciumStart = 'calcium is sligtly higher then expected'
+     }
+    else if ( this.calcium <= 45  && this.alkilinity >= 38.1 ){
+
+      this.calciumStart = 'calcium is sligtly higher then expected'
+      }
+    else {
+
+      this.calciumStart = 'Retest parameter'
+    }
+  }
+  //Magnesium
+
+  magnesiumStart: string = 'The foundation of our Reef'
+  magnesium: number
+
+  onAddMagnesium(){
+
+    let magnesium = this.magnesiumStart
+
+    if (this.magnesium <= 35 && this.magnesium >= 33){
+
+        this.magnesiumStart = 'magnesium is acceptable'
+      }
+    else if ( this.magnesium <= 32.9 && this.magnesium >= 29 ){
+
+      this.magnesiumStart = 'magnesium is lower then expected'
+      }
+    else if ( this.magnesium <= 38  && this.magnesium >= 35.1 ){
+
+      this.magnesiumStart = 'magnesium is sligtly higher then expected'
+     }
+    else if ( this.magnesium <= 45  && this.magnesium >= 38.1 ){
+
+      this.magnesiumStart = 'magnesium is sligtly higher then expected'
+      }
+    else {
+
+      this.magnesiumStart = 'Retest parameter'
+    }
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
   // (function () {
   //   (".menu-link").click(function () {
