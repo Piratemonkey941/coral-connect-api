@@ -97,6 +97,11 @@
  .menu {
   width: 5px;
   height: 5px;
+  align-self: flex-end;
+  position: fixed;
+  // left: 270px;
+  // top:10px;
+  transform: rotate(90deg);
   background-color: var(--button-inactive);
   border-radius: 50%;
   box-shadow: 7px 0 0 0 var(--button-inactive), 14px 0 0 0 var(--button-inactive);
