@@ -3,6 +3,38 @@
   <div class="content-section">
     <div class="content-section-title">Base Elements</div>
 
+    <div class="apps-card center-card">
+      <div class="app-card">
+        <span>
+          <svg viewBox="0 0 512 512" style="border: 1px solid #a059a9"></svg>
+          Volume
+        </span>
+        <div class="menu"></div>
+        <div class="app-card__subtext">{{volumeStart}}</div>
+
+
+        <div class="app-card-buttons input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Volume In Gallons."
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="volume">
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+
+            (click)="onAddVolume()"
+            >Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+
   <div class="apps-card">
     <div class="app-card">
       <span>
@@ -93,7 +125,7 @@
       </svg>
       Magnesium
       </span>
-      <div class="menu"></div>
+      <div class="menu magnesium"></div>
       <div class="app-card__subtext">Ingredient 2 of 2 for healthy corals. </div>
       <div class="app-card-buttons input-group">
         <input

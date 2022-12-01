@@ -22,6 +22,7 @@ export class BigFourComponent implements OnInit {
       document.getElementById("exampleModal")
     )
   }
+// MODAL CODE
 
   openModal(){
     this.formModal.show();
@@ -30,6 +31,45 @@ export class BigFourComponent implements OnInit {
   closeModal(){
     this.formModal.hide();
   }
+
+
+//VOLUME
+
+  volumeStart: string = 'Does Size Matter?'
+  volume: number
+  submitedVolume: number
+
+  onAddVolume(){
+
+    let volume = this.volume
+
+    this.volumeStart = `Your Reef is ${volume} gallons`
+
+    return volume
+
+    // if (this.volume <= 35 && this.volume >= 33){
+
+    //     this.volumeStart = 'volume is acceptable'
+    //   }
+    // else if ( this.volume <= 32.9 && this.salinity >= 29 ){
+
+    //   this.volumeStart = 'volume is lower then expected'
+    //   }
+    // else if ( this.volume <= 38  && this.salinity >= 35.1 ){
+
+    //   this.volumeStart = 'volume is sligtly higher then expected'
+    //  }
+    // else if ( this.volume <= 45  && this.salinity >= 38.1 ){
+
+    //   this.volumeStart = 'volume is sligtly higher then expected'
+    //   }
+    // else {
+
+    //   this.volumeStart = 'Retest parameter'
+    // }
+  }
+
+
 
 
 //SALINITY
@@ -66,33 +106,46 @@ export class BigFourComponent implements OnInit {
   //ALKILINITY
 
   alkilinityStart: string = 'The foundation of our Reef'
+  alkilinityAdjustment: any
   alkilinity: number
 
   onAddAlkilinity(){
 
-    let salinity = this.alkilinityStart
+    let alkilinity = this.alkilinityStart
+    this.alkilinityAdjustment = (0.0714 * this.volume).toFixed(2)
 
-    if (this.alkilinity <= 35 && this.alkilinity >= 33){
+    if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
 
-        this.alkilinityStart = 'alkilinity is acceptable'
+        this.alkilinityStart = 'Ideal alkilinity for most reefs'
       }
-    else if ( this.alkilinity <= 32.9 && this.alkilinity >= 29 ){
+    else if ( this.alkilinity <= 7.2 && this.alkilinity >= 6.6 ){
 
-      this.alkilinityStart = 'alkilinity is lower then expected'
+      this.alkilinityStart = `Alkilinity low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
+
+
       }
-    else if ( this.alkilinity <= 38  && this.alkilinity >= 35.1 ){
+    else if ( this.alkilinity <= 7.8 && this.alkilinity >= 7.3 ){
 
-      this.alkilinityStart = 'alkilinity is sligtly higher then expected'
+      this.alkilinityStart = 'Alk slightly low usually only used in Ultra low nutrient system (ULNS)'
+      }
+    else if ( this.alkilinity <= 11.9  && this.alkilinity >= 8.6){
+
+      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color '
      }
-    else if ( this.alkilinity <= 45  && this.alkilinity >= 38.1 ){
+    else if ( this.alkilinity <= 14  && this.alkilinity >= 12 ){
 
-      this.alkilinityStart = 'alkilinity is sligtly higher then expected'
+      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color or cause bleaching '
       }
     else {
 
       this.alkilinityStart = 'Retest parameter'
     }
+
   }
+
+  // show volume * 0.0714 for 0.1 dkh adjustment
+
+
   //Calcium
 
   calciumStart: string = 'The foundation of our Reef'
