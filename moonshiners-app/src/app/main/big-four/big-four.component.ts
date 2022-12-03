@@ -46,31 +46,7 @@ export class BigFourComponent implements OnInit {
     this.volumeStart = `Your Reef is ${volume} gallons`
 
     return volume
-
-    // if (this.volume <= 35 && this.volume >= 33){
-
-    //     this.volumeStart = 'volume is acceptable'
-    //   }
-    // else if ( this.volume <= 32.9 && this.salinity >= 29 ){
-
-    //   this.volumeStart = 'volume is lower then expected'
-    //   }
-    // else if ( this.volume <= 38  && this.salinity >= 35.1 ){
-
-    //   this.volumeStart = 'volume is sligtly higher then expected'
-    //  }
-    // else if ( this.volume <= 45  && this.salinity >= 38.1 ){
-
-    //   this.volumeStart = 'volume is sligtly higher then expected'
-    //   }
-    // else {
-
-    //   this.volumeStart = 'Retest parameter'
-    // }
   }
-
-
-
 
 //SALINITY
 
@@ -112,20 +88,17 @@ export class BigFourComponent implements OnInit {
   onAddAlkilinity(){
 
     let alkilinity = this.alkilinityStart
+    //calculation for 0.1 dkh change per volume
     this.alkilinityAdjustment = (0.0714 * this.volume).toFixed(2)
 
     if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
-
         this.alkilinityStart = 'Ideal alkilinity for most reefs'
       }
     else if ( this.alkilinity <= 7.2 && this.alkilinity >= 6.6 ){
 
       this.alkilinityStart = `Alkilinity low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
-
-
       }
     else if ( this.alkilinity <= 7.8 && this.alkilinity >= 7.3 ){
-
       this.alkilinityStart = 'Alk slightly low usually only used in Ultra low nutrient system (ULNS)'
       }
     else if ( this.alkilinity <= 11.9  && this.alkilinity >= 8.6){
@@ -137,7 +110,6 @@ export class BigFourComponent implements OnInit {
       this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color or cause bleaching '
       }
     else {
-
       this.alkilinityStart = 'Retest parameter'
     }
 
@@ -150,26 +122,36 @@ export class BigFourComponent implements OnInit {
 
   calciumStart: string = 'The foundation of our Reef'
   calcium: number
+  calciumAdjustment: any
 
   onAddCalcium(){
 
     let calcium = this.calciumStart
+    this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
 
-    if (this.calcium <= 35 && this.calcium >= 33){
+    if (this.calcium <= 440 && this.calcium >= 420){
 
-        this.calciumStart = 'calcium is acceptable'
+        this.calciumStart = 'Optimal calcium range. Keep up the great work!'
       }
-    else if ( this.calcium <= 32.9 && this.calcium >= 29 ){
+    else if ( this.calcium <= 360 && this.calcium >= 200 ){
 
-      this.calciumStart = 'calcium is lower then expected'
+      this.calciumStart = `Very Low Calcium Level. Recommended to increase to 420 ppm immedietly by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
       }
-    else if ( this.calcium <= 38  && this.calcium >= 35.1 ){
+    else if ( this.calcium <= 400 && this.calcium >= 361 ){
 
-      this.calciumStart = 'calcium is sligtly higher then expected'
+      this.calciumStart = `Low Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
+      }
+    else if ( this.calcium <= 419 && this.calcium >= 401 ){
+
+      this.calciumStart = `Acceptable Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
+      }
+    else if ( this.calcium <= 520 && this.calcium >= 441){
+
+      this.calciumStart = 'Calcium above target. Slow Dosage to let Calcium settle down.'
      }
-    else if ( this.calcium <= 45  && this.alkilinity >= 38.1 ){
+    else if ( this.calcium <= 600  && this.alkilinity >= 521 ){
 
-      this.calciumStart = 'calcium is sligtly higher then expected'
+      this.calciumStart = 'Calcium highly elevated! Retest water and if consistant proform water changes to reduce level.'
       }
     else {
 
@@ -180,26 +162,33 @@ export class BigFourComponent implements OnInit {
 
   magnesiumStart: string = 'The foundation of our Reef'
   magnesium: number
+  magnesiumAdjustment: any
 
   onAddMagnesium(){
 
     let magnesium = this.magnesiumStart
+    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
 
-    if (this.magnesium <= 35 && this.magnesium >= 33){
+    if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
         this.magnesiumStart = 'magnesium is acceptable'
       }
-    else if ( this.magnesium <= 32.9 && this.magnesium >= 29 ){
 
-      this.magnesiumStart = 'magnesium is lower then expected'
+    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
+
+      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
       }
-    else if ( this.magnesium <= 38  && this.magnesium >= 35.1 ){
+    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
 
-      this.magnesiumStart = 'magnesium is sligtly higher then expected'
+      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      }
+    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
+
+      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
      }
-    else if ( this.magnesium <= 45  && this.magnesium >= 38.1 ){
+    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
 
-      this.magnesiumStart = 'magnesium is sligtly higher then expected'
+      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
       }
     else {
 
