@@ -10,7 +10,11 @@
           Volume
         </span>
         <div class="menu"></div>
-        <div class="app-card__subtext">{{volumeStart}}</div>
+
+
+          <div class="app-card__subtext">{{volumeStart}}</div>
+          <div class="app-card__warning">Must be submited before proceeding</div>
+
 
 
         <div class="app-card-buttons input-group">
@@ -37,11 +41,12 @@
 
   <div class="apps-card">
     <div class="app-card">
+
       <span>
         <svg viewBox="0 0 512 512" style="border: 1px solid #a059a9"></svg>
         Salinity
       </span>
-      <div class="menu"></div>
+      <div class="menu" > </div>  <!--three dots -->
       <div class="app-card__subtext">{{salinityStart}}</div>
 
 
@@ -67,14 +72,24 @@
 
 
     <div class="app-card g-col-3 ">
-      <span>
-      <svg viewBox="0 0 52 52" style="border: 1px solid #c1316d">
 
-      </svg>
-      Alkilinity
+      <span>
+          <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+          Alkilinity
+
+          <div class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-three-dots-vertical btn text-white"></i>
+          </div>
       </span>
-      <div class="menu"></div>
+
+
+
+
+
+
       <div class="app-card__subtext">{{alkilinityStart}}</div>
+
+
       <div class="app-card-buttons input-group">
         <input
             type="text"
@@ -90,6 +105,7 @@
           (click)="onAddAlkilinity()"
         >Submit</button>
       </div>
+
     </div>
 
     <div class="app-card g-col-3 ">
@@ -147,25 +163,66 @@
 </div>
 </div>
 
+<!-- MODALS -->
 
-
-
-
-
-
+<!-- ALKILINITY -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Alkilinity Calculator</h5>
+        <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1" [(ngModel)]="alkilinityAdjustmentSA">Liquid Soda Ash</option>
+            <option value="2" [(ngModel)]="alkilinityAdjustment">Liquid Sodium Bicarbonate</option>
+            <option value="3" [(ngModel)]="alkilinityAdjustmentKW">Kalkwasser</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Current level</span>
+          <input
+          type="text"
+          class="form-control"
+           placeholder="Alk in dKH"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="alkilinityCurrent"
+          >
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Desired Level</span>
+          <input
+          type="text"
+          class="form-control"
+          placeholder="Alk in dKH"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="alkilinityDesired"
+          >
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="closeModal()">do something</button>
+        <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="alkilinityCalculator()"
+            >Close
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="closeModal()"
+
+            >do something
+        </button>
       </div>
     </div>
   </div>

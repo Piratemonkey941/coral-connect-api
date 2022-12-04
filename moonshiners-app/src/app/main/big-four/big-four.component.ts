@@ -80,16 +80,27 @@ export class BigFourComponent implements OnInit {
   }
 
   //ALKILINITY
-
-  alkilinityStart: string = 'The foundation of our Reef'
-  alkilinityAdjustment: any
   alkilinity: number
+  alkilinityStart: string = 'The foundation of our Reef'
+
+  alkilinityAdjustment: any
+  alkilinityAdjustmentSA: any
+  alkilinityAdjustmentKW: any
+
+  alkilinityDesired: number
+  alkilinityCurrent: number
+
+  alkilinityChange: number
+  alkilinityResult: number
+  alkilinityResultSA: number
+  alkilinityResultKW:number
 
   onAddAlkilinity(){
 
     let alkilinity = this.alkilinityStart
     //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustment = (0.0714 * this.volume).toFixed(2)
+    this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
 
     if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
         this.alkilinityStart = 'Ideal alkilinity for most reefs'
@@ -112,6 +123,19 @@ export class BigFourComponent implements OnInit {
     else {
       this.alkilinityStart = 'Retest parameter'
     }
+
+  }
+
+  alkilinityCalculator(){
+    this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10;
+
+    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+    this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+    this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+
+    this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+    this.alkilinityResultSA = this.alkilinityChange * this.alkilinityAdjustmentSA
+    this.alkilinityResultKW = this.alkilinityChange * this.alkilinityAdjustmentKW
 
   }
 
