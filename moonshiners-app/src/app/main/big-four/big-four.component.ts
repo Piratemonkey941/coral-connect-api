@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
+import {AdditiveSelected} from './alk-selector'
 declare var window: any;
 
 @Component({
@@ -9,10 +9,15 @@ declare var window: any;
 })
 export class BigFourComponent implements OnInit {
 
+  // alkAdditive: any []
+  additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
+  additiveSelectedDefault: Number             // for default selected in alk modal
+  formModal:any;                              // something for modal
 
+  // onAlkAdditiveSelected: any
+  modifiedTextAlk: string                      //modified text from tuto
 
-
-  formModal:any;
+  @Input() receivedValue: String;
 
   constructor() { }
 
@@ -21,7 +26,29 @@ export class BigFourComponent implements OnInit {
     this.formModal = new window.bootstrap.Modal(
       document.getElementById("exampleModal")
     )
+
+    //defines what is in the alk array
+  this.additiveSelectedAlk = [
+      {Id:0, Name:"Liquid Sodium Bicarbonate"},
+      {Id:1, Name:"Liquid Soda Ash"},
+      {Id:2, Name:"Liquid Kalkwasser"},
+    ]
+
+    this.additiveSelectedDefault = 0;
   }
+
+  onAlkAdditiveSelected(val: any)
+  {
+    this.customAlkFunction(val)
+  }
+
+  customAlkFunction(val: any)
+  {
+    this.modifiedTextAlk = "The value is "+val+" from dropdown"
+  }
+
+
+
 // MODAL CODE
 
   openModal(){
@@ -36,7 +63,7 @@ export class BigFourComponent implements OnInit {
 //VOLUME
 
   volumeStart: string = 'Does Size Matter?'
-  volume: number
+  @Output()volume: number
   submitedVolume: number
 
   onAddVolume(){
@@ -87,19 +114,10 @@ export class BigFourComponent implements OnInit {
   alkilinityAdjustmentSA: any
   alkilinityAdjustmentKW: any
 
-  alkilinityDesired: number
-  alkilinityCurrent: number
-
-  alkilinityChange: number
-  alkilinityResult: number
-  alkilinityResultSA: number
-  alkilinityResultKW:number
-
   onAddAlkilinity(){
 
     let alkilinity = this.alkilinityStart
     //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
     this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
 
     if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
@@ -123,20 +141,70 @@ export class BigFourComponent implements OnInit {
     else {
       this.alkilinityStart = 'Retest parameter'
     }
-
   }
 
+  // alkilinityChange: number
+  // alkilinityResult: any
+  // alkilinityResultSA: any
+  // alkilinityResultKW:any
+  // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
+  // alkSodiumBicarb: any
+
+  alkilinityDesired: number
+  alkilinityCurrent: number
+
+
+  // onAlkSelected() {
+  //   this.alkilinityAdjustment = this.alkAdditive.nativeElement.value;
+  //   console.log(this.onAlkSelected)
+  // }
+
+  @ViewChild('alkAdditive') alkAdditive!: ElementRef
+
   alkilinityCalculator(){
-    this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10;
+    // this.additiveSelected = [
+    //   {Id:0, Name:"Select"},
+    //   {Id:1, Name:"Liquid Soda Ash"},
+    //   {Id:2, Name:"Liquid Sodium Bicarbonate"},
+    //   {Id:3, Name:"Liquid Kalkwasser"},
+    // ]
 
-    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-    this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
-    this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+    // const changeSelectedAlk = (e) => {
+    //   const $select = (<HTMLInputElement>document.querySelector('#alkInputGroup')).value;
+    //   $select.value = 'steve'
+    // };
 
-    this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
-    this.alkilinityResultSA = this.alkilinityChange * this.alkilinityAdjustmentSA
-    this.alkilinityResultKW = this.alkilinityChange * this.alkilinityAdjustmentKW
+    // this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10;
 
+    // this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+    // this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+    // this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+
+    // // this.additiveSelected[1] = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+
+    // this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+    // this.alkilinityResultSA = this.alkilinityChange * this.alkilinityAdjustmentSA
+    // this.alkilinityResultKW = this.alkilinityChange * this.alkilinityAdjustmentKW
+
+    // if (this.alkilinityChange)
+    //   {
+    //     this.alkilinityModalStart =  `Your correction is ${this.alkilinityResult}ml of liquid Sodium Bicarbonate`
+    //   }
+    //   //returns this above
+    // else if ( this.alkilinityResultSA)
+    // {
+    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultSA}ml of liquid Soda Ash`
+    // }
+    // else if (this.alkilinityResultKW ){
+
+    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultKW}ml of liquid Kalkwasser`
+    //   }
+    // else {
+    //     'Complete form'
+    //   }
+    // return this.alkilinityCalcResult
+
+    // console.log(this.alkilinityResultSA)
   }
 
   // show volume * 0.0714 for 0.1 dkh adjustment
@@ -173,7 +241,7 @@ export class BigFourComponent implements OnInit {
 
       this.calciumStart = 'Calcium above target. Slow Dosage to let Calcium settle down.'
      }
-    else if ( this.calcium <= 600  && this.alkilinity >= 521 ){
+    else if ( this.calcium <= 600  && this.calcium >= 521 ){
 
       this.calciumStart = 'Calcium highly elevated! Retest water and if consistant proform water changes to reduce level.'
       }
