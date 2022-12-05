@@ -117,23 +117,7 @@
 
       <!-- input below -->
       <div class="modal-body">
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01">Options</label>
-          <select
-              class="form-select "
-              [(ngModel)]="additiveSelectedDefault"
-              (ngModelChange)="onAlkAdditiveSelected($event)"
-          >
-          <option
-              class="text-black"
-              *ngFor="let additive of additiveSelectedAlk"
-              [value]="additive.Id"
-            >
-            {{additive.Name}}
-          </option>
 
-          </select>
-        </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Current level</span>
           <input
@@ -156,6 +140,24 @@
           [(ngModel)]="alkilinityDesired"
           >
         </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          <select
+              class="form-select "
+              [(ngModel)]="additiveSelectedDefault"
+              (ngModelChange)="onAlkAdditiveSelected($event)"
+          >
+          <option
+              class="text-black"
+              *ngFor="let additive of additiveSelectedAlk"
+              [value]="additive.Id"
+            >
+            {{additive.Name}}
+          </option>
+
+          </select>
+        </div>
+
       </div>
       <div class="modal-footer">
 

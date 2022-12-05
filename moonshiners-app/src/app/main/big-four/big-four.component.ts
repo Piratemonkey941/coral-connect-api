@@ -10,12 +10,10 @@ declare var window: any;
 export class BigFourComponent implements OnInit {
 
   // alkAdditive: any []
-  additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
-  additiveSelectedDefault: Number             // for default selected in alk modal
-  formModal:any;                              // something for modal
+formModal:any;                              // something for modal
 
   // onAlkAdditiveSelected: any
-  modifiedTextAlk: string                      //modified text from tuto
+
 
   @Input() receivedValue: String;
 
@@ -29,25 +27,14 @@ export class BigFourComponent implements OnInit {
 
     //defines what is in the alk array
   this.additiveSelectedAlk = [
-      {Id:0, Name:"Liquid Sodium Bicarbonate"},
-      {Id:1, Name:"Liquid Soda Ash"},
-      {Id:2, Name:"Liquid Kalkwasser"},
+      {Id:0, Name:"Select Additive"},
+      {Id:1, Name:"Liquid Sodium Bicarbonate"},
+      {Id:2, Name:"Liquid Soda Ash"},
+      {Id:3, Name:"Liquid Kalkwasser"},
     ]
 
     this.additiveSelectedDefault = 0;
   }
-
-  onAlkAdditiveSelected(val: any)
-  {
-    this.customAlkFunction(val)
-  }
-
-  customAlkFunction(val: any)
-  {
-    this.modifiedTextAlk = "The value is "+val+" from dropdown"
-  }
-
-
 
 // MODAL CODE
 
@@ -114,7 +101,7 @@ export class BigFourComponent implements OnInit {
   alkilinityAdjustmentSA: any
   alkilinityAdjustmentKW: any
 
-  onAddAlkilinity(){
+  onAddAlkilinity(){ // for basic calculation on card
 
     let alkilinity = this.alkilinityStart
     //calculation for 0.1 dkh change per volume
@@ -143,7 +130,7 @@ export class BigFourComponent implements OnInit {
     }
   }
 
-  // alkilinityChange: number
+  alkilinityChange: number
   // alkilinityResult: any
   // alkilinityResultSA: any
   // alkilinityResultKW:any
@@ -153,62 +140,46 @@ export class BigFourComponent implements OnInit {
   alkilinityDesired: number
   alkilinityCurrent: number
 
+  alkilinityResult: number
+  alkilinityResultSA: number
+  alkilinityResultKW: number
 
-  // onAlkSelected() {
-  //   this.alkilinityAdjustment = this.alkAdditive.nativeElement.value;
-  //   console.log(this.onAlkSelected)
-  // }
+  additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
+  additiveSelectedDefault: number             // for default selected in alk modal
+  modifiedTextAlk: string
+  // val:number                    //modified text from tuto
 
-  @ViewChild('alkAdditive') alkAdditive!: ElementRef
+  onAlkAdditiveSelected(val: number)  // logic here
+  {
+  this.customAlkFunction(val)
 
-  alkilinityCalculator(){
-    // this.additiveSelected = [
-    //   {Id:0, Name:"Select"},
-    //   {Id:1, Name:"Liquid Soda Ash"},
-    //   {Id:2, Name:"Liquid Sodium Bicarbonate"},
-    //   {Id:3, Name:"Liquid Kalkwasser"},
-    // ]
+  console.log(val) // confirming that the Id is activly changing
+  this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
 
-    // const changeSelectedAlk = (e) => {
-    //   const $select = (<HTMLInputElement>document.querySelector('#alkInputGroup')).value;
-    //   $select.value = 'steve'
-    // };
-
-    // this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10;
-
-    // this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-    // this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
-    // this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
-
-    // // this.additiveSelected[1] = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
-
-    // this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
-    // this.alkilinityResultSA = this.alkilinityChange * this.alkilinityAdjustmentSA
-    // this.alkilinityResultKW = this.alkilinityChange * this.alkilinityAdjustmentKW
-
-    // if (this.alkilinityChange)
-    //   {
-    //     this.alkilinityModalStart =  `Your correction is ${this.alkilinityResult}ml of liquid Sodium Bicarbonate`
-    //   }
-    //   //returns this above
-    // else if ( this.alkilinityResultSA)
-    // {
-    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultSA}ml of liquid Soda Ash`
-    // }
-    // else if (this.alkilinityResultKW ){
-
-    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultKW}ml of liquid Kalkwasser`
-    //   }
-    // else {
-    //     'Complete form'
-    //   }
-    // return this.alkilinityCalcResult
-
-    // console.log(this.alkilinityResultSA)
+    if (val = 1)  // sodium bicarb logic here
+    {
+      this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+    }
+     if ( val = 2)
+    {
+      this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentSA
+    }
+    else if (val = 3 ){
+      this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentKW
+      }
+    else {
+        'Please complete form'
+      }
+      console.log(this.modifiedTextAlk)
   }
 
-  // show volume * 0.0714 for 0.1 dkh adjustment
-
+  customAlkFunction(val: any)
+  {
+    this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
+  }
 
   //Calcium
 
@@ -295,9 +266,89 @@ export class BigFourComponent implements OnInit {
 
 
 
+// customAlkFunction(val: any)
+// {
+//   // val = this.alkVal
+
+//   // console.log(val)
+//   // console.log(this.alkVal)
+//   // console.log(this.modifiedTextAlk)
+//   // console.log(this.modifiedTextAlk)
+
+//   this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
+//   // this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
+
+//   // if (this.alkVal = 1)  // sodium bicarb logic here
+//   // {
+//   //   this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+//   //   return this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+//   // }
+//   //  if ( this.alkVal = 2)
+//   // {
+//   //   this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+//   //   return this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentSA
+//   // }
+//   // else if (this.alkVal = 3 ){
+//   //   this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+//   //   return this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentKW
+//   //   }
+//   // else {
+//   //     'Please complete form'
+//   //   }
+//   // console.log(val)
+
+// }
 
 
 
+
+  // alkilinityCalculator(){
+
+    // const changeSelectedAlk = (e) => {
+    //   const $select = (<HTMLInputElement>document.querySelector('#alkInputGroup')).value;
+    //   $select.value = 'steve'
+    // };
+
+    // this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10;
+
+    // this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+    // this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+    // this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
+
+    // this.additiveSelected[1] = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
+
+    // this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+    // this.alkilinityResultSA = this.alkilinityChange * this.alkilinityAdjustmentSA
+    // this.alkilinityResultKW = this.alkilinityChange * this.alkilinityAdjustmentKW
+
+    // if (this.alkilinityChange)
+    //   {
+    //     this.alkilinityModalStart =  `Your correction is ${this.alkilinityResult}ml of liquid Sodium Bicarbonate`
+    //   }
+    //   //returns this above
+    // else if ( this.alkilinityResultSA)
+    // {
+    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultSA}ml of liquid Soda Ash`
+    // }
+    // else if (this.alkilinityResultKW ){
+
+    //   this.alkilinityModalStart = `Your correction is ${this.alkilinityResultKW}ml of liquid Kalkwasser`
+    //   }
+    // else {
+    //     'Complete form'
+    //   }
+    // return this.alkilinityCalcResult
+
+    // console.log(this.alkilinityResultSA)
+  // }
+
+  // show volume * 0.0714 for 0.1 dkh adjustment
+// onAlkSelected() {
+  //   this.alkilinityAdjustment = this.alkAdditive.nativeElement.value;
+  //   console.log(this.onAlkSelected)
+  // }
+
+  // @ViewChild('alkAdditive') alkAdditive!: ElementRef
 
 
 
