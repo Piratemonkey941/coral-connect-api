@@ -149,26 +149,33 @@ formModal:any;                              // something for modal
   modifiedTextAlk: string
   // val:number                    //modified text from tuto
 
-  onAlkAdditiveSelected(val: number)  // logic here
-  {
-  this.customAlkFunction(val)
+  onAlkAdditiveSelected(val: any)  // logic here
+    {
+    this.customAlkFunction(val)
 
-  console.log(val) // confirming that the Id is activly changing
-  this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
+    console.log(val) // confirming that the Id is activly changing
+    this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
 
-    if (val = 1)  // sodium bicarb logic here
+
+    if (val === 1)  // sodium bicarb logic here
     {
       this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
       this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+
+      return this.alkilinityResult
     }
-     if ( val = 2)
+     else if( val === 2)
     {
       this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
-      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentSA
+       this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentSA
+       console.log('volume', this.volume)
+      return this.alkilinityResult
     }
-    else if (val = 3 ){
+    else if (val === 3 ){
       this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
-      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentKW
+       this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentKW
+
+      return this.alkilinityResult
       }
     else {
         'Please complete form'
