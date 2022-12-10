@@ -1,0 +1,22 @@
+  <span>
+      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+
+      </svg>
+      Calcium
+      </span>
+      <div class="menu"></div>
+      <div class="app-card__subtext">{{calciumStart}} </div>
+      <div class="app-card-buttons input-group">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Calcium in ppm"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="calcium">
+        <button
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+            (click)="onAddCalcium()"
+        >Submit</button>

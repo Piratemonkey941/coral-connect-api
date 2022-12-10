@@ -1,0 +1,34 @@
+
+     <!-- ALKILINITY -->
+
+     <div class="app-card g-col-3 "> -->
+<div>
+      <span>
+          <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+          Alkilinity
+
+          <div class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-three-dots-vertical btn text-white"></i>
+          </div>
+      </span>
+
+      <div class="app-card__subtext">{{alkilinityStart}}</div>
+
+
+      <div class="app-card-buttons input-group">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Alkilinity in DKH"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="alkilinity">
+        <button
+          class="btn btn-primary"
+          type="button"
+          id="button-addon2"
+          (click)="onAddAlkilinity()"
+        >Submit</button>
+      </div>
+
+    </div>

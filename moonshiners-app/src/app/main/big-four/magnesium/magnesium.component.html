@@ -1,0 +1,23 @@
+<span>
+    <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+
+    </svg>
+    Magnesium
+    </span>
+    <div class="menu magnesium"></div>
+    <div class="app-card__subtext">{{magnesiumStart}} </div>
+    <div class="app-card-buttons input-group">
+      <input
+          type="text"
+          class="form-control"
+          placeholder="Magnesium in ppm"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          [(ngModel)]="magnesium">
+      <button
+          class="btn btn-primary"
+          type="button"
+          id="button-addon2"
+          (click)="onAddMagnesium()"
+        >Submit</button>
+    </div>

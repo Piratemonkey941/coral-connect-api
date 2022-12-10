@@ -41,12 +41,12 @@
 
   <div class="apps-card">
     <div class="app-card">
-
-      <span>
+      <app-salinity></app-salinity>
+      <!-- <span>
         <svg viewBox="0 0 512 512" style="border: 1px solid #a059a9"></svg>
         Salinity
       </span>
-      <div class="menu" > </div>  <!--three dots -->
+      <div class="menu" > </div>
       <div class="app-card__subtext">{{salinityStart}}</div>
 
 
@@ -66,16 +66,16 @@
 
           (click)="onAddSalinity()"
           >Submit
-        </button>
+        </button> -->
       </div>
     </div>
 
      <!-- ALKILINITY -->
 
-     <!-- <app-alkilinity></app-alkilinity> -->
- <div class="app-card g-col-3 ">
+     <div class="app-card g-col-3 ">
+      <app-alkilinity></app-alkilinity>
 
-      <span>
+      <!-- <span>
           <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
           Alkilinity
 
@@ -101,12 +101,83 @@
           id="button-addon2"
           (click)="onAddAlkilinity()"
         >Submit</button>
-      </div>
+      </div> -->
 
     </div>
 
-    <!-- ALKILINITY MODAL -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+    <div class="app-card g-col-3 ">
+
+      <app-calcium></app-calcium>
+      <!-- <span>
+      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+
+      </svg>
+      Calcium
+      </span>
+      <div class="menu"></div>
+      <div class="app-card__subtext">{{calciumStart}} </div>
+      <div class="app-card-buttons input-group">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Calcium in ppm"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="calcium">
+        <button
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+            (click)="onAddCalcium()"
+        >Submit</button> -->
+      </div>
+    </div>
+
+    <div class="app-card g-col-3 ">
+
+      <app-magnesium></app-magnesium>
+      <!-- <span>
+      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+
+      </svg>
+      Magnesium
+      </span>
+      <div class="menu magnesium"></div>
+      <div class="app-card__subtext">{{magnesiumStart}} </div>
+      <div class="app-card-buttons input-group">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Magnesium in ppm"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="magnesium">
+        <button
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+            (click)="onAddMagnesium()"
+          >Submit</button>
+      </div> -->
+    </div>
+
+
+    <!-- MODALS -->
+
+    <app-salinity-modal></app-salinity-modal>
+    <app-alkilinity-modal></app-alkilinity-modal>
+    <app-calcium-modal></app-calcium-modal>
+    <app-magnesium-modal></app-magnesium-modal>
+
+    <!-- MODALS -->
+</div>
+
+
+<!-- MODALS -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -115,7 +186,7 @@
         <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <!-- input below -->
+
       <div class="modal-body">
 
         <div class="input-group mb-3">
@@ -184,67 +255,7 @@
       </div>
     </div>
   </div>
-</div>
-
-
-
-    <div class="app-card g-col-3 ">
-      <span>
-      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
-
-      </svg>
-      Calcium
-      </span>
-      <div class="menu"></div>
-      <div class="app-card__subtext">{{calciumStart}} </div>
-      <div class="app-card-buttons input-group">
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Calcium in ppm"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-            [(ngModel)]="calcium">
-        <button
-            class="btn btn-primary"
-            type="button"
-            id="button-addon2"
-            (click)="onAddCalcium()"
-        >Submit</button>
-      </div>
-    </div>
-
-    <div class="app-card g-col-3 ">
-      <span>
-      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
-
-      </svg>
-      Magnesium
-      </span>
-      <div class="menu magnesium"></div>
-      <div class="app-card__subtext">{{magnesiumStart}} </div>
-      <div class="app-card-buttons input-group">
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Magnesium in ppm"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-            [(ngModel)]="magnesium">
-        <button
-            class="btn btn-primary"
-            type="button"
-            id="button-addon2"
-            (click)="onAddMagnesium()"
-          >Submit</button>
-      </div>
-    </div>
-
-</div>
-</div>
-
-<!-- MODALS -->
-
+</div> -->
 
 
 <!-- (click)="alkilinityCalculator()" -->
