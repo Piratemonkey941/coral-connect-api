@@ -46,11 +46,10 @@ formModal:any;                              // something for modal
     this.formModal.hide();
   }
 
-
 //VOLUME
 
   volumeStart: string = 'Does Size Matter?'
-  @Output()volume: number
+  volume: number = 10
   submitedVolume: number
 
   onAddVolume(){
@@ -59,6 +58,7 @@ formModal:any;                              // something for modal
 
     this.volumeStart = `Your Reef is ${volume} gallons`
 
+    console.log(this.volume)
     return volume
   }
 
@@ -98,8 +98,7 @@ formModal:any;                              // something for modal
   alkilinityStart: string = 'The foundation of our Reef'
 
   alkilinityAdjustment: any
-  alkilinityAdjustmentSA: any
-  alkilinityAdjustmentKW: any
+
 
   onAddAlkilinity(){ // for basic calculation on card
 
@@ -131,49 +130,57 @@ formModal:any;                              // something for modal
   }
 
   alkilinityChange: number
-  // alkilinityResult: any
-  // alkilinityResultSA: any
-  // alkilinityResultKW:any
+  alkilinityAdjustmentSA: number
+  alkilinityAdjustmentKW: number
+  alkilinityAdjustmentSB: number
   // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
   // alkSodiumBicarb: any
 
   alkilinityDesired: number
   alkilinityCurrent: number
 
-  alkilinityResult: number
-  alkilinityResultSA: number
-  alkilinityResultKW: number
+  alkilinityResult: string
+  // alkilinityResultSA: number
+  // alkilinityResultKW: number
 
   additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
   additiveSelectedDefault: number             // for default selected in alk modal
   modifiedTextAlk: string
-  // val:number                    //modified text from tuto
 
-  onAlkAdditiveSelected(val: any)  // logic here
-    {
-    this.customAlkFunction(val)
 
-    console.log(val) // confirming that the Id is activly changing
+  onAlkAdditiveSelected(val:number) {
+
+    // Return the val number
+    console.log("new val function",val)
+    return val;
+  }
+
+  alkinityCalculator(val:number) { // logic here
+
     this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
 
+    console.log("comming from val function",this.onAlkAdditiveSelected(val)) // confirming that the Id is activly changing
+    console.log(this.alkilinityResult) // confirming that the Id is activly changing
 
-    if (val === 1)  // sodium bicarb logic here
+    if (val === this.onAlkAdditiveSelected(1))  // sodium bicarb logic here
     {
-      this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-      this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustment
+      // this.alkilinityAdjustmentSB = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+      this.alkilinityAdjustmentSB = (0.1429 * this.volume) // for sodium bicarbonate lower/nuetural ph
+      this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSB).toFixed(2)
 
+      console.log(this.alkilinityResult)
       return this.alkilinityResult
     }
-     else if( val === 2)
+     else if( val === this.onAlkAdditiveSelected(2))
     {
-      this.alkilinityAdjustmentSA = (0.0714 * this.volume).toFixed(2) // for soda ash higher ph
-       this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentSA
+      this.alkilinityAdjustmentSA = (0.0714 * this.volume) // for soda ash higher ph
+       this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSA).toFixed(2)
        console.log('volume', this.volume)
       return this.alkilinityResult
     }
-    else if (val === 3 ){
-      this.alkilinityAdjustmentKW = (3.322 * this.volume).toFixed(2) // for Kalkwasser higher ph
-       this.alkilinityResult = this.alkilinityChange * this.alkilinityAdjustmentKW
+    else if (val === this.onAlkAdditiveSelected(3) ){
+      this.alkilinityAdjustmentKW = (3.322 * this.volume) // for Kalkwasser higher ph
+       this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentKW).toFixed(2)
 
       return this.alkilinityResult
       }
@@ -181,12 +188,18 @@ formModal:any;                              // something for modal
         'Please complete form'
       }
       console.log(this.modifiedTextAlk)
+
+      this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
+
+
   }
 
-  customAlkFunction(val: any)
-  {
-    this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
-  }
+  // customAlkFunction(val: any)
+  // {
+
+  //   console.log(val)
+  //   this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
+  // }
 
   //Calcium
 
