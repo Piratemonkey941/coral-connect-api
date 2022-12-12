@@ -59,3 +59,11 @@ export class ElementCalculatorService {
 
   }
 }
+
+// basicElems [
+//   {
+//     name: 'salinity',
+//     options: []
+//   }
+// ]
+// loop through with ng for and it can place modal specific to element.

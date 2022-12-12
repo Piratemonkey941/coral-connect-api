@@ -12,13 +12,12 @@ export class BigFourComponent implements OnInit {
 
   // alkAdditive: any []
 formModal:any;                              // something for modal
-
-  // onAlkAdditiveSelected: any
-
+selectedElement: string = ''
 
   @Input() receivedValue: String;
 
-  constructor(private elementCalculator: ElementCalculatorService) { }
+  constructor() { }
+  // private elementCalculator: ElementCalculatorService
 
   ngOnInit(): void {
 
@@ -27,14 +26,14 @@ formModal:any;                              // something for modal
     )
 
     //defines what is in the alk array
-  this.additiveSelectedAlk = [
-      {Id:0, Name:"Select Additive"},
-      {Id:1, Name:"Liquid Sodium Bicarbonate"},
-      {Id:2, Name:"Liquid Soda Ash"},
-      {Id:3, Name:"Liquid Kalkwasser"},
-    ]
+  // this.additiveSelectedAlk = [
+  //     {Id:0, Name:"Select Additive"},
+  //     {Id:1, Name:"Liquid Sodium Bicarbonate"},
+  //     {Id:2, Name:"Liquid Soda Ash"},
+  //     {Id:3, Name:"Liquid Kalkwasser"},
+  //   ]
 
-    // this.additiveSelectedDefault = 0;
+  //   // this.additiveSelectedDefault = 0;
   }
 
 // MODAL CODE
@@ -50,7 +49,7 @@ formModal:any;                              // something for modal
 //VOLUME
 
   volumeStart: string = 'Does Size Matter?'
-  volume: number = 10
+  volume: number
   submitedVolume: number
 
   onAddVolume(){
@@ -129,35 +128,35 @@ formModal:any;                              // something for modal
       this.alkilinityStart = 'Retest parameter'
     }
   }
-  alkilinityChange: number
-  alkilinityAdjustmentSA: number
-  alkilinityAdjustmentKW: number
-  alkilinityAdjustmentSB: number
-  // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
-  // alkSodiumBicarb: any
+  // alkilinityChange: number
+  // alkilinityAdjustmentSA: number
+  // alkilinityAdjustmentKW: number
+  // alkilinityAdjustmentSB: number
+  // // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
+  // // alkSodiumBicarb: any
 
-  alkilinityDesired: number
-  alkilinityCurrent: number
+  // alkilinityDesired: number
+  // alkilinityCurrent: number
 
-  alkilinityResult: string
-  // alkilinityResultSA: number
-  // alkilinityResultKW: number
+  // alkilinityResult: string
+  // // alkilinityResultSA: number
+  // // alkilinityResultKW: number
 
-  additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
-  additiveSelectedDefault: string             // for default selected in alk modal
-  modifiedTextAlk: string
+  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
+  // additiveSelectedDefault: string             // for default selected in alk modal
+  // modifiedTextAlk: string
 
 
-  // Alk Modal Logic
-  alkilinityCalculator(){
-    this.alkilinityResult = this.elementCalculator.alkinityCalculator(
-      this.alkilinityDesired,
-      this.alkilinityCurrent,
-      this.additiveSelectedDefault,
-      this.volume,
+  // // Alk Modal Logic
+  // alkilinityCalculator(){
+  //   this.alkilinityResult = this.elementCalculator.alkinityCalculator(
+  //     this.alkilinityDesired,
+  //     this.alkilinityCurrent,
+  //     this.additiveSelectedDefault,
+  //     this.volume,
 
-      )
-  }
+  //     )
+  // }
 
 
   // customAlkFunction(val: any)

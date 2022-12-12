@@ -1,0 +1,87 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alkilinity Calculator</h5>
+          <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- input below -->
+        <div class="modal-body">
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Current level</span>
+            <input
+            type="text"
+            class="form-control"
+             placeholder="Alk in dKH"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            [(ngModel)]="current"
+            >
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Desired Level</span>
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Alk in dKH"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            [(ngModel)]="desired"
+            >
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select
+                class="form-select "
+                [(ngModel)]="additiveSelectedDefault"
+                >
+                <!-- (ngModelChange)="onAlkAdditiveSelected($event)" -->
+            <option
+                class="text-black"
+                *ngFor='let additive of
+                [
+
+                    {Id:0, Name:"Select Additive"},
+                    {Id:1, Name:"Liquid Sodium Bicarbonate"},
+                    {Id:2, Name:"Liquid Soda Ash"},
+                    {Id:3, Name:"Liquid Kalkwasser"},
+
+                ]'
+                [value]="additive.Id"
+              >
+              {{additive.Name}}
+            </option>
+
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+
+          <div class="h6 float-left text-dark"> {{result}}</div>
+
+          <div>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                (click)="closeModal()"
+
+                >Close
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+            (click)="calculate()"
+
+                >Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
