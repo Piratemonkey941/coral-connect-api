@@ -145,8 +145,8 @@
           <select
               class="form-select "
               [(ngModel)]="additiveSelectedDefault"
-              (ngModelChange)="onAlkAdditiveSelected($event)"
-          >
+              >
+              <!-- (ngModelChange)="onAlkAdditiveSelected($event)" -->
           <option
               class="text-black"
               *ngFor="let additive of additiveSelectedAlk"
@@ -161,7 +161,7 @@
       </div>
       <div class="modal-footer">
 
-        <div class="h6 float-left text-dark"> {{modifiedTextAlk}}</div>
+        <div class="h6 float-left text-dark"> {{alkilinityResult}}</div>
 
         <div>
           <button
@@ -176,7 +176,7 @@
           <button
               type="button"
               class="btn btn-primary"
-
+          (click)="alkilinityCalculator()"
 
               >Submit
           </button>

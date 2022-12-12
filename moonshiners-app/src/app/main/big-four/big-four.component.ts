@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
+import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
 import {AdditiveSelected} from './alk-selector'
 declare var window: any;
 
@@ -17,7 +18,7 @@ formModal:any;                              // something for modal
 
   @Input() receivedValue: String;
 
-  constructor() { }
+  constructor(private elementCalculator: ElementCalculatorService) { }
 
   ngOnInit(): void {
 
@@ -33,7 +34,7 @@ formModal:any;                              // something for modal
       {Id:3, Name:"Liquid Kalkwasser"},
     ]
 
-    this.additiveSelectedDefault = 0;
+    // this.additiveSelectedDefault = 0;
   }
 
 // MODAL CODE
@@ -128,7 +129,6 @@ formModal:any;                              // something for modal
       this.alkilinityStart = 'Retest parameter'
     }
   }
-
   alkilinityChange: number
   alkilinityAdjustmentSA: number
   alkilinityAdjustmentKW: number
@@ -144,55 +144,21 @@ formModal:any;                              // something for modal
   // alkilinityResultKW: number
 
   additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
-  additiveSelectedDefault: number             // for default selected in alk modal
+  additiveSelectedDefault: string             // for default selected in alk modal
   modifiedTextAlk: string
 
 
-  onAlkAdditiveSelected(val:number) {
+  // Alk Modal Logic
+  alkilinityCalculator(){
+    this.alkilinityResult = this.elementCalculator.alkinityCalculator(
+      this.alkilinityDesired,
+      this.alkilinityCurrent,
+      this.additiveSelectedDefault,
+      this.volume,
 
-    // Return the val number
-    console.log("new val function",val)
-    return val;
+      )
   }
 
-  alkinityCalculator(val:number) { // logic here
-
-    this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
-
-    console.log("comming from val function",this.onAlkAdditiveSelected(val)) // confirming that the Id is activly changing
-    console.log(this.alkilinityResult) // confirming that the Id is activly changing
-
-    if (val === this.onAlkAdditiveSelected(1))  // sodium bicarb logic here
-    {
-      // this.alkilinityAdjustmentSB = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-      this.alkilinityAdjustmentSB = (0.1429 * this.volume) // for sodium bicarbonate lower/nuetural ph
-      this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSB).toFixed(2)
-
-      console.log(this.alkilinityResult)
-      return this.alkilinityResult
-    }
-     else if( val === this.onAlkAdditiveSelected(2))
-    {
-      this.alkilinityAdjustmentSA = (0.0714 * this.volume) // for soda ash higher ph
-       this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSA).toFixed(2)
-       console.log('volume', this.volume)
-      return this.alkilinityResult
-    }
-    else if (val === this.onAlkAdditiveSelected(3) ){
-      this.alkilinityAdjustmentKW = (3.322 * this.volume) // for Kalkwasser higher ph
-       this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentKW).toFixed(2)
-
-      return this.alkilinityResult
-      }
-    else {
-        'Please complete form'
-      }
-      console.log(this.modifiedTextAlk)
-
-      this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
-
-
-  }
 
   // customAlkFunction(val: any)
   // {
@@ -284,6 +250,70 @@ formModal:any;                              // something for modal
 
 
 
+  // alkilinityChange: number
+  // alkilinityAdjustmentSA: number
+  // alkilinityAdjustmentKW: number
+  // alkilinityAdjustmentSB: number
+  // // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
+  // // alkSodiumBicarb: any
+
+  // alkilinityDesired: number
+  // alkilinityCurrent: number
+
+  // alkilinityResult: string
+  // // alkilinityResultSA: number
+  // // alkilinityResultKW: number
+
+  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
+  // additiveSelectedDefault: string             // for default selected in alk modal
+  // modifiedTextAlk: string
+
+
+  // onAlkAdditiveSelected(val:number) {
+
+  //   // Return the val number
+  //   console.log("new val function",val)
+  //   return val;
+  // }
+
+  // alkinityCalculator() { // logic here
+
+  //   this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
+
+  //   // console.log("comming from val function",this.onAlkAdditiveSelected(val)) // confirming that the Id is activly changing
+  //   console.log(this.alkilinityResult) // confirming that the Id is activly changing
+
+  //   if (this.additiveSelectedDefault === '1')  // sodium bicarb logic here
+  //   {
+  //     // this.alkilinityAdjustmentSB = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+  //     this.alkilinityAdjustmentSB = (0.1429 * this.volume) // for sodium bicarbonate lower/nuetural ph
+  //     this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSB).toFixed(2)
+
+  //     console.log(this.alkilinityResult)
+  //     return this.alkilinityResult
+  //   }
+  //    else if( this.additiveSelectedDefault === '2')
+  //   {
+  //     this.alkilinityAdjustmentSA = (0.0714 * this.volume) // for soda ash higher ph
+  //      this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentSA).toFixed(2)
+  //     //  console.log('volume', this.volume)
+  //     return this.alkilinityResult
+  //   }
+  //   else if (this.additiveSelectedDefault === '3' ){
+  //     this.alkilinityAdjustmentKW = (3.322 * this.volume) // for Kalkwasser higher ph
+  //      this.alkilinityResult = (this.alkilinityChange * this.alkilinityAdjustmentKW).toFixed(2)
+
+  //     return this.alkilinityResult
+  //     }
+  //   else {
+  //       'Please complete form'
+  //     }
+  //     console.log(this.modifiedTextAlk)
+
+  //     this.alkilinityChange = (this.alkilinityDesired - this.alkilinityCurrent) * 10
+
+
+  // }
 
 
 // customAlkFunction(val: any)
