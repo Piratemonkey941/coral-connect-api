@@ -15,6 +15,10 @@ export class ModalComponent implements OnInit {
   result: any = 'please enter a value'
   formModal:any;
 
+  alkilinityResult: string
+  calciumResult: string
+  magnesiumResult: string
+
 
   @Input() elementName: string = ''
   @Input() volume: number
@@ -25,17 +29,9 @@ export class ModalComponent implements OnInit {
 
     this.formModal = new window.bootstrap.Modal(
       document.getElementById("exampleModal"))
-
-
-    // this.additiveSelectedAlk = [
-    //   {Id:0, Name:"Select Additive"},
-    //   {Id:1, Name:"Liquid Sodium Bicarbonate"},
-    //   {Id:2, Name:"Liquid Soda Ash"},
-    //   {Id:3, Name:"Liquid Kalkwasser"},
-    // ]
-
-    // this.additiveSelectedDefault = 0;
   }
+
+  modifiedTextAlk: string
 
   calculate() {
 
@@ -45,19 +41,29 @@ export class ModalComponent implements OnInit {
     case 'alkilinity':
 
       this.result = this.alkilinityResult = this.elementCalculator.alkinityCalculator(
-
           this.desired,
           this.current,
           this.additiveSelectedDefault,
           this.volume,
-
           )
-
       break;
     case 'calcium':
+      this.result = this.calciumResult = this.elementCalculator.calciumCalculator(
+        this.desired,
+        this.current,
+        this.additiveSelectedDefault,
+        this.volume,
+        )
       break;
     case 'magnesium':
+      this.result = this.magnesiumResult = this.elementCalculator.magnesiumCalculator(
+        this.desired,
+        this.current,
+        this.additiveSelectedDefault,
+        this.volume,
+      )
       break;
+
     default:
       this.result
   }
@@ -76,34 +82,37 @@ export class ModalComponent implements OnInit {
 
   calculator(){}
 
-  alkilinityChange: number
-  alkilinityAdjustmentSA: number
-  alkilinityAdjustmentKW: number
-  alkilinityAdjustmentSB: number
-  // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
-  // alkSodiumBicarb: any
-
-  alkilinityDesired: number
-  alkilinityCurrent: number
-
-  alkilinityResult: string
-  // alkilinityResultSA: number
-  // alkilinityResultKW: number
-
-  additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
-  // additiveSelectedDefault: string             // for default selected in alk modal
-  modifiedTextAlk: string
 
 
-  // Alk Modal Logic
-  // alkilinityCalculator(){
-  //   this.alkilinityResult = this.elementCalculator.alkinityCalculator(
-  //     this.alkilinityDesired,
-  //     this.alkilinityCurrent,
-  //     this.additiveSelectedDefault,
-  //     this.volume,
 
-  //     )
-  // }
+
 
 }
+
+
+//GRAVEYARD
+
+
+    // this.additiveSelectedAlk = [
+    //   {Id:0, Name:"Select Additive"},
+    //   {Id:1, Name:"Liquid Sodium Bicarbonate"},
+    //   {Id:2, Name:"Liquid Soda Ash"},
+    //   {Id:3, Name:"Liquid Kalkwasser"},
+    // ]
+
+    // this.additiveSelectedDefault = 0;
+
+
+  // alkilinityChange: number
+  // alkilinityAdjustmentSA: number
+  // alkilinityAdjustmentKW: number
+  // alkilinityAdjustmentSB: number
+
+
+  // alkilinityDesired: number
+  // alkilinityCurrent: number
+
+
+
+
+  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop

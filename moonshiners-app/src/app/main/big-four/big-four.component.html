@@ -43,9 +43,14 @@
     <div class="app-card">
 
       <span>
-        <svg viewBox="0 0 512 512" style="border: 1px solid #a059a9"></svg>
+        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
         Salinity
-      </span>
+
+        <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <!-- <i class="bi bi-three-dots-vertical btn text-white"></i> -->
+        </div>
+
+    </span>
       <div class="menu" > </div>  <!--three dots -->
       <div class="app-card__subtext">{{salinityStart}}</div>
 
@@ -112,11 +117,14 @@
 
     <div class="app-card g-col-3 ">
       <span>
-      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        Calcium
 
-      </svg>
-      Calcium
-      </span>
+        <div (click)="selectedElement = 'calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="bi bi-three-dots-vertical btn text-white"></i>
+        </div>
+
+    </span>
       <div class="menu"></div>
       <div class="app-card__subtext">{{calciumStart}} </div>
       <div class="app-card-buttons input-group">
@@ -138,11 +146,14 @@
 
     <div class="app-card g-col-3 ">
       <span>
-      <svg viewBox="0 0 52 52" style="border: 1px solid #C75DEB">
+        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        Magnesium
 
-      </svg>
-      Magnesium
-      </span>
+        <div (click)="selectedElement = 'magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="bi bi-three-dots-vertical btn text-white"></i>
+        </div>
+
+    </span>
       <div class="menu magnesium"></div>
       <div class="app-card__subtext">{{magnesiumStart}} </div>
       <div class="app-card-buttons input-group">

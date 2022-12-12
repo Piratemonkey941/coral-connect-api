@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
-import {AdditiveSelected} from './alk-selector'
+
 declare var window: any;
 
 @Component({
@@ -9,15 +9,13 @@ declare var window: any;
   styleUrls: ['./big-four.component.scss']
 })
 export class BigFourComponent implements OnInit {
-
-  // alkAdditive: any []
-formModal:any;                              // something for modal
-selectedElement: string = ''
+  formModal:any;                              // something for modal
+  selectedElement: string = ''
 
   @Input() receivedValue: String;
 
   constructor() { }
-  // private elementCalculator: ElementCalculatorService
+
 
   ngOnInit(): void {
 
@@ -25,26 +23,18 @@ selectedElement: string = ''
       document.getElementById("exampleModal")
     )
 
-    //defines what is in the alk array
-  // this.additiveSelectedAlk = [
-  //     {Id:0, Name:"Select Additive"},
-  //     {Id:1, Name:"Liquid Sodium Bicarbonate"},
-  //     {Id:2, Name:"Liquid Soda Ash"},
-  //     {Id:3, Name:"Liquid Kalkwasser"},
-  //   ]
 
-  //   // this.additiveSelectedDefault = 0;
   }
 
-// MODAL CODE
+  // MODAL CODE
 
-  openModal(){
-    this.formModal.show();
-  }
+    openModal(){
+      this.formModal.show();
+    }
 
-  closeModal(){
-    this.formModal.hide();
-  }
+    closeModal(){
+      this.formModal.hide();
+    }
 
 //VOLUME
 
@@ -128,43 +118,6 @@ selectedElement: string = ''
       this.alkilinityStart = 'Retest parameter'
     }
   }
-  // alkilinityChange: number
-  // alkilinityAdjustmentSA: number
-  // alkilinityAdjustmentKW: number
-  // alkilinityAdjustmentSB: number
-  // // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
-  // // alkSodiumBicarb: any
-
-  // alkilinityDesired: number
-  // alkilinityCurrent: number
-
-  // alkilinityResult: string
-  // // alkilinityResultSA: number
-  // // alkilinityResultKW: number
-
-  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
-  // additiveSelectedDefault: string             // for default selected in alk modal
-  // modifiedTextAlk: string
-
-
-  // // Alk Modal Logic
-  // alkilinityCalculator(){
-  //   this.alkilinityResult = this.elementCalculator.alkinityCalculator(
-  //     this.alkilinityDesired,
-  //     this.alkilinityCurrent,
-  //     this.additiveSelectedDefault,
-  //     this.volume,
-
-  //     )
-  // }
-
-
-  // customAlkFunction(val: any)
-  // {
-
-  //   console.log(val)
-  //   this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
-  // }
 
   //Calcium
 
@@ -247,6 +200,43 @@ selectedElement: string = ''
 }
 
 
+// alkilinityChange: number
+  // alkilinityAdjustmentSA: number
+  // alkilinityAdjustmentKW: number
+  // alkilinityAdjustmentSB: number
+  // // alkilinityModalStart: string = 'MMH Bicarbonates, Its whats for Dinner'
+  // // alkSodiumBicarb: any
+
+  // alkilinityDesired: number
+  // alkilinityCurrent: number
+
+  // alkilinityResult: string
+  // // alkilinityResultSA: number
+  // // alkilinityResultKW: number
+
+  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
+  // additiveSelectedDefault: string             // for default selected in alk modal
+  // modifiedTextAlk: string
+
+
+  // // Alk Modal Logic
+  // alkilinityCalculator(){
+  //   this.alkilinityResult = this.elementCalculator.alkinityCalculator(
+  //     this.alkilinityDesired,
+  //     this.alkilinityCurrent,
+  //     this.additiveSelectedDefault,
+  //     this.volume,
+
+  //     )
+  // }
+
+
+  // customAlkFunction(val: any)
+  // {
+
+  //   console.log(val)
+  //   this.modifiedTextAlk = `Dose ${this.alkilinityResult}ml to achieve new level`
+  // }
 
 
   // alkilinityChange: number
