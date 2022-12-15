@@ -54,7 +54,7 @@ export class BigFourComponent implements OnInit {
 
 //SALINITY
 
-  salinityStart: string = 'The foundation of our Reef'
+  salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
   salinity: number
 
   onAddSalinity(){
@@ -85,7 +85,7 @@ export class BigFourComponent implements OnInit {
 
   //ALKILINITY
   alkilinity: number
-  alkilinityStart: string = 'The foundation of our Reef'
+  alkilinityStart: string = 'Acid, harmfull to the animals stored in the vessel '
 
   alkilinityAdjustment: any
 
@@ -121,7 +121,7 @@ export class BigFourComponent implements OnInit {
 
   //Calcium
 
-  calciumStart: string = 'The foundation of our Reef'
+  calciumStart: string = 'A broken bone can heal, so can the Reef'
   calcium: number
   calciumAdjustment: any
 
@@ -161,7 +161,7 @@ export class BigFourComponent implements OnInit {
   }
   //Magnesium
 
-  magnesiumStart: string = 'The foundation of our Reef'
+  magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
   magnesium: number
   magnesiumAdjustment: any
 

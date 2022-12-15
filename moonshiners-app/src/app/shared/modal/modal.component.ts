@@ -12,13 +12,15 @@ export class ModalComponent implements OnInit {
   current: string = ''
   desired: string = ''
   additiveSelectedDefault: any
-  result: any = 'please enter a value'
+  result: any = ''
   formModal:any;
 
   alkilinityResult: string
+  alkOptionText: string = ''
   calciumResult: string
   magnesiumResult: string
-
+  magnesiumResultWithString: string
+  magOptionText: string = ''
 
   @Input() elementName: string = ''
   @Input() volume: number
@@ -38,25 +40,26 @@ export class ModalComponent implements OnInit {
 
 
   switch (this.elementName) {
-    case 'alkilinity':
+    case 'Alkilinity':
 
       this.result = this.alkilinityResult = this.elementCalculator.alkinityCalculator(
           this.desired,
           this.current,
           this.additiveSelectedDefault,
           this.volume,
+          this.alkOptionText
           )
       break;
-    case 'calcium':
+    case 'Calcium':
       this.result = this.calciumResult = this.elementCalculator.calciumCalculator(
         this.desired,
         this.current,
-        this.additiveSelectedDefault,
+        // this.additiveSelectedDefault,
         this.volume,
         )
       break;
-    case 'magnesium':
-      this.result = this.magnesiumResult = this.elementCalculator.magnesiumCalculator(
+    case 'Magnesium':
+      this.result = this.magnesiumResultWithString = this.elementCalculator.magnesiumCalculator(
         this.desired,
         this.current,
         this.additiveSelectedDefault,

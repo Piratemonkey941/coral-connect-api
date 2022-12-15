@@ -3,7 +3,7 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Alkilinity Calculator</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{elementName}} Calculator</h5>
           <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
@@ -15,7 +15,7 @@
             <input
             type="text"
             class="form-control"
-             placeholder="Alk in dKH"
+             placeholder="Current"
             aria-label="Username"
             aria-describedby="basic-addon1"
             [(ngModel)]="current"
@@ -26,13 +26,13 @@
             <input
             type="text"
             class="form-control"
-            placeholder="Alk in dKH"
+            placeholder="Desired"
             aria-label="Username"
             aria-describedby="basic-addon1"
             [(ngModel)]="desired"
             >
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" *ngIf="elementName === 'Alkilinity'" >
             <label class="input-group-text" for="inputGroupSelect01">Options</label>
             <select
                 class="form-select "
@@ -45,9 +45,35 @@
                 [
 
                     {Id:0, Name:"Select Additive"},
-                    {Id:1, Name:"Liquid Sodium Bicarbonate"},
-                    {Id:2, Name:"Liquid Soda Ash"},
-                    {Id:3, Name:"Liquid Kalkwasser"},
+                    {Id:1, Name:"Option 1 Sodium Bicarbonate"},
+                    {Id:2, Name:"Option 2 Soda Ash"},
+                    {Id:3, Name:"Option 3 Kalkwasser"},
+
+                ]'
+                [value]="additive.Id"
+              >
+              {{additive.Name}}
+            </option>
+
+            </select>
+          </div>
+
+          <div class="input-group mb-3" *ngIf="elementName === 'Magnesium'" >
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select
+                class="form-select "
+                [(ngModel)]="additiveSelectedDefault"
+                >
+                <!-- (ngModelChange)="onAlkAdditiveSelected($event)" -->
+            <option
+                class="text-black"
+                *ngFor='let additive of
+                [
+
+                    {Id:0, Name:"Select Additive"},
+                    {Id:1, Name:"Option 1 Liquid Magnesium Mix BRS"},
+                    {Id:2, Name:"Option 2 Dry Magnesium Cloride"},
+                    {Id:3, Name:"Option 3 Dry Magnesium Sulfite"},
 
                 ]'
                 [value]="additive.Id"
@@ -60,8 +86,10 @@
 
         </div>
         <div class="modal-footer">
+          <div class="h6 justify-content-center" *ngIf="elementName === 'Alkilinity'"> {{alkOptionText}} </div>
+          <div class="h6 justify-content-center" *ngIf="elementName === 'Magnesium'"> {{magOptionText}}</div>
 
-          <div class="h6 float-left text-dark"> {{result}}</div>
+          <div class="h6  text-dark justify-content-center">  {{result}}</div>
 
           <div>
             <button

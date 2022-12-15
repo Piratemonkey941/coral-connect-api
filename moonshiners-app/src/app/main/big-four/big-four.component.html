@@ -6,7 +6,10 @@
     <div class="apps-card center-card">
       <div class="app-card">
         <span>
-          <svg viewBox="0 0 512 512" style="border: 1px solid #a059a9"></svg>
+          <div class="chemImg">
+
+            <img src="../../../assets/h2o.png" alt="" >
+          </div>
           Volume
         </span>
         <div class="menu"></div>
@@ -43,7 +46,10 @@
     <div class="app-card">
 
       <span>
-        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        <div class="chemImg">
+
+          <img src="../../../assets/SoCl.png" alt="" >
+        </div>
         Salinity
 
         <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -81,10 +87,21 @@
  <div class="app-card g-col-3 ">
 
       <span>
-          <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        <div class="chemImg">
+
+          <img src="../../../assets/sodium bicarb.png" alt="" >
+        </div>
+          <!-- <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" /> -->
+            <!-- <div> -->
+
+              <!-- <img href="../../../assets/sodium bicarb.png"  /> -->
+            <!-- </div> -->
+              <!-- <img src="../../../assets/sodium bicarb.png" alt=""> -->
+          <!-- </svg> -->
           Alkilinity
 
-          <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
@@ -111,16 +128,15 @@
 
     </div>
 
-    <!-- ALKILINITY MODAL -->
-
-
-
     <div class="app-card g-col-3 ">
       <span>
-        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        <div class="chemImg">
+
+          <img src="../../../assets/CaCl.png" alt="" >
+        </div>
         Calcium
 
-        <div (click)="selectedElement = 'calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div (click)="selectedElement = 'Calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-three-dots-vertical btn text-white"></i>
         </div>
 
@@ -144,12 +160,15 @@
       </div>
     </div>
 
-    <div class="app-card g-col-3 ">
+  <div class="app-card g-col-3 ">
       <span>
-        <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
+        <div class="chemImg">
+
+          <img src="../../../assets/MgCl.png" alt="" >
+        </div>
         Magnesium
 
-        <div (click)="selectedElement = 'magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-three-dots-vertical btn text-white"></i>
         </div>
 
