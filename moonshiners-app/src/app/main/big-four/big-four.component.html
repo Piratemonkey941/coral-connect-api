@@ -53,7 +53,7 @@
         Salinity
 
         <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <!-- <i class="bi bi-three-dots-vertical btn text-white"></i> -->
+          
         </div>
 
     </span>
@@ -83,7 +83,7 @@
 
      <!-- ALKILINITY -->
 
-     <!-- <app-alkilinity></app-alkilinity> -->
+
  <div class="app-card g-col-3 ">
 
       <span>
@@ -91,14 +91,7 @@
 
           <img src="../../../assets/sodium bicarb.png" alt="" >
         </div>
-          <!-- <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d">
-            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" /> -->
-            <!-- <div> -->
 
-              <!-- <img href="../../../assets/sodium bicarb.png"  /> -->
-            <!-- </div> -->
-              <!-- <img src="../../../assets/sodium bicarb.png" alt=""> -->
-          <!-- </svg> -->
           Alkilinity
 
           <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -199,133 +192,6 @@
   <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
 </div>
 
-<!-- MODALS -->
 
 
-
-<!-- (click)="alkilinityCalculator()" -->
-   <!-- <g xmlns="http://www.w3.org/2000/svg">
-        <path d="M40.824 52H11.176C5.003 52 0 46.997 0 40.824V11.176C0 5.003 5.003 0 11.176 0h29.649C46.997 0 52 5.003 52 11.176v29.649C52 46.997 46.997 52 40.824 52z" fill="#3a3375" data-original="#3a3375" />
-        <path d="M27.44 39H24.2l-2.76-9.04h-8.32L10.48 39H7.36l8.24-28h3.32l8.52 28zm-6.72-12l-3.48-11.36L13.88 27h6.84zM31.48 33.48c0 2.267 1.333 3.399 4 3.399 1.653 0 3.466-.546 5.44-1.64L42 37.6c-2.054 1.254-4.2 1.881-6.44 1.881-4.64 0-6.96-1.946-6.96-5.841v-8.2c0-2.16.673-3.841 2.02-5.04 1.346-1.2 3.126-1.801 5.34-1.801s3.94.594 5.18 1.78c1.24 1.187 1.86 2.834 1.86 4.94V30.8l-11.52.6v2.08zm8.6-5.24v-3.08c0-1.413-.44-2.42-1.32-3.021-.88-.6-1.907-.899-3.08-.899-1.174 0-2.167.359-2.98 1.08-.814.72-1.22 1.773-1.22 3.16v3.199l8.6-.439z" fill="#e4d1eb" data-original="#e7adfb" />
-        </g> -->
-<!--
-<div class="cont">
-  <h1 class=" small-box mx-auto text-white"> Base Elements </h1>
-</div>
-
-
-            <div class="
-            container
-            ">
-
-              <div class="
-              row
-              grid
-              square-box
-              d-flex
-              justify-content-center
-              align-items-center
-              text-white">
-
-                    <div class=" app-card g-col-3 "> -->
-
-<!-- ALKILINITY -->
-    <!-- <div class="app-card g-col-3 ">
-
-      <span>
-          <svg class="" viewBox="0 0 52 52" style="border: 1px solid #c1316d"></svg>
-          Alkilinity
-
-          <div class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-three-dots-vertical btn text-white"></i>
-          </div>
-      </span>
-
-      <div class="app-card__subtext">{{alkilinityStart}}</div>
-
-
-      <div class="app-card-buttons input-group">
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Alkilinity in DKH"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-            [(ngModel)]="alkilinity">
-        <button
-          class="btn btn-primary"
-          type="button"
-          id="button-addon2"
-          (click)="onAddAlkilinity()"
-        >Submit</button>
-      </div>
-
-    </div> -->
-
-    <!-- ALKILINITY MODAL -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Alkilinity Calculator</h5>
-        <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01">Options</label>
-          <select class="form-select "  [(ngModel)]="additiveSelected">
-            <option class="text-black" *ngFor="let additive of additiveSelected " [value]="additive.Id">{{additive.Name}}</option>
-
-          </select>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Current level</span>
-          <input
-          type="text"
-          class="form-control"
-           placeholder="Alk in dKH"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          [(ngModel)]="alkilinityCurrent"
-          >
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Desired Level</span>
-          <input
-          type="text"
-          class="form-control"
-          placeholder="Alk in dKH"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          [(ngModel)]="alkilinityDesired"
-          >
-        </div>
-      </div>
-      <div class="modal-footer">
-
-        <div class="h6 float-left text-dark"> {{alkilinityModalStart}}</div>
-
-          <div>
-            <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                (click)="closeModal()"
-
-                >Close
-            </button>
-
-            <button
-                type="button"
-                class="btn btn-primary"
-
-
-                >Submit
-            </button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
