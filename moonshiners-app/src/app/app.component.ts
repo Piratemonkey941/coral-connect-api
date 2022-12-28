@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
     // add to anchors if you want more buttons at top
     this.config = {
-      // licenseKey: 'YOUR LICENSE KEY HERE', no licence required for creating an open source application under a license compatible with the GNU GPL license v3
+      licenseKey: 'gplv3-license',
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','lastPage'],
       menu: '#menu',
       navigation: true,
