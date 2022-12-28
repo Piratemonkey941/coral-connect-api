@@ -2,7 +2,6 @@
 
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
-import { BigFourComponent } from '../big-four/big-four.component';
 
 declare var window: any;
 
@@ -18,7 +17,7 @@ export class MajorElemsComponent implements OnInit {
 
   @Input() receivedValue: String;
 
-  constructor(private bigFourComponent:BigFourComponent) { }
+  constructor() { }
 
 
   ngOnInit(): void {
@@ -40,58 +39,52 @@ export class MajorElemsComponent implements OnInit {
       this.formModal.hide();
     }
 
+//VOLUME
 
-boron: number
-boronStart: string = 'Acid, harmfull to the animals stored in the vessel '
+  volumeStart: string = 'Does Size Matter?'
+  volume: number
+  submitedVolume: number
 
-boronAdjustment: any
-boronAdjustmentTotal: any
-boronDays: any
+  onAddVolume(){
 
-onAddBoron(){ // for basic calculation on card
+    let volume = this.volume
 
-  let boron = this.boronStart
-  //calculation for 0.1 dkh change per volume
+    this.volumeStart = `Your Reef is ${volume} gallons`
 
-  this.boronAdjustmentTotal = 0.9464 * this.bigFourComponent.volume // general boron calculation
-  this.boronDays = (6 - this.boron).toFixed(2)
-  this.boronAdjustment = this.boronAdjustmentTotal/this.boronDays
-//Best Range
-
-  if (this.boron = 6){
-      this.boronStart = 'Ideal Boron for most reefs'
-    }
-//low start  9.46ml at 100 g for 0.1 ppm increase
-// 94.64ml per day for 1 ppm recovery
-  else if ( this.boron <= 2 && this.boron >= 0 ){
-
-    this.boronStart = `Boron low, adjust immedietly but slowly. ${this.boronAdjustment}ml per day for ${this.boronDays} days  `
-    }
-  else if ( this.boron <= 5.9 && this.boron >= 2.1 ){
-    this.boronStart = `Boron slighty low, adjust slowly to 6ppm. ${this.boronAdjustment}ml will increase ppm by 0.1 `
-    }
-
-//high start
-  else if ( this.boron <= 6.5  && this.boron >= 6.1){
-
-    this.boronStart = 'Acceptable Range However RM method recomends adjusting to 6 '
-   }
-  else if ( this.boron <= 8  && this.boron >= 6.6 ){
-
-    this.boronStart = 'Boron slightly elevated recomendation is to allow level to settle down and watch ICP '
-    }
-  else if ( this.boron <= 10  && this.boron >= 8.1 ){
-
-    this.boronStart = 'Boron critically elevated recomendation is to allow level to settle down and watch ICP '
-    }
-  else if ( this.boron <= 20 && this.boron >= 10.1 ){
-
-    this.boronStart = 'Boron extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-    }
-  else {
-    this.boronStart = 'Retest parameter'
+    console.log(this.volume)
+    return volume
   }
-}
+
+//SALINITY
+
+  salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
+  salinity: number
+
+  onAddSalinity(){
+
+    let salinity = this.salinityStart
+
+    if (this.salinity <= 35 && this.salinity >= 33){
+
+        this.salinityStart = 'Salnity is acceptable'
+      }
+    else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
+
+      this.salinityStart = 'Salnity is lower then expected'
+      }
+    else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
+
+      this.salinityStart = 'Salnity is sligtly higher then expected'
+     }
+    else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
+
+      this.salinityStart = 'Salnity is sligtly higher then expected'
+      }
+    else {
+
+      this.salinityStart = 'Retest parameter'
+    }
+  }
 
   //ALKILINITY
   alkilinity: number
@@ -104,7 +97,7 @@ onAddBoron(){ // for basic calculation on card
 
     let alkilinity = this.alkilinityStart
     //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustment = (0.1429 * this.bigFourComponent.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
 
     if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
         this.alkilinityStart = 'Ideal alkilinity for most reefs'
@@ -138,7 +131,7 @@ onAddBoron(){ // for basic calculation on card
   onAddCalcium(){
 
     let calcium = this.calciumStart
-    this.calciumAdjustment = (0.1024 * this.bigFourComponent.volume).toFixed(2)
+    this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
 
     if (this.calcium <= 440 && this.calcium >= 420){
 
@@ -178,7 +171,7 @@ onAddBoron(){ // for basic calculation on card
   onAddMagnesium(){
 
     let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.bigFourComponent.volume).toFixed(2)
+    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
 
     if (this.magnesium <= 1400 && this.magnesium >= 1300){
 

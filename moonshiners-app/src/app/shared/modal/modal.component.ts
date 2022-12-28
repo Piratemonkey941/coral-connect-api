@@ -94,3 +94,28 @@ export class ModalComponent implements OnInit {
 
 
 //GRAVEYARD
+
+
+    // this.additiveSelectedAlk = [
+    //   {Id:0, Name:"Select Additive"},
+    //   {Id:1, Name:"Liquid Sodium Bicarbonate"},
+    //   {Id:2, Name:"Liquid Soda Ash"},
+    //   {Id:3, Name:"Liquid Kalkwasser"},
+    // ]
+
+    // this.additiveSelectedDefault = 0;
+
+
+  // alkilinityChange: number
+  // alkilinityAdjustmentSA: number
+  // alkilinityAdjustmentKW: number
+  // alkilinityAdjustmentSB: number
+
+
+  // alkilinityDesired: number
+  // alkilinityCurrent: number
+
+
+
+
+  // additiveSelectedAlk: AdditiveSelected[];    // Created empty array for loop
