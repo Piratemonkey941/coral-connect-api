@@ -9,16 +9,18 @@
           <div class="chemImg">
 
             <img src="../../../assets/SoCl.png" alt="" >
-          </div>
 
+<!--==================================================== BORON ==================================================== -->
+
+          </div>
           Boron
-          <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Boron'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
         <div class="menu" > </div>  <!--three dots -->
-        <div class="app-card__subtext">{{salinityStart}}</div>
+        <div class="app-card__subtext">{{boronStart}}</div>
 
 
         <div class="app-card-buttons input-group">
@@ -28,14 +30,14 @@
             placeholder="Bromide/Bromine in ppm"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="salinity">
+            [(ngModel)]="boron">
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
 
-            (click)="onAddSalinity()"
+            (click)="onAddBoron()"
             >Submit
           </button>
         </div>
@@ -57,7 +59,7 @@
 
       </span>
         <div class="menu" > </div>  <!--three dots -->
-        <div class="app-card__subtext">{{salinityStart}}</div>
+        <div class="app-card__subtext">{{boronStart}}</div>
 
 
         <div class="app-card-buttons input-group">
@@ -67,19 +69,21 @@
             placeholder="Bromide/Bromine in ppm"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="salinity">
+            [(ngModel)]="boron">
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
 
-            (click)="onAddSalinity()"
+            (click)="onAddBoron()"
             >Submit
           </button>
         </div>
       </div>
 
+
+<!--==================================================== Potassium ==================================================== -->
       <div class="app-card g-col-3 ">
 
         <span>
@@ -117,6 +121,8 @@
 
       </div>
 
+<!--==================================================== Potassium ==================================================== -->
+
       <div class="app-card g-col-3 ">
         <span>
           <div class="chemImg">
@@ -148,6 +154,8 @@
           >Submit</button>
         </div>
       </div>
+
+<!--==================================================== Potassium ==================================================== -->
 
     <div class="app-card g-col-3 ">
         <span>
@@ -185,7 +193,7 @@
   </div>
 
   <div>
-    <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
+    <!-- <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal> -->
   </div>
 
 
