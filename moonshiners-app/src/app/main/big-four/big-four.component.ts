@@ -90,6 +90,10 @@ export class BigFourComponent implements OnInit {
 
       this.alkilinityStart = `Alkilinity low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
       }
+    else if ( this.alkilinity <= 6.5 && this.alkilinity >= 5 ){
+
+      this.alkilinityStart = `Alkilinity extremely low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
+      }
     else if ( this.alkilinity <= 7.8 && this.alkilinity >= 7.3 ){
       this.alkilinityStart = 'Alk slightly low usually only used in Ultra low nutrient system (ULNS)'
       }

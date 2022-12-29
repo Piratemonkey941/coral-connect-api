@@ -44,7 +44,7 @@ export class MajorElemsComponent implements OnInit {
 // ==================================================== BORON ====================================================
 
 boron: number
-boronStart: string = 'boron '
+boronStart: string = 'Are you a metal or not?!'
 
 boronAdjustment: number
 boronAdjustmentTotal: number
@@ -52,16 +52,16 @@ boronDays: number
 boronQuantityDivisor: number
 
 
-  onAddBoron(){ // for basic calculation on card
-// general boron calculation
+onAddBoron(){ // for basic calculation on card
 
+// general boron calculation
 this.boronDays = Math.ceil(6 - this.boron)   // 2
 this.boronQuantityDivisor = (6 - this.boron) // 6 - 4.5 = 1.5
 this.boronAdjustmentTotal = (0.9464 * this.volumeService.volume) * this.boronQuantityDivisor // 94.64
 this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
 
 
-  if (this.boron = 6){
+  if (this.boron == 6){
       this.boronStart = 'Ideal Boron for most reefs'
   }
 //low start  9.46ml at 100 g for 0.1 ppm increase
