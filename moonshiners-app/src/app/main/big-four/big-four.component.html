@@ -15,7 +15,7 @@
         <div class="menu"></div>
 
 
-          <div class="app-card__subtext">{{volumeStart}}</div>
+          <div class="app-card__subtext">{{this.volumeService.volumeStart}}</div>
           <div class="app-card__warning">Must be submited before proceeding</div>
 
 
@@ -27,14 +27,14 @@
             placeholder="Volume In Gallons."
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="volume">
+            [(ngModel)]="this.volumeService.volume">
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
 
-            (click)="onAddVolume()"
+            (click)="this.volumeService.onAddVolume()"
             >Submit
           </button>
         </div>
@@ -53,7 +53,7 @@
         Salinity
 
         <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          
+
         </div>
 
     </span>
@@ -189,7 +189,7 @@
 </div>
 
 <div>
-  <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
+  <app-modal [elementName]="selectedElement" [volume]="this.volumeService.volume"></app-modal>
 </div>
 
 

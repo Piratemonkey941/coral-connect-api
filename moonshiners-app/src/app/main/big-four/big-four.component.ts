@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
-
+import { VolumeService } from 'src/app/shared/volume.service';
 declare var window: any;
 
 @Component({
@@ -14,7 +14,7 @@ export class BigFourComponent implements OnInit {
 
   @Input() receivedValue: String;
 
-  constructor() { }
+  constructor(public volumeService: VolumeService) { }
 
 
   ngOnInit(): void {
@@ -36,21 +36,6 @@ export class BigFourComponent implements OnInit {
       this.formModal.hide();
     }
 
-//VOLUME
-
-  volumeStart: string = 'Does Size Matter?'
-  volume: number
-  submitedVolume: number
-
-  onAddVolume(){
-
-    let volume = this.volume
-
-    this.volumeStart = `Your Reef is ${volume} gallons`
-
-    console.log(this.volume)
-    return volume
-  }
 
 //SALINITY
 
@@ -94,7 +79,9 @@ export class BigFourComponent implements OnInit {
 
     let alkilinity = this.alkilinityStart
     //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+    this.alkilinityAdjustment = (0.1429 * this.volumeService.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
+
+    console.log(this.alkilinityAdjustment)
 
     if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
         this.alkilinityStart = 'Ideal alkilinity for most reefs'
@@ -128,7 +115,7 @@ export class BigFourComponent implements OnInit {
   onAddCalcium(){
 
     let calcium = this.calciumStart
-    this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
+    this.calciumAdjustment = (0.1024 * this.volumeService.volume).toFixed(2)
 
     if (this.calcium <= 440 && this.calcium >= 420){
 
@@ -168,7 +155,7 @@ export class BigFourComponent implements OnInit {
   onAddMagnesium(){
 
     let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
 
     if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
@@ -199,3 +186,19 @@ export class BigFourComponent implements OnInit {
 
 }
 
+//VOLUME
+
+  // volumeStart: string = 'Does Size Matter?'
+  // @Input() volume: number
+  // volume: number
+  // submitedVolume: number
+
+  // onAddVolume(){
+
+  //   let volume = this.volume
+
+  //   this.volumeStart = `Your Reef is ${volume} gallons`
+
+  //   console.log(this.volume)
+  //   return volume
+  // }

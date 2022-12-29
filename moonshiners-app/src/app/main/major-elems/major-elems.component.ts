@@ -3,7 +3,7 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
 // import { BigFourComponent } from '../big-four/big-four.component';
-
+import { VolumeService } from 'src/app/shared/volume.service';
 declare var window: any;
 
 @Component({
@@ -18,7 +18,7 @@ export class MajorElemsComponent implements OnInit {
 
   @Input() receivedValue: String;
   @Input() volume: number
-  constructor() { }
+  constructor(public volumeService: VolumeService) { }
 
 
   ngOnInit(): void {
@@ -46,34 +46,31 @@ export class MajorElemsComponent implements OnInit {
 boron: number
 boronStart: string = 'boron '
 
-boronAdjustment: any
-boronAdjustmentTotal: any
-boronDays: any
+boronAdjustment: number
+boronAdjustmentTotal: number
+boronDays: number
+boronQuantityDivisor: number
 
 
   onAddBoron(){ // for basic calculation on card
+// general boron calculation
 
-  this.boronAdjustmentTotal = 0.9464 * this.volume // general boron calculation
-
-  this.boronDays = Math.ceil(6 - this.boron)
-
-  this.boronAdjustment = this.boronAdjustmentTotal/this.boronDays
-
-
-
-  console.log(this.boronDays)
+this.boronDays = Math.ceil(6 - this.boron)   // 2
+this.boronQuantityDivisor = (6 - this.boron) // 6 - 4.5 = 1.5
+this.boronAdjustmentTotal = (0.9464 * this.volumeService.volume) * this.boronQuantityDivisor // 94.64
+this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
 
 
-    if (this.boron = 6){
+  if (this.boron = 6){
       this.boronStart = 'Ideal Boron for most reefs'
-    }
+  }
 //low start  9.46ml at 100 g for 0.1 ppm increase
 // 94.64ml per day for 1 ppm recovery
   else if ( this.boron <= 2 && this.boron >= 0 ){
-    this.boronStart = `Boron low, adjust immedietly but slowly. ${this.boronAdjustment}ml per day for ${this.boronDays} days  `
+    this.boronStart = `Boron low, adjust  ${this.boronAdjustment}ml per day for ${this.boronDays} days.  `
   }
   else if ( this.boron <= 5.9 && this.boron >= 2.1 ){
-    this.boronStart = `Boron slighty low, adjust slowly to 6ppm. ${this.boronAdjustment}ml will increase ppm by 0.1 `
+    this.boronStart = `Boron slighty low, adjust ${this.boronAdjustment}ml per day for ${this.boronDays} days.`
     }
   //high start
   else if ( this.boron <= 6.5  && this.boron >= 6.1){
@@ -102,7 +99,7 @@ boronDays: any
   onAddBromide(){
 
     let calcium = this.calciumStart
-    this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
+    this.calciumAdjustment = (0.1024 * this.volumeService.volume).toFixed(2)
 
     if (this.calcium <= 440 && this.calcium >= 420){
 
@@ -143,7 +140,7 @@ boronDays: any
   onAddPotassium(){
 
     let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
 
     if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
@@ -181,7 +178,7 @@ boronDays: any
   onAddStrontium(){
 
     let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
 
     if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
@@ -219,7 +216,7 @@ boronDays: any
   onAddSulfate(){
 
     let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
 
     if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
@@ -261,6 +258,18 @@ boronDays: any
 
 
 }
+
+
+
+
+
+// console.log(this.volumeService.volume)
+
+// console.log(this.boronDays)
+// console.log(this.boronQuantityDivisor)
+// console.log(this.boronAdjustmentTotal)
+// console.log(this.boronAdjustment)
+
 
   // onAddVolume(){
 
