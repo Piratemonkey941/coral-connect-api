@@ -2,6 +2,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
+// import { BigFourComponent } from '../big-four/big-four.component';
 
 declare var window: any;
 
@@ -16,7 +17,7 @@ export class MajorElemsComponent implements OnInit {
   selectedElement: string = ''
 
   @Input() receivedValue: String;
-
+  @Input() volume: number
   constructor() { }
 
 
@@ -39,90 +40,66 @@ export class MajorElemsComponent implements OnInit {
       this.formModal.hide();
     }
 
-//VOLUME
 
-  volumeStart: string = 'Does Size Matter?'
-  volume: number
-  submitedVolume: number
+// ==================================================== BORON ====================================================
+boron: number
+boronStart: string = 'boron '
 
-  onAddVolume(){
+boronAdjustment: any
+boronAdjustmentTotal: any
+boronDays: any
 
-    let volume = this.volume
 
-    this.volumeStart = `Your Reef is ${volume} gallons`
+  onAddBoron(){ // for basic calculation on card
 
-    console.log(this.volume)
-    return volume
-  }
+  this.boronAdjustmentTotal = 0.9464 * this.volume // general boron calculation
 
-//SALINITY
+  this.boronDays = Math.ceil(6 - this.boron)
 
-  salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
-  salinity: number
 
-  onAddSalinity(){
+  this.boronAdjustment = this.boronAdjustmentTotal/this.boronDays
 
-    let salinity = this.salinityStart
 
-    if (this.salinity <= 35 && this.salinity >= 33){
+  console.log(this.boronDays)
 
-        this.salinityStart = 'Salnity is acceptable'
-      }
-    else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
 
-      this.salinityStart = 'Salnity is lower then expected'
-      }
-    else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
-
-      this.salinityStart = 'Salnity is sligtly higher then expected'
-     }
-    else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
-
-      this.salinityStart = 'Salnity is sligtly higher then expected'
-      }
-    else {
-
-      this.salinityStart = 'Retest parameter'
+    if (this.boron = 6){
+      this.boronStart = 'Ideal Boron for most reefs'
     }
+//low start  9.46ml at 100 g for 0.1 ppm increase
+// 94.64ml per day for 1 ppm recovery
+  else if ( this.boron <= 2 && this.boron >= 0 ){
+    this.boronStart = `Boron low, adjust immedietly but slowly. ${this.boronAdjustment}ml per day for ${this.boronDays} days  `
   }
-
-  //ALKILINITY
-  alkilinity: number
-  alkilinityStart: string = 'Acid, harmfull to the animals stored in the vessel '
-
-  alkilinityAdjustment: any
-
-
-  onAddAlkilinity(){ // for basic calculation on card
-
-    let alkilinity = this.alkilinityStart
-    //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-
-    if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
-        this.alkilinityStart = 'Ideal alkilinity for most reefs'
-      }
-    else if ( this.alkilinity <= 7.2 && this.alkilinity >= 6.6 ){
-
-      this.alkilinityStart = `Alkilinity low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
-      }
-    else if ( this.alkilinity <= 7.8 && this.alkilinity >= 7.3 ){
-      this.alkilinityStart = 'Alk slightly low usually only used in Ultra low nutrient system (ULNS)'
-      }
-    else if ( this.alkilinity <= 11.9  && this.alkilinity >= 8.6){
-
-      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color '
-     }
-    else if ( this.alkilinity <= 14  && this.alkilinity >= 12 ){
-
-      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color or cause bleaching '
-      }
-    else {
-      this.alkilinityStart = 'Retest parameter'
+  else if ( this.boron <= 5.9 && this.boron >= 2.1 ){
+    this.boronStart = `Boron slighty low, adjust slowly to 6ppm. ${this.boronAdjustment}ml will increase ppm by 0.1 `
     }
+  //high start
+  else if ( this.boron <= 6.5  && this.boron >= 6.1){
+    this.boronStart = 'Acceptable Range However RM method recomends adjusting to 6 '
   }
+  else if ( this.boron <= 8  && this.boron >= 6.6 ){
+    this.boronStart = 'Boron slightly elevated recomendation is to allow level to settle down and watch ICP '
+  }
+  else if ( this.boron <= 10  && this.boron >= 8.1 ){
+    this.boronStart = 'Boron critically elevated recomendation is to allow level to settle down and watch ICP '
+  }
+  else if ( this.boron <= 20 && this.boron >= 10.1 ){
+    this.boronStart = 'Boron extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+  }
+  else {
+    this.boronStart = 'Retest parameter'
+  }
+}
 
   //Calcium
+
+  bromide: number
+  bromideStart: string = 'bromide'
+  potassium: number
+  potassiumStart: string = 'potassium'
+  // bromide: number
+  // bromideStart: string = 'bromide'
 
   calciumStart: string = 'A broken bone can heal, so can the Reef'
   calcium: number
@@ -200,5 +177,48 @@ export class MajorElemsComponent implements OnInit {
     }
   }
 
+
+  onAddTemp(){}
+
 }
 
+  // onAddVolume(){
+
+  //   let volume = this.volume
+
+  //   this.volumeStart = `Your Reef is ${volume} gallons`
+
+  //   console.log(this.volume)
+  //   return volume
+  // }
+
+//SALINITY
+
+  // salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
+  // salinity: number
+
+  // onAddSalinity(){
+
+  //   let salinity = this.salinityStart
+
+  //   if (this.salinity <= 35 && this.salinity >= 33){
+
+  //       this.salinityStart = 'Salnity is acceptable'
+  //     }
+  //   else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
+
+  //     this.salinityStart = 'Salnity is lower then expected'
+  //     }
+  //   else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
+
+  //     this.salinityStart = 'Salnity is sligtly higher then expected'
+  //    }
+  //   else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
+
+  //     this.salinityStart = 'Salnity is sligtly higher then expected'
+  //     }
+  //   else {
+
+  //     this.salinityStart = 'Retest parameter'
+  //   }
+  // }

@@ -17,8 +17,8 @@
           </div>
 
       </span>
-        <div class="menu" > </div>  <!--three dots -->
-        <div class="app-card__subtext">{{salinityStart}}</div>
+        <div class="menu" > </div>
+        <div class="app-card__subtext">{{boronStart}}</div>
 
 
         <div class="app-card-buttons input-group">
@@ -28,20 +28,20 @@
             placeholder="Bromide/Bromine in ppm"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="salinity">
+            [(ngModel)]="boron">
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
 
-            (click)="onAddSalinity()"
+            (click)="onAddBoron()"
             >Submit
           </button>
         </div>
     </div>
 
-    <div class="apps-card">
+    <!-- <div class="apps-card">
       <div class="app-card">
 
         <span>
@@ -56,7 +56,7 @@
           </div>
 
       </span>
-        <div class="menu" > </div>  <!--three dots -->
+        <div class="menu" > </div>
         <div class="app-card__subtext">{{salinityStart}}</div>
 
 
@@ -186,6 +186,6 @@
 
   <div>
     <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
-  </div>
+  </div> -->
 
 

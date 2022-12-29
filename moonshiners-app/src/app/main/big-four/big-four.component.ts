@@ -26,7 +26,7 @@ export class BigFourComponent implements OnInit {
 
   }
 
-  // MODAL CODE
+// MODAL CODE
 
     openModal(){
       this.formModal.show();

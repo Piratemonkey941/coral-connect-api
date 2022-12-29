@@ -9,6 +9,9 @@ declare var window: any;
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
+
+
+
   current: string = ''
   desired: string = ''
   additiveSelectedDefault: any
