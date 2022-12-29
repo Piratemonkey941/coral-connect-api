@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <!-- <div class="apps-card">
+  <div class="apps-card">
       <div class="app-card">
 
         <span>
@@ -51,13 +51,13 @@
           </div>
           Bromide/Bromine
 
-          <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Bromide'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
         <div class="menu" > </div>
-        <div class="app-card__subtext">{{salinityStart}}</div>
+        <div class="app-card__subtext">{{bromideStart}}</div>
 
 
         <div class="app-card-buttons input-group">
@@ -67,14 +67,14 @@
             placeholder="Bromide/Bromine in ppm"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="salinity">
+            [(ngModel)]="bromide">
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
 
-            (click)="onAddSalinity()"
+            (click)="onAddBromide()"
             >Submit
           </button>
         </div>
@@ -90,13 +90,13 @@
 
           Potassium
 
-            <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div (click)="selectedElement = 'Potassium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="bi bi-three-dots-vertical btn text-white"></i>
             </div>
 
         </span>
 
-        <div class="app-card__subtext">{{alkilinityStart}}</div>
+        <div class="app-card__subtext">{{potassiumStart}}</div>
 
 
         <div class="app-card-buttons input-group">
@@ -106,12 +106,12 @@
               placeholder="Potassium in DKH"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
-              [(ngModel)]="alkilinity">
+              [(ngModel)]="potassium">
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
-            (click)="onAddAlkilinity()"
+            (click)="onAddPotassium()"
           >Submit</button>
         </div>
 
@@ -125,13 +125,13 @@
           </div>
           Strontium
 
-          <div (click)="selectedElement = 'Calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Strontium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
         <div class="menu"></div>
-        <div class="app-card__subtext">{{calciumStart}} </div>
+        <div class="app-card__subtext">{{strontiumStart}} </div>
         <div class="app-card-buttons input-group">
           <input
               type="text"
@@ -139,12 +139,12 @@
               placeholder="Strontium in ppm"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
-              [(ngModel)]="calcium">
+              [(ngModel)]="strontium">
           <button
               class="btn btn-primary"
               type="button"
               id="button-addon2"
-              (click)="onAddCalcium()"
+              (click)="onAddStrontium()"
           >Submit</button>
         </div>
       </div>
@@ -157,13 +157,13 @@
           </div>
           Sulfate
 
-          <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Sulfate'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
-        <div class="menu magnesium"></div>
-        <div class="app-card__subtext">{{magnesiumStart}} </div>
+        <div class="menu Sulfate"></div>
+        <div class="app-card__subtext">{{sulfateStart}} </div>
         <div class="app-card-buttons input-group">
           <input
               type="text"
@@ -171,12 +171,12 @@
               placeholder="Sulfate in ppm"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
-              [(ngModel)]="magnesium">
+              [(ngModel)]="sulfate">
           <button
               class="btn btn-primary"
               type="button"
               id="button-addon2"
-              (click)="onAddMagnesium()"
+              (click)="onAddSulfate()"
             >Submit</button>
         </div>
       </div>
@@ -186,6 +186,6 @@
 
   <div>
     <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
-  </div> -->
+  </div>
 
 

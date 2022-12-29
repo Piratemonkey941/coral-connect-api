@@ -42,6 +42,7 @@ export class MajorElemsComponent implements OnInit {
 
 
 // ==================================================== BORON ====================================================
+
 boron: number
 boronStart: string = 'boron '
 
@@ -56,8 +57,8 @@ boronDays: any
 
   this.boronDays = Math.ceil(6 - this.boron)
 
-
   this.boronAdjustment = this.boronAdjustmentTotal/this.boronDays
+
 
 
   console.log(this.boronDays)
@@ -92,20 +93,13 @@ boronDays: any
   }
 }
 
-  //Calcium
+// ==================================================== BROMIDE ====================================================
 
   bromide: number
   bromideStart: string = 'bromide'
-  potassium: number
-  potassiumStart: string = 'potassium'
-  // bromide: number
-  // bromideStart: string = 'bromide'
+  bromideAdjustment: any
 
-  calciumStart: string = 'A broken bone can heal, so can the Reef'
-  calcium: number
-  calciumAdjustment: any
-
-  onAddCalcium(){
+  onAddBromide(){
 
     let calcium = this.calciumStart
     this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
@@ -139,13 +133,90 @@ boronDays: any
       this.calciumStart = 'Retest parameter'
     }
   }
-  //Magnesium
 
-  magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  magnesium: number
-  magnesiumAdjustment: any
+  // ==================================================== POTASSIUM ====================================================
 
-  onAddMagnesium(){
+  potassiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  potassium: number
+  potassiumAdjustment: any
+
+  onAddPotassium(){
+
+    let magnesium = this.magnesiumStart
+    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+
+    if (this.magnesium <= 1400 && this.magnesium >= 1300){
+
+        this.magnesiumStart = 'magnesium is acceptable'
+      }
+
+    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
+
+      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
+      }
+    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
+
+      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      }
+    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
+
+      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
+     }
+    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
+
+      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
+      }
+    else {
+
+      this.magnesiumStart = 'Retest parameter'
+    }
+  }
+
+// ==================================================== STRONTIUM ====================================================
+
+  strontiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  strontium: number
+  strontiumAdjustment: any
+
+  onAddStrontium(){
+
+    let magnesium = this.magnesiumStart
+    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+
+    if (this.magnesium <= 1400 && this.magnesium >= 1300){
+
+        this.magnesiumStart = 'magnesium is acceptable'
+      }
+
+    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
+
+      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
+      }
+    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
+
+      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      }
+    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
+
+      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
+     }
+    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
+
+      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
+      }
+    else {
+
+      this.magnesiumStart = 'Retest parameter'
+    }
+  }
+
+// ==================================================== SULFATE ====================================================
+
+  sulfateStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  sulfate: number
+  sulfateAdjustment: any
+
+  onAddSulfate(){
 
     let magnesium = this.magnesiumStart
     this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
@@ -179,6 +250,15 @@ boronDays: any
 
 
   onAddTemp(){}
+
+  calciumStart: string = 'A broken bone can heal, so can the Reef'
+  calcium: number
+  calciumAdjustment: any
+
+  magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  magnesium: number
+  magnesiumAdjustment: any
+
 
 }
 
