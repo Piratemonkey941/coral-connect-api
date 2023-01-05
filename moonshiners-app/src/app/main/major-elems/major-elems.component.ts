@@ -152,7 +152,7 @@ bromideQuantityDivisor: number
       // general boron calculation
       this.potassiumDays = Math.ceil(410 - this.potassium)   // 2
       this.potassiumQuantityDivisor = (410 - this.potassium) // 410 - 4.5 = 1.5
-      this.potassiumAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.potassiumQuantityDivisor 
+      this.potassiumAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.potassiumQuantityDivisor
       this.potassiumAdjustment = this.potassiumAdjustmentTotal / this.potassiumDays
 
 
@@ -190,91 +190,109 @@ bromideQuantityDivisor: number
       }
 
 // ==================================================== STRONTIUM ====================================================
+strontiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+strontium: number
+strontiumAdjustment: any
+strontiumAdjustmentTotal: number
+strontiumDays: number
+strontiumQuantityDivisor: number
 
-  strontiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  strontium: number
-  strontiumAdjustment: any
+onAddStrontium(){
 
-  onAddStrontium(){
+    // general boron calculation
+    this.strontiumDays = Math.ceil(410 - this.strontium)   // 2
+    this.strontiumQuantityDivisor = (410 - this.strontium) // 410 - 4.5 = 1.5
+    this.strontiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.strontiumQuantityDivisor
+    this.strontiumAdjustment = this.strontiumAdjustmentTotal / this.strontiumDays
 
-    let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
 
-    if (this.magnesium <= 1400 && this.magnesium >= 1300){
-
-        this.magnesiumStart = 'magnesium is acceptable'
+      if (this.strontium == 10){
+          this.strontiumStart = 'Ideal  for most reefs'
       }
+    //low start  7.72ml at 100 g for 0.1 ppm increase
 
-    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
-
-      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
+      else if ( this.strontium <= 3 && this.strontium >= 0){
+        this.strontiumStart = `Depleted strontium Level, Correct immedietly ${this.strontiumAdjustment}ml per day for ${this.strontiumDays} days.  `
       }
-    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
-
-      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      else if ( this.strontium <= 6 && this.strontium >= 3.1 ){
+        this.strontiumStart = `Low strontium level, adjust  ${this.strontiumAdjustment}ml per day for ${this.strontiumDays} days.  `
       }
-    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
-
-      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
-     }
-    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
-
-      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
+      else if ( this.strontium <= 9 && this.strontium >= 6.1 ){
+        this.strontiumStart = `Reduced strontium, adjust  ${this.strontiumAdjustment}ml per day for ${this.strontiumDays} days.  `
       }
-    else {
+      else if ( this.strontium <= 9.9 && this.strontium >= 9.1 ){
+        this.strontiumStart = `Optimal Range for strontium, adjust ${this.strontiumAdjustment}ml per day for ${this.strontiumDays} days.`
+        }
 
-      this.magnesiumStart = 'Retest parameter'
+      //high start
+      else if ( this.strontium <= 12  && this.strontium >= 10.1){
+        this.strontiumStart = 'Strontium Range Optimal '
+      }
+      else if ( this.strontium <= 25  && this.strontium >= 12.1 ){
+        this.strontiumStart = 'Strontium slightly elevated recomendation is to allow level to settle down and watch ICP '
+      }
+      else if ( this.strontium <= 60  && this.strontium >= 25.1 ){
+        this.strontiumStart = 'Strontium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      }
+      else {
+        this.strontiumStart = 'Retest parameter'
+      }
     }
-  }
 
 // ==================================================== SULFATE ====================================================
 
-  sulfateStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  sulfate: number
-  sulfateAdjustment: any
+sulfateStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+sulfate: number
 
-  onAddSulfate(){
-
-    let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
-
-    if (this.magnesium <= 1400 && this.magnesium >= 1300){
-
-        this.magnesiumStart = 'magnesium is acceptable'
+onAddSulfate(){
+      if ( this.sulfate <= 2800 && this.sulfate >= 2251 )
+      {
+        this.sulfateStart = 'Sulfate Range Optimal '
+      }
+      else if ( this.sulfate <= 2250 && this.sulfate >= 1201)
+      {
+        this.sulfateStart = 'Very low Sulfate levels. Can be a result of low salinity'
+      }
+      else if ( this.sulfate <= 1200 && this.sulfate >= 0)
+      {
+        this.sulfateStart = 'Extremely low Sulfate levels. Can be a result of low salinity'
       }
 
-    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
-
-      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
+      else if ( this.sulfate <= 3300  && this.sulfate >= 2801 )
+      {
+        this.sulfateStart = 'Sulfate slightly elevated if salinity is in range'
       }
-    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
-
-      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      else if ( this.sulfate <= 3500  && this.sulfate >= 3301 )
+      {
+        this.sulfateStart = 'Sulfate very elevated if salinity is in range'
       }
-    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
-
-      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
-     }
-    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
-
-      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
+      else {
+        this.sulfateStart = 'Retest parameter'
       }
-    else {
-
-      this.magnesiumStart = 'Retest parameter'
     }
-  }
 
 
-  onAddTemp(){}
+    // sulfateAdjustment: any
+// sulfateAdjustmentTotal: number
+// sulfateDays: number
+// sulfateQuantityDivisor: number
 
-  calciumStart: string = 'A broken bone can heal, so can the Reef'
-  calcium: number
-  calciumAdjustment: any
+  // general boron calculation
+    // this.sulfateDays = Math.ceil(410 - this.sulfate)   // 2
+    // this.sulfateQuantityDivisor = (410 - this.sulfate) // 410 - 4.5 = 1.5
+    // this.sulfateAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.sulfateQuantityDivisor
+    // this.sulfateAdjustment = this.sulfateAdjustmentTotal / this.sulfateDays
 
-  magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  magnesium: number
-  magnesiumAdjustment: any
+
+  // onAddTemp(){}
+
+  // calciumStart: string = 'A broken bone can heal, so can the Reef'
+  // calcium: number
+  // calciumAdjustment: any
+
+  // magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  // magnesium: number
+  // magnesiumAdjustment: any
 
 
 }
