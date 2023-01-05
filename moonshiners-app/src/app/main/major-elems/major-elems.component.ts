@@ -92,82 +92,102 @@ this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
 
 // ==================================================== BROMIDE ====================================================
 
-  bromide: number
-  bromideStart: string = 'bromide'
-  bromideAdjustment: any
+bromide: number
+bromideStart: string = 'Are you a metal or not?!'
+
+bromideAdjustment: number
+bromideAdjustmentTotal: number
+bromideDays: number
+bromideQuantityDivisor: number
 
   onAddBromide(){
 
-    let calcium = this.calciumStart
-    this.calciumAdjustment = (0.1024 * this.volumeService.volume).toFixed(2)
+      // general boron calculation
+      this.bromideDays = Math.ceil(6 - this.bromide)   // 2
+      this.bromideQuantityDivisor = (85 - this.bromide) // 6 - 4.5 = 1.5
+      this.bromideAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.bromideQuantityDivisor // 94.64
+      this.bromideAdjustment = this.bromideAdjustmentTotal / this.bromideDays
 
-    if (this.calcium <= 440 && this.calcium >= 420){
 
-        this.calciumStart = 'Optimal calcium range. Keep up the great work!'
+        if (this.bromide == 85){
+            this.bromideStart = 'Ideal Bromide for most reefs'
+        }
+      //low start  9.46ml at 100 g for 0.1 ppm increase
+      // 94.64ml per day for 1 ppm recovery
+        else if ( this.bromide <= 45 && this.bromide >= 0 ){
+          this.bromideStart = `Bromide depleted, adjust  ${this.bromideAdjustment}ml per day for ${this.bromideDays} days.`
+        }
+        else if ( this.bromide <= 80 && this.bromide >= 46 ){
+          this.bromideStart = `Bromide low, adjust  ${this.bromideAdjustment}ml per day for ${this.bromideDays} days.  `
+        }
+        else if ( this.bromide <= 84 && this.bromide >= 81){
+          this.bromideStart = `Bromide slighty low, adjust ${this.bromideAdjustment}ml per day for ${this.bromideDays} days.`
+          }
+        //high start
+        else if ( this.bromide <= 100  && this.bromide >= 86){
+          this.bromideStart = 'Bromide slightly elevated recomendation is to allow level to settle down and watch ICP '
+        }
+        else if ( this.bromide <= 120  && this.bromide >= 101 ){
+          this.bromideStart = 'Bromide critically elevated, do not exede 110/120. Recomended: allow level to settle down and watch ICP '
+        }
+        else if ( this.bromide <= 150 && this.bromide >= 121 ){
+          this.bromideStart = 'Bromide extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+        }
+        else {
+          this.bromideStart = 'Retest parameter'
+        }
       }
-    else if ( this.calcium <= 360 && this.calcium >= 200 ){
-
-      this.calciumStart = `Very Low Calcium Level. Recommended to increase to 420 ppm immedietly by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
-      }
-    else if ( this.calcium <= 400 && this.calcium >= 361 ){
-
-      this.calciumStart = `Low Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
-      }
-    else if ( this.calcium <= 419 && this.calcium >= 401 ){
-
-      this.calciumStart = `Acceptable Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
-      }
-    else if ( this.calcium <= 520 && this.calcium >= 441){
-
-      this.calciumStart = 'Calcium above target. Slow Dosage to let Calcium settle down.'
-     }
-    else if ( this.calcium <= 600  && this.calcium >= 521 ){
-
-      this.calciumStart = 'Calcium highly elevated! Retest water and if consistant proform water changes to reduce level.'
-      }
-    else {
-
-      this.calciumStart = 'Retest parameter'
-    }
-  }
 
   // ==================================================== POTASSIUM ====================================================
 
   potassiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
   potassium: number
   potassiumAdjustment: any
+  potassiumAdjustmentTotal: number
+  potassiumDays: number
+  potassiumQuantityDivisor: number
 
   onAddPotassium(){
 
-    let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volumeService.volume).toFixed(2)
+      // general boron calculation
+      this.potassiumDays = Math.ceil(410 - this.potassium)   // 2
+      this.potassiumQuantityDivisor = (410 - this.potassium) // 410 - 4.5 = 1.5
+      this.potassiumAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.potassiumQuantityDivisor 
+      this.potassiumAdjustment = this.potassiumAdjustmentTotal / this.potassiumDays
 
-    if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
-        this.magnesiumStart = 'magnesium is acceptable'
+        if (this.potassium == 410){
+            this.potassiumStart = 'Ideal  for most reefs'
+        }
+      //low start  7.72ml at 100 g for 0.1 ppm increase
+
+        else if ( this.potassium <= 330 && this.potassium >= 250){
+          this.potassiumStart = `Depleted Potassium Level, Correct immedietly ${this.potassiumAdjustment}ml per day for ${this.potassiumDays} days.  `
+        }
+        else if ( this.potassium <= 381 && this.potassium >= 331 ){
+          this.potassiumStart = `Very Low Potassium Level, adjust  ${this.potassiumAdjustment}ml per day for ${this.potassiumDays} days.  `
+        }
+        else if ( this.potassium <= 400 && this.potassium >= 381 ){
+          this.potassiumStart = `Reduced Potassium, adjust  ${this.potassiumAdjustment}ml per day for ${this.potassiumDays} days.  `
+        }
+        else if ( this.potassium <= 409 && this.potassium >= 401 ){
+          this.potassiumStart = `Potassium optimal, adjust ${this.potassiumAdjustment}ml per day for ${this.potassiumDays} days.`
+          }
+
+        //high start
+        else if ( this.potassium <= 420  && this.potassium >= 411){
+          this.potassiumStart = 'Potassium Range Optimal '
+        }
+        else if ( this.potassium <= 500  && this.potassium >= 421 ){
+          this.potassiumStart = 'Potassium slightly elevated recomendation is to allow level to settle down and watch ICP '
+        }
+        else if ( this.potassium <= 600  && this.potassium >= 501 ){
+          this.potassiumStart = 'Potassium extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+        }
+        else {
+          this.potassiumStart = 'Retest parameter'
+        }
       }
-
-    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
-
-      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
-      }
-    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
-
-      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
-      }
-    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
-
-      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
-     }
-    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
-
-      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
-      }
-    else {
-
-      this.magnesiumStart = 'Retest parameter'
-    }
-  }
 
 // ==================================================== STRONTIUM ====================================================
 
@@ -261,6 +281,52 @@ this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
 
 
 
+// BLANK TEMPLATE
+// : number
+// Start: string = 'Are you a metal or not?!'
+
+// Adjustment: number
+// AdjustmentTotal: number
+// Days: number
+// QuantityDivisor: number
+
+//   onAddBromide(){
+
+//       // general boron calculation
+//       this.Days = Math.ceil(6 - this.)   // 2
+//       this.QuantityDivisor = (6 - this.) // 6 - 4.5 = 1.5
+//       this.AdjustmentTotal = (0.9464 * this.volumeService.volume) * this.QuantityDivisor // 94.64
+//       this.Adjustment = this.AdjustmentTotal / this.Days
+
+
+//         if (this. == 6){
+//             this.Start = 'Ideal  for most reefs'
+//         }
+//       //low start  9.46ml at 100 g for 0.1 ppm increase
+//       // 94.64ml per day for 1 ppm recovery
+//         else if ( this. <= 2 && this. >= 0 ){
+//           this.Start = ` low, adjust  ${this.Adjustment}ml per day for ${this.Days} days.  `
+//         }
+//         else if ( this. <= 5.9 && this. >= 2.1 ){
+//           this.Start = ` slighty low, adjust ${this.Adjustment}ml per day for ${this.Days} days.`
+//           }
+//         //high start
+//         else if ( this. <= 6.5  && this. >= 6.1){
+//           this.Start = 'Acceptable Range However RM method recomends adjusting to 6 '
+//         }
+//         else if ( this. <= 8  && this. >= 6.6 ){
+//           this.Start = ' slightly elevated recomendation is to allow level to settle down and watch ICP '
+//         }
+//         else if ( this. <= 10  && this. >= 8.1 ){
+//           this.Start = ' critically elevated recomendation is to allow level to settle down and watch ICP '
+//         }
+//         else if ( this. <= 20 && this. >= 10.1 ){
+//           this.Start = ' extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+//         }
+//         else {
+//           this.Start = 'Retest parameter'
+//         }
+//       }
 
 
 // console.log(this.volumeService.volume)
