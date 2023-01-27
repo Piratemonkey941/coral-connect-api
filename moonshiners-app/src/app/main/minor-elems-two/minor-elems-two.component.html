@@ -1,26 +1,97 @@
 
 <div class="body">
   <div class="content-section">
-    <div class="content-section-title">Minor Elements M-Z</div>
+    <div class="content-section-title">Minor Elements I-N </div>
 
-    <div class="apps-card">
-      <div class="app-card">
+    <!-- ==========  Iron ============-->
 
+    <div class="apps-card center-card">
+      <div class="app-card g-col-3 ">
         <span>
           <div class="chemImg">
 
-            <img src="../../../assets/SoCl.png" alt="" >
+            <img src="../../../assets/CaCl.png" alt="" >
           </div>
-          Manganese
 
-          <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-
+          Iron
+          <div (click)="selectedElement = 'Iron'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
-        <div class="menu" > </div>  <!--three dots -->
-        <div class="app-card__subtext">{{salinityStart}}</div>
+        <div class="menu"></div>
+        <div class="app-card__subtext">{{ironStart}} </div>
+        <div class="app-card-buttons input-group">
+          <input
+              type="text"
+              class="form-control"
+              placeholder="Iron in ppm"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              [(ngModel)]="iron">
+          <button
+              class="btn btn-primary"
+              type="button"
+              id="button-addon2"
+              (click)="onAddIron()"
+          >Submit</button>
+        </div>
+      </div>
+    </div>
 
+       <!-- ========== Lithium  ============-->
+
+      <div class="apps-card ">
+       <div class="app-card g-col-3 ">
+        <span>
+          <div class="chemImg">
+
+            <img src="../../../assets/MgCl.png" alt="" >
+          </div>
+          Lithium
+
+          <div (click)="selectedElement = 'Lithium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-three-dots-vertical btn text-white"></i>
+          </div>
+
+      </span>
+        <div class="menu lithium"></div>
+        <div class="app-card__subtext">{{lithiumStart}} </div>
+        <div class="app-card-buttons input-group">
+          <input
+              type="text"
+              class="form-control"
+              placeholder="Lithium in ppm"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              [(ngModel)]="lithium">
+          <button
+              class="btn btn-primary"
+              type="button"
+              id="button-addon2"
+              (click)="onAddLithium()"
+            >Submit</button>
+        </div>
+      </div>
+
+      <!-- ========== Manganese  ============-->
+
+      <div class="app-card">
+        <span>
+          <div class="chemImg">
+            <img src="../../../assets/SoCl.png" alt="" />
+          </div>
+          Manganese
+
+          <div
+            (click)="selectedElement = 'manganese'"
+            class=""
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          ></div>
+        </span>
+        <div class="menu"></div>
+        <div class="app-card__subtext">{{ manganeseStart }}</div>
 
         <div class="app-card-buttons input-group">
           <input
@@ -29,270 +100,109 @@
             placeholder="Manganese in ppm"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="salinity">
+            [(ngModel)]="manganese"
+          />
 
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
-
-            (click)="onAddSalinity()"
-            >Submit
+            (click)="onAddManganese()"
+          >
+            Submit
           </button>
         </div>
       </div>
 
-       <!-- ALKILINITY -->
+      <!-- ==========  Molybdenum ============-->
 
-
-   <div class="app-card g-col-3 ">
-
+      <div class="app-card g-col-3">
         <span>
           <div class="chemImg">
-
-            <img src="../../../assets/sodium bicarb.png" alt="" >
+            <img src="../../../assets/sodium bicarb.png" alt="" />
           </div>
 
           Molybdenum
 
-            <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="bi bi-three-dots-vertical btn text-white"></i>
-            </div>
-
+          <div
+            (click)="selectedElement = 'Molybdenum'"
+            class=""
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <i class="bi bi-three-dots-vertical btn text-white"></i>
+          </div>
         </span>
 
-        <div class="app-card__subtext">{{alkilinityStart}}</div>
-
+        <div class="app-card__subtext">{{ molybdenumStart }}</div>
 
         <div class="app-card-buttons input-group">
           <input
-              type="text"
-              class="form-control"
-              placeholder="Molybdenum in ppm"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-              [(ngModel)]="alkilinity">
+            type="text"
+            class="form-control"
+            placeholder="Molybdenum in ppm"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="molybdenum"
+          />
           <button
             class="btn btn-primary"
             type="button"
             id="button-addon2"
-            (click)="onAddAlkilinity()"
-          >Submit</button>
+            (click)="onAddMolybdenum()"
+          >
+            Submit
+          </button>
         </div>
-
       </div>
 
-      <div class="app-card g-col-3 ">
+      <!-- ========== Nickle  ============-->
+
+      <div class="app-card g-col-3">
         <span>
           <div class="chemImg">
-
-            <img src="../../../assets/CaCl.png" alt="" >
+            <img src="../../../assets/CaCl.png" alt="" />
           </div>
           Nickle
 
-          <div (click)="selectedElement = 'Calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div
+            (click)="selectedElement = 'Nickle'"
+            class=""
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
-
-      </span>
+        </span>
         <div class="menu"></div>
-        <div class="app-card__subtext">{{calciumStart}} </div>
+        <div class="app-card__subtext">{{ nickleStart }}</div>
         <div class="app-card-buttons input-group">
           <input
-              type="text"
-              class="form-control"
-              placeholder=" Nickle in ppm"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-              [(ngModel)]="calcium">
+            type="text"
+            class="form-control"
+            placeholder=" Nickle in ppm"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            [(ngModel)]="nickle"
+          />
           <button
-              class="btn btn-primary"
-              type="button"
-              id="button-addon2"
-              (click)="onAddCalcium()"
-          >Submit</button>
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+            (click)="onAddNickle()"
+          >
+            Submit
+          </button>
         </div>
       </div>
 
-    <div class="app-card g-col-3 ">
-        <span>
-          <div class="chemImg">
-
-            <img src="../../../assets/MgCl.png" alt="" >
-          </div>
-          Rubidium
-
-          <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-three-dots-vertical btn text-white"></i>
-          </div>
-
-      </span>
-        <div class="menu magnesium"></div>
-        <div class="app-card__subtext">{{magnesiumStart}} </div>
-        <div class="app-card-buttons input-group">
-          <input
-              type="text"
-              class="form-control"
-              placeholder="Rubidium in ppm"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-              [(ngModel)]="magnesium">
-          <button
-              class="btn btn-primary"
-              type="button"
-              id="button-addon2"
-              (click)="onAddMagnesium()"
-            >Submit</button>
-        </div>
-      </div>
-
-      <div class="apps-card">
-        <div class="app-card">
-
-          <span>
-            <div class="chemImg">
-
-              <img src="../../../assets/SoCl.png" alt="" >
-            </div>
-            Selenium
-
-            <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-
-            </div>
-
-        </span>
-          <div class="menu" > </div>  <!--three dots -->
-          <div class="app-card__subtext">{{salinityStart}}</div>
 
 
-          <div class="app-card-buttons input-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Selenium in ppm"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-              [(ngModel)]="salinity">
-
-            <button
-              class="btn btn-primary"
-              type="button"
-              id="button-addon2"
-
-              (click)="onAddSalinity()"
-              >Submit
-            </button>
-          </div>
-        </div>
-
-         <!-- ALKILINITY -->
-
-
-     <div class="app-card g-col-3 ">
-
-          <span>
-            <div class="chemImg">
-
-              <img src="../../../assets/sodium bicarb.png" alt="" >
-            </div>
-
-            Vanadium
-
-              <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="bi bi-three-dots-vertical btn text-white"></i>
-              </div>
-
-          </span>
-
-          <div class="app-card__subtext">{{alkilinityStart}}</div>
-
-
-          <div class="app-card-buttons input-group">
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Vanadium in ppm"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-                [(ngModel)]="alkilinity">
-            <button
-              class="btn btn-primary"
-              type="button"
-              id="button-addon2"
-              (click)="onAddAlkilinity()"
-            >Submit</button>
-          </div>
-
-        </div>
-
-        <div class="app-card g-col-3 ">
-          <span>
-            <div class="chemImg">
-
-              <img src="../../../assets/CaCl.png" alt="" >
-            </div>
-            Tin/Stannum
-
-            <div (click)="selectedElement = 'Calcium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="bi bi-three-dots-vertical btn text-white"></i>
-            </div>
-
-        </span>
-          <div class="menu"></div>
-          <div class="app-card__subtext">{{calciumStart}} </div>
-          <div class="app-card-buttons input-group">
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Tin/Stannum in ppm"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-                [(ngModel)]="calcium">
-            <button
-                class="btn btn-primary"
-                type="button"
-                id="button-addon2"
-                (click)="onAddCalcium()"
-            >Submit</button>
-          </div>
-        </div>
-
-      <div class="app-card g-col-3 ">
-          <span>
-            <div class="chemImg">
-
-              <img src="../../../assets/MgCl.png" alt="" >
-            </div>
-            Zinc
-
-            <div (click)="selectedElement = 'Magnesium'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="bi bi-three-dots-vertical btn text-white"></i>
-            </div>
-
-        </span>
-          <div class="menu magnesium"></div>
-          <div class="app-card__subtext">{{magnesiumStart}} </div>
-          <div class="app-card-buttons input-group">
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Zinc in ppm"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-                [(ngModel)]="magnesium">
-            <button
-                class="btn btn-primary"
-                type="button"
-                id="button-addon2"
-                (click)="onAddMagnesium()"
-              >Submit</button>
-          </div>
-        </div>
 
   </div>
 
   <app-modal [elementName]="selectedElement" [volume]="volume"></app-modal>
 
 
-  </div>
+</div>
 
