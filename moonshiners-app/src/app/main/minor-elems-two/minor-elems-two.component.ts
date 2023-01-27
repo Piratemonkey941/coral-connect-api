@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
-
+import { VolumeService } from 'src/app/shared/volume.service';
 declare var window: any;
 
 @Component({
@@ -16,7 +16,8 @@ export class MinorElemsTwoComponent implements OnInit {
 
   @Input() receivedValue: String;
 
-  constructor() { }
+  @Input() volume: number
+  constructor(public volumeService: VolumeService) { }
 
 
   ngOnInit(): void {
@@ -38,166 +39,257 @@ export class MinorElemsTwoComponent implements OnInit {
       this.formModal.hide();
     }
 
-//VOLUME
 
-  volumeStart: string = 'Does Size Matter?'
-  volume: number
-  submitedVolume: number
 
-  onAddVolume(){
+    // ==================================================== Iron ====================================================
+    ironStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+    iron: number
+    ironAdjustment: any
+    ironAdjustmentTotal: number
+    ironDays: number
+    ironQuantityDivisor: number
 
-    let volume = this.volume
+    onAddIron(){
 
-    this.volumeStart = `Your Reef is ${volume} gallons`
+        // general boron calculation
+        this.ironDays = Math.ceil(410 - this.iron)   // 2
+        this.ironQuantityDivisor = (410 - this.iron) // 410 - 4.5 = 1.5
+        this.ironAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.ironQuantityDivisor
+        this.ironAdjustment = this.ironAdjustmentTotal / this.ironDays
 
-    console.log(this.volume)
-    return volume
-  }
 
-//SALINITY
+          if (this.iron == 10){
+              this.ironStart = 'Ideal  for most reefs'
+          }
+        //low start  7.72ml at 100 g for 0.1 ppm increase
 
-  salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
-  salinity: number
+          else if ( this.iron <= 3 && this.iron >= 0){
+            this.ironStart = `Depleted iron Level, Correct immedietly ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
+          }
+          else if ( this.iron <= 6 && this.iron >= 3.1 ){
+            this.ironStart = `Low iron level, adjust  ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
+          }
+          else if ( this.iron <= 9 && this.iron >= 6.1 ){
+            this.ironStart = `Reduced iron, adjust  ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
+          }
+          else if ( this.iron <= 9.9 && this.iron >= 9.1 ){
+            this.ironStart = `Optimal Range for iron, adjust ${this.ironAdjustment}ml per day for ${this.ironDays} days.`
+            }
 
-  onAddSalinity(){
+          //high start
+          else if ( this.iron <= 12  && this.iron >= 10.1){
+            this.ironStart = 'iron Range Optimal '
+          }
+          else if ( this.iron <= 25  && this.iron >= 12.1 ){
+            this.ironStart = 'iron slightly elevated recomendation is to allow level to settle down and watch ICP '
+          }
+          else if ( this.iron <= 60  && this.iron >= 25.1 ){
+            this.ironStart = 'iron critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+          }
+          else {
+            this.ironStart = 'Retest parameter'
+          }
+        }
 
-    let salinity = this.salinityStart
+            // ==================================================== Lithium ====================================================
+lithiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+lithium: number
+lithiumAdjustment: any
+lithiumAdjustmentTotal: number
+lithiumDays: number
+lithiumQuantityDivisor: number
 
-    if (this.salinity <= 35 && this.salinity >= 33){
+onAddLithium(){
 
-        this.salinityStart = 'Salnity is acceptable'
+    // general boron calculation
+    this.lithiumDays = Math.ceil(410 - this.lithium)   // 2
+    this.lithiumQuantityDivisor = (410 - this.lithium) // 410 - 4.5 = 1.5
+    this.lithiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.lithiumQuantityDivisor
+    this.lithiumAdjustment = this.lithiumAdjustmentTotal / this.lithiumDays
+
+
+      if (this.lithium == 10){
+          this.lithiumStart = 'Ideal  for most reefs'
       }
-    else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
+    //low start  7.72ml at 100 g for 0.1 ppm increase
 
-      this.salinityStart = 'Salnity is lower then expected'
+      else if ( this.lithium <= 3 && this.lithium >= 0){
+        this.lithiumStart = `Depleted lithium Level, Correct immedietly ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
       }
-    else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
-
-      this.salinityStart = 'Salnity is sligtly higher then expected'
-     }
-    else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
-
-      this.salinityStart = 'Salnity is sligtly higher then expected'
+      else if ( this.lithium <= 6 && this.lithium >= 3.1 ){
+        this.lithiumStart = `Low lithium level, adjust  ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
       }
-    else {
+      else if ( this.lithium <= 9 && this.lithium >= 6.1 ){
+        this.lithiumStart = `Reduced lithium, adjust  ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
+      }
+      else if ( this.lithium <= 9.9 && this.lithium >= 9.1 ){
+        this.lithiumStart = `Optimal Range for lithium, adjust ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.`
+        }
 
-      this.salinityStart = 'Retest parameter'
+      //high start
+      else if ( this.lithium <= 12  && this.lithium >= 10.1){
+        this.lithiumStart = 'lithium Range Optimal '
+      }
+      else if ( this.lithium <= 25  && this.lithium >= 12.1 ){
+        this.lithiumStart = 'lithium slightly elevated recomendation is to allow level to settle down and watch ICP '
+      }
+      else if ( this.lithium <= 60  && this.lithium >= 25.1 ){
+        this.lithiumStart = 'lithium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      }
+      else {
+        this.lithiumStart = 'Retest parameter'
+      }
     }
-  }
 
-  //ALKILINITY
-  alkilinity: number
-  alkilinityStart: string = 'Acid, harmfull to the animals stored in the vessel '
+        // ==================================================== Manganese ====================================================
+manganeseStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+manganese: number
+manganeseAdjustment: any
+manganeseAdjustmentTotal: number
+manganeseDays: number
+manganeseQuantityDivisor: number
 
-  alkilinityAdjustment: any
+onAddManganese(){
+
+    // general boron calculation
+    this.manganeseDays = Math.ceil(410 - this.manganese)   // 2
+    this.manganeseQuantityDivisor = (410 - this.manganese) // 410 - 4.5 = 1.5
+    this.manganeseAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.manganeseQuantityDivisor
+    this.manganeseAdjustment = this.manganeseAdjustmentTotal / this.manganeseDays
 
 
-  onAddAlkilinity(){ // for basic calculation on card
-
-    let alkilinity = this.alkilinityStart
-    //calculation for 0.1 dkh change per volume
-    this.alkilinityAdjustment = (0.1429 * this.volume).toFixed(2) // for sodium bicarbonate lower/nuetural ph
-
-    if (this.alkilinity <= 8.5 && this.alkilinity >= 7.9){
-        this.alkilinityStart = 'Ideal alkilinity for most reefs'
+      if (this.manganese == 10){
+          this.manganeseStart = 'Ideal  for most reefs'
       }
-    else if ( this.alkilinity <= 7.2 && this.alkilinity >= 6.6 ){
+    //low start  7.72ml at 100 g for 0.1 ppm increase
 
-      this.alkilinityStart = `Alkilinity low, adjust slowly. ${this.alkilinityAdjustment}ml will increase dkh by 0.1 `
+      else if ( this.manganese <= 3 && this.manganese >= 0){
+        this.manganeseStart = `Depleted manganese Level, Correct immedietly ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
       }
-    else if ( this.alkilinity <= 7.8 && this.alkilinity >= 7.3 ){
-      this.alkilinityStart = 'Alk slightly low usually only used in Ultra low nutrient system (ULNS)'
+      else if ( this.manganese <= 6 && this.manganese >= 3.1 ){
+        this.manganeseStart = `Low manganese level, adjust  ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
       }
-    else if ( this.alkilinity <= 11.9  && this.alkilinity >= 8.6){
+      else if ( this.manganese <= 9 && this.manganese >= 6.1 ){
+        this.manganeseStart = `Reduced manganese, adjust  ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
+      }
+      else if ( this.manganese <= 9.9 && this.manganese >= 9.1 ){
+        this.manganeseStart = `Optimal Range for manganese, adjust ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.`
+        }
 
-      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color '
-     }
-    else if ( this.alkilinity <= 14  && this.alkilinity >= 12 ){
-
-      this.alkilinityStart = 'Alk slightly higher, not usually recommended at very low nutrient levels and may wash out coral color or cause bleaching '
+      //high start
+      else if ( this.manganese <= 12  && this.manganese >= 10.1){
+        this.manganeseStart = 'manganese Range Optimal '
       }
-    else {
-      this.alkilinityStart = 'Retest parameter'
+      else if ( this.manganese <= 25  && this.manganese >= 12.1 ){
+        this.manganeseStart = 'manganese slightly elevated recomendation is to allow level to settle down and watch ICP '
+      }
+      else if ( this.manganese <= 60  && this.manganese >= 25.1 ){
+        this.manganeseStart = 'manganese critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      }
+      else {
+        this.manganeseStart = 'Retest parameter'
+      }
     }
-  }
 
-  //Calcium
+        // ==================================================== Molybdenum ====================================================
+molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+molybdenum: number
+molybdenumAdjustment: any
+molybdenumAdjustmentTotal: number
+molybdenumDays: number
+molybdenumQuantityDivisor: number
 
-  calciumStart: string = 'A broken bone can heal, so can the Reef'
-  calcium: number
-  calciumAdjustment: any
+onAddMolybdenum(){
 
-  onAddCalcium(){
+    // general boron calculation
+    this.molybdenumDays = Math.ceil(410 - this.molybdenum)   // 2
+    this.molybdenumQuantityDivisor = (410 - this.molybdenum) // 410 - 4.5 = 1.5
+    this.molybdenumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.molybdenumQuantityDivisor
+    this.molybdenumAdjustment = this.molybdenumAdjustmentTotal / this.molybdenumDays
 
-    let calcium = this.calciumStart
-    this.calciumAdjustment = (0.1024 * this.volume).toFixed(2)
 
-    if (this.calcium <= 440 && this.calcium >= 420){
-
-        this.calciumStart = 'Optimal calcium range. Keep up the great work!'
+      if (this.molybdenum == 10){
+          this.molybdenumStart = 'Ideal  for most reefs'
       }
-    else if ( this.calcium <= 360 && this.calcium >= 200 ){
+    //low start  7.72ml at 100 g for 0.1 ppm increase
 
-      this.calciumStart = `Very Low Calcium Level. Recommended to increase to 420 ppm immedietly by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
+      else if ( this.molybdenum <= 3 && this.molybdenum >= 0){
+        this.molybdenumStart = `Depleted molybdenum Level, Correct immedietly ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
       }
-    else if ( this.calcium <= 400 && this.calcium >= 361 ){
-
-      this.calciumStart = `Low Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
+      else if ( this.molybdenum <= 6 && this.molybdenum >= 3.1 ){
+        this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
       }
-    else if ( this.calcium <= 419 && this.calcium >= 401 ){
-
-      this.calciumStart = `Acceptable Calcium Level. Recommended to increase to 420-440 ppm by dosing ${this.calciumAdjustment}ml for 1ppm increase.`
+      else if ( this.molybdenum <= 9 && this.molybdenum >= 6.1 ){
+        this.molybdenumStart = `Reduced molybdenum, adjust  ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
       }
-    else if ( this.calcium <= 520 && this.calcium >= 441){
+      else if ( this.molybdenum <= 9.9 && this.molybdenum >= 9.1 ){
+        this.molybdenumStart = `Optimal Range for molybdenum, adjust ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.`
+        }
 
-      this.calciumStart = 'Calcium above target. Slow Dosage to let Calcium settle down.'
-     }
-    else if ( this.calcium <= 600  && this.calcium >= 521 ){
-
-      this.calciumStart = 'Calcium highly elevated! Retest water and if consistant proform water changes to reduce level.'
+      //high start
+      else if ( this.molybdenum <= 12  && this.molybdenum >= 10.1){
+        this.molybdenumStart = 'molybdenum Range Optimal '
       }
-    else {
-
-      this.calciumStart = 'Retest parameter'
+      else if ( this.molybdenum <= 25  && this.molybdenum >= 12.1 ){
+        this.molybdenumStart = 'molybdenum slightly elevated recomendation is to allow level to settle down and watch ICP '
+      }
+      else if ( this.molybdenum <= 60  && this.molybdenum >= 25.1 ){
+        this.molybdenumStart = 'molybdenum critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      }
+      else {
+        this.molybdenumStart = 'Retest parameter'
+      }
     }
-  }
-  //Magnesium
 
-  magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  magnesium: number
-  magnesiumAdjustment: any
+        // ==================================================== Nickle ====================================================
+nickleStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+nickle: number
+nickleAdjustment: any
+nickleAdjustmentTotal: number
+nickleDays: number
+nickleQuantityDivisor: number
 
-  onAddMagnesium(){
+onAddNickle(){
 
-    let magnesium = this.magnesiumStart
-    this.magnesiumAdjustment = (0.806 * this.volume).toFixed(2)
+    // general boron calculation
+    this.nickleDays = Math.ceil(410 - this.nickle)   // 2
+    this.nickleQuantityDivisor = (410 - this.nickle) // 410 - 4.5 = 1.5
+    this.nickleAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.nickleQuantityDivisor
+    this.nickleAdjustment = this.nickleAdjustmentTotal / this.nickleDays
 
-    if (this.magnesium <= 1400 && this.magnesium >= 1300){
 
-        this.magnesiumStart = 'magnesium is acceptable'
+      if (this.nickle == 10){
+          this.nickleStart = 'Ideal  for most reefs'
       }
+    //low start  7.72ml at 100 g for 0.1 ppm increase
 
-    else if ( this.magnesium <= 1299 && this.magnesium >= 1251 ){
-
-      this.magnesiumStart = `Magnesium is lower then expected. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase`
+      else if ( this.nickle <= 3 && this.nickle >= 0){
+        this.nickleStart = `Depleted nickle Level, Correct immedietly ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
       }
-    else if ( this.magnesium <= 1251 && this.magnesium >= 1000 ){
-
-      this.magnesiumStart = `Low Magnesium level. Correct to target of 1350 by dosing ${this.magnesiumAdjustment}ml for 10ppm increase.`
+      else if ( this.nickle <= 6 && this.nickle >= 3.1 ){
+        this.nickleStart = `Low nickle level, adjust  ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
       }
-    else if ( this.magnesium <= 1600 && this.magnesium >= 1401 ){
-
-      this.magnesiumStart = 'Magnesium is sligtly higher then expected. Slow or stop dosing and allow level to settle down'
-     }
-    else if ( this.magnesium <= 2000  && this.magnesium >= 1601 ){
-
-      this.magnesiumStart = 'magnesium is higher then expected, proform water changes to reduce level to acceptable range 1350'
+      else if ( this.nickle <= 9 && this.nickle >= 6.1 ){
+        this.nickleStart = `Reduced nickle, adjust  ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
       }
-    else {
+      else if ( this.nickle <= 9.9 && this.nickle >= 9.1 ){
+        this.nickleStart = `Optimal Range for nickle, adjust ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.`
+        }
 
-      this.magnesiumStart = 'Retest parameter'
+      //high start
+      else if ( this.nickle <= 12  && this.nickle >= 10.1){
+        this.nickleStart = 'nickle Range Optimal '
+      }
+      else if ( this.nickle <= 25  && this.nickle >= 12.1 ){
+        this.nickleStart = 'nickle slightly elevated recomendation is to allow level to settle down and watch ICP '
+      }
+      else if ( this.nickle <= 60  && this.nickle >= 25.1 ){
+        this.nickleStart = 'nickle critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      }
+      else {
+        this.nickleStart = 'Retest parameter'
+      }
     }
-  }
 
 }
 

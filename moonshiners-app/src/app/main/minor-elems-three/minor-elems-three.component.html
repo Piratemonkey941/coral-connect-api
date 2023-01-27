@@ -87,7 +87,7 @@
             </div>
           </div>
 
-          <!-- ========== Vanadium  ============-->
+          <!-- ========== tin  ============-->
 
           <div class="app-card g-col-3">
             <span>
@@ -95,10 +95,10 @@
                 <img src="../../../assets/sodium bicarb.png" alt="" />
               </div>
 
-              Vanadium
+              tin
 
               <div
-                (click)="selectedElement = 'Vanadium'"
+                (click)="selectedElement = 'tin'"
                 class=""
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
@@ -107,22 +107,22 @@
               </div>
             </span>
 
-            <div class="app-card__subtext">{{ vanadiumStart }}</div>
+            <div class="app-card__subtext">{{ tinStart }}</div>
 
             <div class="app-card-buttons input-group">
               <input
                 type="text"
                 class="form-control"
-                placeholder="Vanadium in ppm"
+                placeholder="tin in ppm"
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
-                [(ngModel)]="vanadium"
+                [(ngModel)]="tin"
               />
               <button
                 class="btn btn-primary"
                 type="button"
                 id="button-addon2"
-                (click)="onAddVanadium()"
+                (click)="onAddTin()"
               >
                 Submit
               </button>
