@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     // add to anchors if you want more buttons at top
     this.config = {
       licenseKey: 'gplv3-license',
-      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','lastPage'],
+      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','sixthPage','lastPage'],
       menu: '#menu',
       navigation: true,
       autoScrolling: false,

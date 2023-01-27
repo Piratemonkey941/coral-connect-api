@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
-import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
+// import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
 import { VolumeService } from 'src/app/shared/volume.service';
 declare var window: any;
 
@@ -39,56 +39,62 @@ export class MinorElemsComponent implements OnInit {
       this.formModal.hide();
     }
 
-// ==================================================== chromium ====================================================
+// ==================================================== Barium ====================================================
  bariumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
  barium: number
  bariumAdjustment: any
  bariumAdjustmentTotal: number
  bariumDays: number
  bariumQuantityDivisor: number
-
+ bariumAdjustmentGT: number
+ bariumDaysDiv: number
 onAddBarium(){
 
     // general boron calculation
-    this. bariumDays = Math.ceil(410 - this. barium)   // 2
-    this. bariumQuantityDivisor = (410 - this. barium) // 410 - 4.5 = 1.5
-    this. bariumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this. bariumQuantityDivisor
-    this. bariumAdjustment = this. bariumAdjustmentTotal / this. bariumDays
+    this. bariumDays = (15 - this.barium)  // 2
 
+    this. bariumQuantityDivisor = (15 - this.barium) // 410 - 4.5 = 1.5
+    this. bariumAdjustmentTotal = (0.0378 * this.volumeService.volume) * this. bariumQuantityDivisor
 
-      if (this. barium == 10){
+      if (this. barium == 15){
           this. bariumStart = 'Ideal  for most reefs'
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
+      else if ( this.barium <= 5.9 && this. barium >= 0 ){
+        this.bariumAdjustment = parseFloat(( (this.bariumDays * 9)/4).toFixed(2));
+        this. bariumStart = `Extremely Low  Barium level, adjust  ${this.bariumAdjustment}ml per day for 4 days.  `
+      }
+      else if ( this.barium <= 8 && this. barium >= 6 ){
 
-      else if ( this. barium <= 3 && this. barium >= 0){
-        this. bariumStart = `Depleted  barium Level, Correct immedietly ${this. bariumAdjustment}ml per day for ${this. bariumDays} days.  `
+        this.bariumAdjustment = parseFloat(( (this.bariumDays * 11)/3).toFixed(2));
+
+
+        this. bariumStart = `Very Low  Barium level, adjust  ${this.bariumAdjustment}ml per day for 3 days.  `
       }
-      else if ( this. barium <= 6 && this. barium >= 3.1 ){
-        this. bariumStart = `Low  barium level, adjust  ${this. bariumAdjustment}ml per day for ${this. bariumDays} days.  `
+      else if ( this.barium <= 13 && this. barium >= 8.1 ){
+        this. bariumAdjustment = parseFloat((this.bariumAdjustmentTotal).toFixed(2));
+        this. bariumStart = `Low  Barium level, adjust  ${this.bariumAdjustment}ml  `
       }
-      else if ( this.chromium <= 9 && this.chromium >= 6.1 ){
-        this.chromiumStart = `Reduced chromium, adjust  ${this.chromiumAdjustment}ml per day for ${this. bariumDays} days.  `
-      }
-      else if ( this. barium <= 9.9 && this. barium >= 9.1 ){
-        this. bariumStart = `Optimal Range for  barium, adjust ${this. bariumAdjustment}ml per day for ${this. bariumDays} days.`
+
+      else if ( this. barium <= 14.9 && this. barium >= 13.1 ){
+        this.bariumStart = `Acceptable Range for  Barium, adjust ${this.bariumAdjustment}ml per day for ${this.bariumDays} days.`
         }
 
       //high start
-      else if ( this. barium <= 12  && this. barium >= 10.1){
-        this. bariumStart = ' barium Range Optimal '
+      else if ( this. barium <= 30  && this.barium >= 15.1){
+        this.bariumStart = ' Barium slightly elevated recomendation is to allow level to settle down and watch ICP '
       }
-      else if ( this. barium <= 25  && this. barium >= 12.1 ){
-        this. bariumStart = ' barium slightly elevated recomendation is to allow level to settle down and watch ICP '
+      else if ( this. barium <= 90  && this.barium >= 30.1){
+        this.bariumStart = ' Barium significantly elevated recomendation is to allow level to settle down and watch ICP '
       }
-      else if ( this. barium <= 60  && this. barium >= 25.1 ){
-        this. bariumStart = ' barium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      else if ( this. barium <= 160  && this.barium >= 90.1 ){
+        this.bariumStart = ' Barium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
       }
       else {
-        this. bariumStart = 'Retest parameter'
+        this.bariumStart = 'Retest parameter'
       }
     }
 
+  // parseFloat(().toFixed(2));
     // ==================================================== chromium ====================================================
 chromiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 chromium: number

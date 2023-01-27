@@ -1,7 +1,7 @@
 
 
 import { Component, ElementRef, OnInit, ViewChild, Input, Output } from '@angular/core';
-import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
+// import { ElementCalculatorService } from 'src/app/shared/element-calculator.service';
 // import { BigFourComponent } from '../big-four/big-four.component';
 import { VolumeService } from 'src/app/shared/volume.service';
 declare var window: any;
@@ -58,7 +58,8 @@ onAddBoron(){ // for basic calculation on card
 this.boronDays = Math.ceil(6 - this.boron)   // 2
 this.boronQuantityDivisor = (6 - this.boron) // 6 - 4.5 = 1.5
 this.boronAdjustmentTotal = (0.9464 * this.volumeService.volume) * this.boronQuantityDivisor // 94.64
-this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
+this.boronAdjustment = parseFloat((this.boronAdjustmentTotal / this.boronDays).toFixed(2));
+
 
 
   if (this.boron == 6){
@@ -90,7 +91,7 @@ this.boronAdjustment = this.boronAdjustmentTotal / this.boronDays
   }
 }
 
-// ==================================================== BROMIDE ====================================================
+// ==================================================== BROMIDE ====================================================!
 
 bromide: number
 bromideStart: string = 'Are you a metal or not?!'
@@ -103,11 +104,10 @@ bromideQuantityDivisor: number
   onAddBromide(){
 
       // general boron calculation
-      this.bromideDays = Math.ceil(6 - this.bromide)   // 2
+      this.bromideDays = Math.ceil(85 - this.bromide)   // 2
       this.bromideQuantityDivisor = (85 - this.bromide) // 6 - 4.5 = 1.5
       this.bromideAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.bromideQuantityDivisor // 94.64
-      this.bromideAdjustment = this.bromideAdjustmentTotal / this.bromideDays
-
+      this.bromideAdjustment = parseFloat((this.bromideAdjustmentTotal / this.bromideDays).toFixed(2));
 
         if (this.bromide == 85){
             this.bromideStart = 'Ideal Bromide for most reefs'
@@ -138,7 +138,7 @@ bromideQuantityDivisor: number
         }
       }
 
-  // ==================================================== POTASSIUM ====================================================
+  // ==================================================== POTASSIUM ====================================================!
 
   potassiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
   potassium: number
@@ -150,14 +150,15 @@ bromideQuantityDivisor: number
   onAddPotassium(){
 
       // general boron calculation
-      this.potassiumDays = Math.ceil(410 - this.potassium)   // 2
-      this.potassiumQuantityDivisor = (410 - this.potassium) // 410 - 4.5 = 1.5
-      this.potassiumAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.potassiumQuantityDivisor
-      this.potassiumAdjustment = this.potassiumAdjustmentTotal / this.potassiumDays
+      this.potassiumDays = Math.ceil((410 - this.potassium)/10)   // = 10 is cieling to 10 need it to go to 1  need to dev by 10
+      this.potassiumQuantityDivisor = ((410 - this.potassium)/10) // 410 - 4.5 = 1.5
+      this.potassiumAdjustmentTotal = (0.7725 * this.volumeService.volume) * this.potassiumQuantityDivisor
+      this.potassiumAdjustment = parseFloat((this.potassiumAdjustmentTotal / this.potassiumDays).toFixed(2));
 
 
-        if (this.potassium == 410){
+        if (this.potassium === 410){
             this.potassiumStart = 'Ideal  for most reefs'
+            this.potassiumDays = 1;
         }
       //low start  7.72ml at 100 g for 0.1 ppm increase
 
@@ -189,7 +190,7 @@ bromideQuantityDivisor: number
         }
       }
 
-// ==================================================== STRONTIUM ====================================================
+// ==================================================== STRONTIUM ==================================================== !
 strontiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 strontium: number
 strontiumAdjustment: any
@@ -200,8 +201,8 @@ strontiumQuantityDivisor: number
 onAddStrontium(){
 
     // general boron calculation
-    this.strontiumDays = Math.ceil(410 - this.strontium)   // 2
-    this.strontiumQuantityDivisor = (410 - this.strontium) // 410 - 4.5 = 1.5
+    this.strontiumDays = Math.ceil(10 - this.strontium)   // 2
+    this.strontiumQuantityDivisor = (10 - this.strontium) // 410 - 4.5 = 1.5
     this.strontiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.strontiumQuantityDivisor
     this.strontiumAdjustment = this.strontiumAdjustmentTotal / this.strontiumDays
 
@@ -239,7 +240,7 @@ onAddStrontium(){
       }
     }
 
-// ==================================================== SULFATE ====================================================
+// ==================================================== SULFATE ====================================================!
 
 sulfateStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 sulfate: number
@@ -271,127 +272,6 @@ onAddSulfate(){
       }
     }
 
-
-    // sulfateAdjustment: any
-// sulfateAdjustmentTotal: number
-// sulfateDays: number
-// sulfateQuantityDivisor: number
-
-  // general boron calculation
-    // this.sulfateDays = Math.ceil(410 - this.sulfate)   // 2
-    // this.sulfateQuantityDivisor = (410 - this.sulfate) // 410 - 4.5 = 1.5
-    // this.sulfateAdjustmentTotal = (0.0772 * this.volumeService.volume) * this.sulfateQuantityDivisor
-    // this.sulfateAdjustment = this.sulfateAdjustmentTotal / this.sulfateDays
+  }
 
 
-  // onAddTemp(){}
-
-  // calciumStart: string = 'A broken bone can heal, so can the Reef'
-  // calcium: number
-  // calciumAdjustment: any
-
-  // magnesiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-  // magnesium: number
-  // magnesiumAdjustment: any
-
-
-}
-
-
-
-// BLANK TEMPLATE
-// : number
-// Start: string = 'Are you a metal or not?!'
-
-// Adjustment: number
-// AdjustmentTotal: number
-// Days: number
-// QuantityDivisor: number
-
-//   onAddBromide(){
-
-//       // general boron calculation
-//       this.Days = Math.ceil(6 - this.)   // 2
-//       this.QuantityDivisor = (6 - this.) // 6 - 4.5 = 1.5
-//       this.AdjustmentTotal = (0.9464 * this.volumeService.volume) * this.QuantityDivisor // 94.64
-//       this.Adjustment = this.AdjustmentTotal / this.Days
-
-
-//         if (this. == 6){
-//             this.Start = 'Ideal  for most reefs'
-//         }
-//       //low start  9.46ml at 100 g for 0.1 ppm increase
-//       // 94.64ml per day for 1 ppm recovery
-//         else if ( this. <= 2 && this. >= 0 ){
-//           this.Start = ` low, adjust  ${this.Adjustment}ml per day for ${this.Days} days.  `
-//         }
-//         else if ( this. <= 5.9 && this. >= 2.1 ){
-//           this.Start = ` slighty low, adjust ${this.Adjustment}ml per day for ${this.Days} days.`
-//           }
-//         //high start
-//         else if ( this. <= 6.5  && this. >= 6.1){
-//           this.Start = 'Acceptable Range However RM method recomends adjusting to 6 '
-//         }
-//         else if ( this. <= 8  && this. >= 6.6 ){
-//           this.Start = ' slightly elevated recomendation is to allow level to settle down and watch ICP '
-//         }
-//         else if ( this. <= 10  && this. >= 8.1 ){
-//           this.Start = ' critically elevated recomendation is to allow level to settle down and watch ICP '
-//         }
-//         else if ( this. <= 20 && this. >= 10.1 ){
-//           this.Start = ' extremely elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-//         }
-//         else {
-//           this.Start = 'Retest parameter'
-//         }
-//       }
-
-
-// console.log(this.volumeService.volume)
-
-// console.log(this.boronDays)
-// console.log(this.boronQuantityDivisor)
-// console.log(this.boronAdjustmentTotal)
-// console.log(this.boronAdjustment)
-
-
-  // onAddVolume(){
-
-  //   let volume = this.volume
-
-  //   this.volumeStart = `Your Reef is ${volume} gallons`
-
-  //   console.log(this.volume)
-  //   return volume
-  // }
-
-//SALINITY
-
-  // salinityStart: string = 'The cure for anything is salt water: sweat, tears or the sea.'
-  // salinity: number
-
-  // onAddSalinity(){
-
-  //   let salinity = this.salinityStart
-
-  //   if (this.salinity <= 35 && this.salinity >= 33){
-
-  //       this.salinityStart = 'Salnity is acceptable'
-  //     }
-  //   else if ( this.salinity <= 32.9 && this.salinity >= 29 ){
-
-  //     this.salinityStart = 'Salnity is lower then expected'
-  //     }
-  //   else if ( this.salinity <= 38  && this.salinity >= 35.1 ){
-
-  //     this.salinityStart = 'Salnity is sligtly higher then expected'
-  //    }
-  //   else if ( this.salinity <= 45  && this.salinity >= 38.1 ){
-
-  //     this.salinityStart = 'Salnity is sligtly higher then expected'
-  //     }
-  //   else {
-
-  //     this.salinityStart = 'Retest parameter'
-  //   }
-  // }
