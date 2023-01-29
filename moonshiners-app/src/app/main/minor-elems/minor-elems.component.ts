@@ -50,7 +50,7 @@ export class MinorElemsComponent implements OnInit {
  bariumDaysDiv: number
 onAddBarium(){
 
-    // general boron calculation
+    // general barium calculation
     this. bariumDays = (15 - this.barium)  // 2
 
     this. bariumQuantityDivisor = (15 - this.barium) // 410 - 4.5 = 1.5
@@ -98,147 +98,94 @@ onAddBarium(){
     // ==================================================== chromium ====================================================
 chromiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 chromium: number
-chromiumAdjustment: any
-chromiumAdjustmentTotal: number
-chromiumDays: number
-chromiumQuantityDivisor: number
+chromiumNano: number
+chomiumRegular: number
 
 onAddChromium(){
 
-    // general boron calculation
-    this.chromiumDays = Math.ceil(410 - this.chromium)   // 2
-    this.chromiumQuantityDivisor = (410 - this.chromium) // 410 - 4.5 = 1.5
-    this.chromiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.chromiumQuantityDivisor
-    this.chromiumAdjustment = this.chromiumAdjustmentTotal / this.chromiumDays
+  this.chomiumRegular = (0.00076 * this.volumeService.volume)  // round to 2 places?
+  this.chromiumNano = (0.01 * this.volumeService.volume)
 
-
-      if (this.chromium == 10){
-          this.chromiumStart = 'Ideal  for most reefs'
-      }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
-
-      else if ( this.chromium <= 3 && this.chromium >= 0){
-        this.chromiumStart = `Depleted chromium Level, Correct immedietly ${this.chromiumAdjustment}ml per day for ${this.chromiumDays} days.  `
-      }
-      else if ( this.chromium <= 6 && this.chromium >= 3.1 ){
-        this.chromiumStart = `Low chromium level, adjust  ${this.chromiumAdjustment}ml per day for ${this.chromiumDays} days.  `
-      }
-      else if ( this.chromium <= 9 && this.chromium >= 6.1 ){
-        this.chromiumStart = `Reduced chromium, adjust  ${this.chromiumAdjustment}ml per day for ${this.chromiumDays} days.  `
-      }
-      else if ( this.chromium <= 9.9 && this.chromium >= 9.1 ){
-        this.chromiumStart = `Optimal Range for chromium, adjust ${this.chromiumAdjustment}ml per day for ${this.chromiumDays} days.`
-        }
-
-      //high start
-      else if ( this.chromium <= 12  && this.chromium >= 10.1){
-        this.chromiumStart = 'chromium Range Optimal '
-      }
-      else if ( this.chromium <= 25  && this.chromium >= 12.1 ){
-        this.chromiumStart = 'chromium slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.chromium <= 60  && this.chromium >= 25.1 ){
-        this.chromiumStart = 'chromium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-      }
-      else {
-        this.chromiumStart = 'Retest parameter'
-      }
+    if (this. chromium == 0){
+        this. chromiumStart =
+        `Ideal, should remain undetectable. Recomended dose of ${this.chomiumRegular}ml RM classic Chromium or ${this.chromiumNano}ml RM NANO per Day`
     }
+    else if ( this.chromium <= 2.5 && this. chromium >= 0.1 ){
+
+      this. chromiumStart = `Chromium in very low level, if supplementing, stop dosing`
+    }
+    else if ( this.chromium <= 5 && this. chromium >= 2.6 ){
+
+      this. chromiumStart = `Chromium in low level, if supplementing, stop dosing   `
+    }
+    else if ( this.chromium <= 10 && this. chromium >= 5.1 ){
+
+      this. chromiumStart = `Chromium in high levels, if supplementing, stop dosing `
+    }
+
+    else if ( this. chromium <= 50 && this. chromium >= 10.1 ){
+      this.chromiumStart = `Chromium in very high levels, if supplementing, stop dosing recomendation is to check equipment for degredation `
+      }
+    else {
+      this.chromiumStart = 'Retest parameter'
+    }
+  }
 
     // ==================================================== cobalt ====================================================
-cobaltStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-cobalt: number
-cobaltAdjustment: any
-cobaltAdjustmentTotal: number
-cobaltDays: number
-cobaltQuantityDivisor: number
+    cobaltStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+    cobalt: number
+    cobaltNano: number
+    cobaltRegular: number
 
-onAddCobalt(){
+    onAddCobalt(){
 
-    // general boron calculation
-    this.cobaltDays = Math.ceil(410 - this.cobalt)   // 2
-    this.cobaltQuantityDivisor = (410 - this.cobalt) // 410 - 4.5 = 1.5
-    this.cobaltAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.cobaltQuantityDivisor
-    this.cobaltAdjustment = this.cobaltAdjustmentTotal / this.cobaltDays
+      this.cobaltRegular = (0.00075 * this.volumeService.volume)
+      this.cobaltNano = (0.01 * this.volumeService.volume)
 
+        if (this.cobalt <= 0.1 && this. cobalt >= 0 ){
+            this. cobaltStart =
+            `Ideal, should remain near undetectable. Recomended dose of ${this.cobaltRegular}ml RM classic cobalt or ${this.cobaltNano}ml RM NANO per Day`
+        }
+        else if ( this.cobalt <= 2.5 && this. cobalt >= 0.2 ){
 
-      if (this.cobalt == 10){
-          this.cobaltStart = 'Ideal  for most reefs'
-      }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
+          this. cobaltStart = `Cobalt level very low , if supplementing, reduce dosage one third`
+        }
+        else if ( this.cobalt <= 5 && this. cobalt >= 2.6 ){
 
-      else if ( this.cobalt <= 3 && this.cobalt >= 0){
-        this.cobaltStart = `Depleted cobalt Level, Correct immedietly ${this.cobaltAdjustment}ml per day for ${this.cobaltDays} days.  `
-      }
-      else if ( this.cobalt <= 6 && this.cobalt >= 3.1 ){
-        this.cobaltStart = `Low cobalt level, adjust  ${this.cobaltAdjustment}ml per day for ${this.cobaltDays} days.  `
-      }
-      else if ( this.cobalt <= 9 && this.cobalt >= 6.1 ){
-        this.cobaltStart = `Reduced cobalt, adjust  ${this.cobaltAdjustment}ml per day for ${this.cobaltDays} days.  `
-      }
-      else if ( this.cobalt <= 9.9 && this.cobalt >= 9.1 ){
-        this.cobaltStart = `Optimal Range for cobalt, adjust ${this.cobaltAdjustment}ml per day for ${this.cobaltDays} days.`
+          this. cobaltStart = `Cobalt detected at low levels, if supplementing, stop dosing   `
+        }
+        else if ( this.cobalt <= 10 && this. cobalt >= 5.1 ){
+
+          this. cobaltStart = `Cobalt detected at Ver low levels, if supplementing, stop dosing `
         }
 
-      //high start
-      else if ( this.cobalt <= 12  && this.cobalt >= 10.1){
-        this.cobaltStart = 'cobalt Range Optimal '
+        else if ( this. cobalt <= 50 && this. cobalt >= 10.1 ){
+          this.cobaltStart = `Cobalt in very high levels, if supplementing, stop dosing recomendation is to check equipment for degredation `
+          }
+        else {
+          this.cobaltStart = 'Retest parameter'
+        }
       }
-      else if ( this.cobalt <= 25  && this.cobalt >= 12.1 ){
-        this.cobaltStart = 'cobalt slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.cobalt <= 60  && this.cobalt >= 25.1 ){
-        this.cobaltStart = 'cobalt critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-      }
-      else {
-        this.cobaltStart = 'Retest parameter'
-      }
-    }
-
     // ==================================================== Copper ====================================================
 copperStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 copper: number
-copperAdjustment: any
-copperAdjustmentTotal: number
-copperDays: number
-copperQuantityDivisor: number
+
 
 onAddCopper(){
 
-    // general boron calculation
-    this.copperDays = Math.ceil(410 - this.copper)   // 2
-    this.copperQuantityDivisor = (410 - this.copper) // 410 - 4.5 = 1.5
-    this.copperAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.copperQuantityDivisor
-    this.copperAdjustment = this.copperAdjustmentTotal / this.copperDays
+      if (this.copper <= 0.7 && this. copper >= 0 ){
+        this. copperStart =
+        `Ideal, should remain at or near undetectable.`
+      }
+      else if ( this.copper <= 5 && this. copper >= 0.8 ){
 
-
-      if (this.copper == 10){
-          this.copperStart = 'Ideal  for most reefs'
+        this.copperStart = `Copper detected at very low levels, can effect coral flourescence. Reduces naturally without waterchanges. If there is an increase, check equipment for degredation`
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
-
-      else if ( this.copper <= 3 && this.copper >= 0){
-        this.copperStart = `Depleted copper Level, Correct immedietly ${this.copperAdjustment}ml per day for ${this.copperDays} days.  `
+      else if ( this.copper <= 10 && this.copper >= 5.1 ){
+        this.copperStart = `Copper detected at these levels will effect coral flourescence. Reduces naturally without waterchanges. If there is an increase, check equipment for degredation`
       }
-      else if ( this.copper <= 6 && this.copper >= 3.1 ){
-        this.copperStart = `Low copper level, adjust  ${this.copperAdjustment}ml per day for ${this.copperDays} days.  `
-      }
-      else if ( this.copper <= 9 && this.copper >= 6.1 ){
-        this.copperStart = `Reduced copper, adjust  ${this.copperAdjustment}ml per day for ${this.copperDays} days.  `
-      }
-      else if ( this.copper <= 9.9 && this.copper >= 9.1 ){
-        this.copperStart = `Optimal Range for copper, adjust ${this.copperAdjustment}ml per day for ${this.copperDays} days.`
-        }
-
-      //high start
-      else if ( this.copper <= 12  && this.copper >= 10.1){
-        this.copperStart = 'copper Range Optimal '
-      }
-      else if ( this.copper <= 25  && this.copper >= 12.1 ){
-        this.copperStart = 'copper slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.copper <= 60  && this.copper >= 25.1 ){
-        this.copperStart = 'copper critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      else if ( this.copper <= 50 && this.copper >= 10.1 ){
+        this.copperStart = `Copper detected at these levels will effect coral flourescence. They will appear brown/dull. Preform 2-3 - 10-20% water changes & check equipment for degredation`
       }
       else {
         this.copperStart = 'Retest parameter'
