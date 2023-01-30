@@ -95,7 +95,7 @@ onAddBarium(){
     }
 
   // parseFloat(().toFixed(2));
-    // ==================================================== chromium ====================================================
+    // ==================================================== Chromium ====================================================
 chromiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 chromium: number
 chromiumNano: number
@@ -131,7 +131,7 @@ onAddChromium(){
     }
   }
 
-    // ==================================================== cobalt ====================================================
+    // ==================================================== Cobalt ====================================================
     cobaltStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
     cobalt: number
     cobaltNano: number
@@ -192,50 +192,42 @@ onAddCopper(){
       }
     }
 
-    // ==================================================== flouride ====================================================
+    // ==================================================== Flouride ====================================================
 flourideStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 flouride: number
-flourideAdjustment: any
 flourideAdjustmentTotal: number
 flourideDays: number
-flourideQuantityDivisor: number
+
 
 onAddFlouride(){
 
     // general boron calculation
-    this.flourideDays = Math.ceil(410 - this.flouride)   // 2
-    this.flourideQuantityDivisor = (410 - this.flouride) // 410 - 4.5 = 1.5
-    this.flourideAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.flourideQuantityDivisor
-    this.flourideAdjustment = this.flourideAdjustmentTotal / this.flourideDays
+    this.flourideDays = (1.5 - this.flouride)*10  // 2
+    this.flourideAdjustmentTotal = (0.37854 * this.volumeService.volume)
 
 
-      if (this.flouride == 10){
+
+      if (this.flouride == 1.5){
           this.flourideStart = 'Ideal  for most reefs'
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
+    //low start  .37854ml at 1 g for 0.1 ppm increase
 
-      else if ( this.flouride <= 3 && this.flouride >= 0){
-        this.flourideStart = `Depleted flouride Level, Correct immedietly ${this.flourideAdjustment}ml per day for ${this.flourideDays} days.  `
+      else if ( this.flouride <= 0.5 && this.flouride >= 0 ){
+        this.flourideStart = `Depleted flouride Level, Correct immedietly ${this.flourideAdjustmentTotal}ml per day for ${this.flourideDays} days.  `
       }
-      else if ( this.flouride <= 6 && this.flouride >= 3.1 ){
-        this.flourideStart = `Low flouride level, adjust  ${this.flourideAdjustment}ml per day for ${this.flourideDays} days.  `
-      }
-      else if ( this.flouride <= 9 && this.flouride >= 6.1 ){
-        this.flourideStart = `Reduced flouride, adjust  ${this.flourideAdjustment}ml per day for ${this.flourideDays} days.  `
-      }
-      else if ( this.flouride <= 9.9 && this.flouride >= 9.1 ){
-        this.flourideStart = `Optimal Range for flouride, adjust ${this.flourideAdjustment}ml per day for ${this.flourideDays} days.`
+      else if ( this.flouride <= 1.4 && this.flouride >= 0.6 ){
+        this.flourideStart = `Below target level for flouride, adjust ${this.flourideAdjustmentTotal}ml per day for ${this.flourideDays} days.`
         }
 
       //high start
-      else if ( this.flouride <= 12  && this.flouride >= 10.1){
-        this.flourideStart = 'flouride Range Optimal '
+      else if ( this.flouride <= 1.8  && this.flouride >= 1.6){
+        this.flourideStart = 'Flouride slightly elevated recomendation is to allow level to settle down and watch ICP.'
       }
-      else if ( this.flouride <= 25  && this.flouride >= 12.1 ){
-        this.flourideStart = 'flouride slightly elevated recomendation is to allow level to settle down and watch ICP '
+      else if ( this.flouride <= 2  && this.flouride >= 1.9 ){
+        this.flourideStart = 'Flouride critically elevated recomendation is to allow level to settle down and watch ICP.'
       }
-      else if ( this.flouride <= 60  && this.flouride >= 25.1 ){
-        this.flourideStart = 'flouride critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      else if ( this.flouride <= 3 && this.flouride >= 2.1 ){
+        this.flourideStart = 'Flouride level critical! Recomendation is preform several small water changes. May be entering through RODI'
       }
       else {
         this.flourideStart = 'Retest parameter'
