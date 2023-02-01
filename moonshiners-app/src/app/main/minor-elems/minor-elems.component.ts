@@ -245,44 +245,48 @@ iodineQuantityDivisor: number
 onAddIodine(){
 
     // general boron calculation
-    this.iodineDays = Math.ceil(410 - this.iodine)   // 2
-    this.iodineQuantityDivisor = (410 - this.iodine) // 410 - 4.5 = 1.5
-    this.iodineAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.iodineQuantityDivisor
-    this.iodineAdjustment = this.iodineAdjustmentTotal / this.iodineDays
 
 
-      if (this.iodine == 10){
+    // this.iodineDays = Math.ceil(410 - this.iodine)   // 2
+    // this.iodineQuantityDivisor = (410 - this.iodine) // 410 - 4.5 = 1.5
+    // this.iodineAdjustmentTotal = Math.ceil(this.volumeService.volume/50)
+    // this.iodineAdjustment = this.iodineAdjustmentTotal / this.iodineDays
+    if (this.volumeService.volume/40 < 1) {
+
+      this.iodineDays = Math.ceil(50/this.volumeService.volume)
+      this.iodineAdjustmentTotal = 1
+
+
+    } else {
+      this.iodineAdjustmentTotal = Math.ceil(this.volumeService.volume/50);
+      this.iodineDays = 1
+    }
+
+      if (this.iodine <= 95 && this.iodine >= 76 ){
           this.iodineStart = 'Ideal  for most reefs'
       }
     //low start  7.72ml at 100 g for 0.1 ppm increase
 
-      else if ( this.iodine <= 3 && this.iodine >= 0){
-        this.iodineStart = `Depleted iodine Level, Correct immedietly ${this.iodineAdjustment}ml per day for ${this.iodineDays} days.  `
+      else if ( this.iodine <= 25 && this.iodine >= 0){ // 2-3 drops per day  @ 100g
+        this.iodineStart = `Iodine Depleted, recomended dose is ${this.iodineAdjustmentTotal} drops every ${this.iodineDays} days`
       }
-      else if ( this.iodine <= 6 && this.iodine >= 3.1 ){
-        this.iodineStart = `Low iodine level, adjust  ${this.iodineAdjustment}ml per day for ${this.iodineDays} days.  `
-      }
-      else if ( this.iodine <= 9 && this.iodine >= 6.1 ){
-        this.iodineStart = `Reduced iodine, adjust  ${this.iodineAdjustment}ml per day for ${this.iodineDays} days.  `
-      }
-      else if ( this.iodine <= 9.9 && this.iodine >= 9.1 ){
-        this.iodineStart = `Optimal Range for iodine, adjust ${this.iodineAdjustment}ml per day for ${this.iodineDays} days.`
+      else if ( this.iodine <= 75 && this.iodine >= 26){  // 2-3 drops per day @ 100g
+        this.iodineStart = `Iodine low, recomended dose is ${this.iodineAdjustmentTotal} drops every ${this.iodineDays} days`
         }
 
       //high start
-      else if ( this.iodine <= 12  && this.iodine >= 10.1){
-        this.iodineStart = 'iodine Range Optimal '
+      else if ( this.iodine <= 500  && this.iodine >= 96){
+        this.iodineStart = 'Iodine slightly elevated recomendation is to allow level to settle down and watch ICP '
       }
-      else if ( this.iodine <= 25  && this.iodine >= 12.1 ){
-        this.iodineStart = 'iodine slightly elevated recomendation is to allow level to settle down and watch ICP '
+      else if ( this.iodine <= 1500  && this.iodine >= 501){
+        this.iodineStart = 'iodine highly elevated recomendation is to do water change and run carbon. Levels above 1000 can lead to browning or burnt tips'
       }
-      else if ( this.iodine <= 60  && this.iodine >= 25.1 ){
-        this.iodineStart = 'iodine critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-      }
+
       else {
         this.iodineStart = 'Retest parameter'
       }
     }
 
 }
+
 
