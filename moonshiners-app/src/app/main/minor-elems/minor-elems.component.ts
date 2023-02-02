@@ -244,13 +244,6 @@ iodineQuantityDivisor: number
 
 onAddIodine(){
 
-    // general boron calculation
-
-
-    // this.iodineDays = Math.ceil(410 - this.iodine)   // 2
-    // this.iodineQuantityDivisor = (410 - this.iodine) // 410 - 4.5 = 1.5
-    // this.iodineAdjustmentTotal = Math.ceil(this.volumeService.volume/50)
-    // this.iodineAdjustment = this.iodineAdjustmentTotal / this.iodineDays
     if (this.volumeService.volume/40 < 1) {
 
       this.iodineDays = Math.ceil(50/this.volumeService.volume)
