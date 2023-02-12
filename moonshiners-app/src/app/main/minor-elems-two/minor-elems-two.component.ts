@@ -83,44 +83,40 @@ lithium: number
 lithiumAdjustment: any
 lithiumAdjustmentTotal: number
 lithiumDays: number
+lithiumDaysCalc: number
 lithiumQuantityDivisor: number
 
 onAddLithium(){
 
-    // general boron calculation
-    this.lithiumDays = Math.ceil(410 - this.lithium)   // 2
-    this.lithiumQuantityDivisor = (410 - this.lithium) // 410 - 4.5 = 1.5
-    this.lithiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.lithiumQuantityDivisor
-    this.lithiumAdjustment = this.lithiumAdjustmentTotal / this.lithiumDays
+    // general lithium calculation
+    this.lithiumDaysCalc = Math.ceil(100 - this.lithium)   // 2
+    this.lithiumDays = Math.ceil((100 - this.lithium)/10)   // 2
+    this.lithiumQuantityDivisor = (100 - this.lithium) // 410 - 4.5 = 1.5
+    this.lithiumAdjustmentTotal = (0.03773 * this.volumeService.volume) * this.lithiumQuantityDivisor
+    this.lithiumAdjustment = (this.lithiumAdjustmentTotal / this.lithiumDaysCalc).toFixed(2)
 
 
-      if (this.lithium == 10){
+      if (this.lithium <= 200 && this.lithium >= 101){
           this.lithiumStart = 'Ideal  for most reefs'
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
+    //low start
 
-      else if ( this.lithium <= 3 && this.lithium >= 0){
-        this.lithiumStart = `Depleted lithium Level, Correct immedietly ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
+      else if ( this.lithium <= 80 && this.lithium >= 0 ){
+        this.lithiumStart = `Lithium very low, adjust  ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
       }
-      else if ( this.lithium <= 6 && this.lithium >= 3.1 ){
-        this.lithiumStart = `Low lithium level, adjust  ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
-      }
-      else if ( this.lithium <= 9 && this.lithium >= 6.1 ){
-        this.lithiumStart = `Reduced lithium, adjust  ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.  `
-      }
-      else if ( this.lithium <= 9.9 && this.lithium >= 9.1 ){
-        this.lithiumStart = `Optimal Range for lithium, adjust ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.`
+      else if ( this.lithium <= 100 && this.lithium >= 81 ){
+        this.lithiumStart = `Lithium low, adjust ${this.lithiumAdjustment}ml per day for ${this.lithiumDays} days.`
         }
 
       //high start
-      else if ( this.lithium <= 12  && this.lithium >= 10.1){
-        this.lithiumStart = 'lithium Range Optimal '
+      else if ( this.lithium <= 600  && this.lithium >= 201){
+        this.lithiumStart = 'Lithium slightly elevated recomendation is to allow level to settle down and watch ICP. This can take several months'
       }
-      else if ( this.lithium <= 25  && this.lithium >= 12.1 ){
-        this.lithiumStart = 'lithium slightly elevated recomendation is to allow level to settle down and watch ICP '
+      else if ( this.lithium <= 1500 && this.lithium >= 601 ){
+        this.lithiumStart = 'Lithium highly elevated recomendation Acceptable range is 100-350. Consider 20% water change'
       }
-      else if ( this.lithium <= 60  && this.lithium >= 25.1 ){
-        this.lithiumStart = 'lithium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      else if ( this.lithium <= 3500  && this.lithium >= 1501 ){
+        this.lithiumStart = 'Lithium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level.'
       }
       else {
         this.lithiumStart = 'Retest parameter'
