@@ -42,55 +42,41 @@ export class MinorElemsTwoComponent implements OnInit {
 
 
     // ==================================================== Iron ====================================================
-    ironStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-    iron: number
-    ironAdjustment: any
-    ironAdjustmentTotal: number
-    ironDays: number
-    ironQuantityDivisor: number
 
-    onAddIron(){
+ironStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+iron: number
+ironNano: number
+ironRegular: number
 
-        // general boron calculation
-        this.ironDays = Math.ceil(410 - this.iron)   // 2
-        this.ironQuantityDivisor = (410 - this.iron) // 410 - 4.5 = 1.5
-        this.ironAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.ironQuantityDivisor
-        this.ironAdjustment = this.ironAdjustmentTotal / this.ironDays
+onAddIron(){
 
+  this.ironRegular = (0.00035 * this.volumeService.volume)  // round to 2 places?
+  this.ironNano = (0.01 * this.volumeService.volume)
 
-          if (this.iron == 10){
-              this.ironStart = 'Ideal  for most reefs'
-          }
-        //low start  7.72ml at 100 g for 0.1 ppm increase
+    if (this.iron <= 0.1 && this. iron >= 0 ){
+        this.ironStart =
+        `Ideal, should remain Low or Undetectable. Recomended dose of ${this.ironRegular}ml RM classic iron or ${this.ironNano}ml RM NANO per Day`
+    }
+    else if ( this.iron <= 1 && this. iron >= 0.11 ){
 
-          else if ( this.iron <= 3 && this.iron >= 0){
-            this.ironStart = `Depleted iron Level, Correct immedietly ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
-          }
-          else if ( this.iron <= 6 && this.iron >= 3.1 ){
-            this.ironStart = `Low iron level, adjust  ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
-          }
-          else if ( this.iron <= 9 && this.iron >= 6.1 ){
-            this.ironStart = `Reduced iron, adjust  ${this.ironAdjustment}ml per day for ${this.ironDays} days.  `
-          }
-          else if ( this.iron <= 9.9 && this.iron >= 9.1 ){
-            this.ironStart = `Optimal Range for iron, adjust ${this.ironAdjustment}ml per day for ${this.ironDays} days.`
-            }
+      this. ironStart = `Iron found in very low levels, if supplementing, reduce dosage`
+    }
+    else if ( this.iron <= 2.5 && this. iron >= 1.1 ){
 
-          //high start
-          else if ( this.iron <= 12  && this.iron >= 10.1){
-            this.ironStart = 'iron Range Optimal '
-          }
-          else if ( this.iron <= 25  && this.iron >= 12.1 ){
-            this.ironStart = 'iron slightly elevated recomendation is to allow level to settle down and watch ICP '
-          }
-          else if ( this.iron <= 60  && this.iron >= 25.1 ){
-            this.ironStart = 'iron critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-          }
-          else {
-            this.ironStart = 'Retest parameter'
-          }
-        }
+      this. ironStart = `Iron found in low levels, if supplementing, reduce dosage. Iron at this level may cause browning of coral`
+    }
+    else if ( this.iron <= 10 && this. iron >= 2.6 ){
 
+      this. ironStart = `Excessive iron detected. Cease supplementation and monitor for any further increase. It is recommended to inspect your equipment`
+    }
+
+    else if ( this. iron <= 50 && this. iron >= 10.1 ){
+      this.ironStart = `Warning: High levels of iron detected. If you are supplementing, immediately stop dosing. To prevent further issues, it is recommended to check your equipment for degradation and perform water changes.`
+      }
+    else {
+      this.ironStart = 'Retest parameter'
+    }
+  }
             // ==================================================== Lithium ====================================================
 lithiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 lithium: number
@@ -293,3 +279,37 @@ onAddNickle(){
 
 }
 
+// rtempStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+// rtemp: number
+// rtempNano: number
+// rtempRegular: number
+
+// onAddrtemp(){
+
+//   this.rtempRegular = (0.00076 * this.volumeService.volume)  // round to 2 places?
+//   this.rtempNano = (0.01 * this.volumeService.volume)
+
+//     if (this. rtemp == 0){
+//         this. rtempStart =
+//         `Ideal, should remain undetectable. Recomended dose of ${this.rtempRegular}ml RM classic rtemp or ${this.rtempNano}ml RM NANO per Day`
+//     }
+//     else if ( this.rtemp <= 2.5 && this. rtemp >= 0.1 ){
+
+//       this. rtempStart = `rtemp in very low level, if supplementing, stop dosing`
+//     }
+//     else if ( this.rtemp <= 5 && this. rtemp >= 2.6 ){
+
+//       this. rtempStart = `rtemp in low level, if supplementing, stop dosing   `
+//     }
+//     else if ( this.rtemp <= 10 && this. rtemp >= 5.1 ){
+
+//       this. rtempStart = `rtemp in high levels, if supplementing, stop dosing `
+//     }
+
+//     else if ( this. rtemp <= 50 && this. rtemp >= 10.1 ){
+//       this.rtempStart = `rtemp in very high levels, if supplementing, stop dosing recomendation is to check equipment for degredation `
+//       }
+//     else {
+//       this.rtempStart = 'Retest parameter'
+//     }
+//   }
