@@ -157,66 +157,106 @@ onAddManganese(){
     }
         // ==================================================== Molybdenum ====================================================
 
+        molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!';
+        molybdenum: number;
+        molybdenumAdjustmentTotal: number;
+        molybdenumAdjustmentDiv: any;
 
+        onAddMolybdenum() {
+            const molybdenumRanges = {
+                15: {
+                    message: 'Ideal for most reefs',
+                    divisor: 1,
+                },
+                low: [
+                    { range: [0, 2.9], divisor: 5, message: 'Very low molybdenum level' },
+                    { range: [3, 5.9], divisor: 4, message: 'Very low molybdenum level' },
+                    { range: [6, 8.9], divisor: 3, message: 'Very low molybdenum level' },
+                    { range: [9, 11.9], divisor: 2, message: 'Low molybdenum level' },
+                    { range: [12, 14.9], divisor: 1, message: 'Acceptable range for molybdenum' },
+                ],
+                high: [
+                    { range: [15.1, 12], message: 'Molybdenum range optimal' },
+                    { range: [12.1, 25], message: 'Molybdenum slightly elevated' },
+                    { range: [25.1, 60], message: 'Molybdenum critical' },
+                ],
+            };
 
-molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-molybdenum: number
-molybdenumAdjustment: any
-molybdenumAdjustmentTotal: number
-molybdenumDays: number
-molybdenumQuantityDivisor: number
-molybdenumAdjustmentDiv: any
+            let range: { message: string, divisor?: number } = molybdenumRanges[15];
+            for (const r of molybdenumRanges.low) {
+                if (this.molybdenum >= r.range[0] && this.molybdenum <= r.range[1]) {
+                    range = r;
+                    break;
+                }
+            }
+            if (!range) {
+                for (const r of molybdenumRanges.high) {
+                    if (this.molybdenum >= r.range[0] && this.molybdenum <= r.range[1]) {
+                        range = r;
+                        break;
+                    }
+                }
+            }
 
-onAddMolybdenum(){
-
-
-    // general boron calculation
-    // this.molybdenumDays = Math.ceil(15 - this.molybdenum)   // 2
-    this.molybdenumQuantityDivisor = (15 - this.molybdenum) // 410 - 4.5 = 1.5
-    this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * this.molybdenumQuantityDivisor
-    // this.molybdenumAdjustment = (this.molybdenumAdjustmentTotal / this.molybdenumDays).toFixed(2)
-
-
-      if (this.molybdenum == 15){
-          this.molybdenumStart = 'Ideal  for most reefs'
-      }
-    //low start
-      else if ( this.molybdenum <= 2.9 && this.molybdenum >= 0 ){
-      this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/5).toFixed(2)
-
-        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 5 days.`
-      }
-      else if ( this.molybdenum <= 5.9 && this.molybdenum >= 3 ){
-        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/4).toFixed(2)
-        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 4 days.`
-      }
-      else if ( this.molybdenum <= 8.9 && this.molybdenum >= 6 ){
-        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/3).toFixed(2)
-        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 3 days.`
-      }
-      else if ( this.molybdenum <= 11.9 && this.molybdenum >= 9 ){
-        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/2).toFixed(2)
-        this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 2 days.`
-      }
-      else if ( this.molybdenum <= 14.9 && this.molybdenum >= 12){
-        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal).toFixed(2)
-        this.molybdenumStart = `Acceptable Range for molybdenum, however adjust ${this.molybdenumAdjustmentDiv}ml per day for 1 days.`
+            this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * (15 - this.molybdenum);
+            this.molybdenumAdjustmentDiv = `${(this.molybdenumAdjustmentTotal / range.divisor).toFixed(2)} ml`;
+            this.molybdenumStart = `${range.message}, adjust ${this.molybdenumAdjustmentDiv} per day for ${range.divisor} days.`;
         }
 
-      //high start
-      else if ( this.molybdenum <= 12  && this.molybdenum >= 15.1){
-        this.molybdenumStart = 'molybdenum Range Optimal '
-      }
-      else if ( this.molybdenum <= 25  && this.molybdenum >= 12.1 ){
-        this.molybdenumStart = 'molybdenum slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.molybdenum <= 60  && this.molybdenum >= 25.1 ){
-        this.molybdenumStart = 'molybdenum critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-      }
-      else {
-        this.molybdenumStart = 'Retest parameter'
-      }
-    }
+// molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+// molybdenum: number
+// molybdenumAdjustment: any
+// molybdenumAdjustmentTotal: number
+// molybdenumQuantityDivisor: number
+// molybdenumAdjustmentDiv: any
+
+// onAddMolybdenum(){
+
+//     this.molybdenumQuantityDivisor = (15 - this.molybdenum) // 410 - 4.5 = 1.5
+//     this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * this.molybdenumQuantityDivisor
+
+
+
+//       if (this.molybdenum == 15){
+//           this.molybdenumStart = 'Ideal  for most reefs'
+//       }
+//     //low start
+//       else if ( this.molybdenum <= 2.9 && this.molybdenum >= 0 ){
+//       this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/5).toFixed(2)
+
+//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 5 days.`
+//       }
+//       else if ( this.molybdenum <= 5.9 && this.molybdenum >= 3 ){
+//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/4).toFixed(2)
+//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 4 days.`
+//       }
+//       else if ( this.molybdenum <= 8.9 && this.molybdenum >= 6 ){
+//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/3).toFixed(2)
+//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 3 days.`
+//       }
+//       else if ( this.molybdenum <= 11.9 && this.molybdenum >= 9 ){
+//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/2).toFixed(2)
+//         this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 2 days.`
+//       }
+//       else if ( this.molybdenum <= 14.9 && this.molybdenum >= 12){
+//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal).toFixed(2)
+//         this.molybdenumStart = `Acceptable Range for molybdenum, however adjust ${this.molybdenumAdjustmentDiv}ml per day for 1 days.`
+//         }
+
+//       //high start
+//       else if ( this.molybdenum <= 12  && this.molybdenum >= 15.1){
+//         this.molybdenumStart = 'molybdenum Range Optimal '
+//       }
+//       else if ( this.molybdenum <= 25  && this.molybdenum >= 12.1 ){
+//         this.molybdenumStart = 'molybdenum slightly elevated recomendation is to allow level to settle down and watch ICP '
+//       }
+//       else if ( this.molybdenum <= 60  && this.molybdenum >= 25.1 ){
+//         this.molybdenumStart = 'molybdenum critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+//       }
+//       else {
+//         this.molybdenumStart = 'Retest parameter'
+//       }
+//     }
 
 
 
