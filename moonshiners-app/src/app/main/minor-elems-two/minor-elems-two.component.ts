@@ -156,42 +156,55 @@ onAddManganese(){
       }
     }
         // ==================================================== Molybdenum ====================================================
+
+
+
 molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 molybdenum: number
 molybdenumAdjustment: any
 molybdenumAdjustmentTotal: number
 molybdenumDays: number
 molybdenumQuantityDivisor: number
+molybdenumAdjustmentDiv: any
 
 onAddMolybdenum(){
 
+
     // general boron calculation
-    this.molybdenumDays = Math.ceil(410 - this.molybdenum)   // 2
-    this.molybdenumQuantityDivisor = (410 - this.molybdenum) // 410 - 4.5 = 1.5
-    this.molybdenumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.molybdenumQuantityDivisor
-    this.molybdenumAdjustment = this.molybdenumAdjustmentTotal / this.molybdenumDays
+    // this.molybdenumDays = Math.ceil(15 - this.molybdenum)   // 2
+    this.molybdenumQuantityDivisor = (15 - this.molybdenum) // 410 - 4.5 = 1.5
+    this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * this.molybdenumQuantityDivisor
+    // this.molybdenumAdjustment = (this.molybdenumAdjustmentTotal / this.molybdenumDays).toFixed(2)
 
 
-      if (this.molybdenum == 10){
+      if (this.molybdenum == 15){
           this.molybdenumStart = 'Ideal  for most reefs'
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
+    //low start
+      else if ( this.molybdenum <= 2.9 && this.molybdenum >= 0 ){
+      this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/5).toFixed(2)
 
-      else if ( this.molybdenum <= 3 && this.molybdenum >= 0){
-        this.molybdenumStart = `Depleted molybdenum Level, Correct immedietly ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
+        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 5 days.`
       }
-      else if ( this.molybdenum <= 6 && this.molybdenum >= 3.1 ){
-        this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
+      else if ( this.molybdenum <= 5.9 && this.molybdenum >= 3 ){
+        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/4).toFixed(2)
+        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 4 days.`
       }
-      else if ( this.molybdenum <= 9 && this.molybdenum >= 6.1 ){
-        this.molybdenumStart = `Reduced molybdenum, adjust  ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.  `
+      else if ( this.molybdenum <= 8.9 && this.molybdenum >= 6 ){
+        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/3).toFixed(2)
+        this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 3 days.`
       }
-      else if ( this.molybdenum <= 9.9 && this.molybdenum >= 9.1 ){
-        this.molybdenumStart = `Optimal Range for molybdenum, adjust ${this.molybdenumAdjustment}ml per day for ${this.molybdenumDays} days.`
+      else if ( this.molybdenum <= 11.9 && this.molybdenum >= 9 ){
+        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/2).toFixed(2)
+        this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 2 days.`
+      }
+      else if ( this.molybdenum <= 14.9 && this.molybdenum >= 12){
+        this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal).toFixed(2)
+        this.molybdenumStart = `Acceptable Range for molybdenum, however adjust ${this.molybdenumAdjustmentDiv}ml per day for 1 days.`
         }
 
       //high start
-      else if ( this.molybdenum <= 12  && this.molybdenum >= 10.1){
+      else if ( this.molybdenum <= 12  && this.molybdenum >= 15.1){
         this.molybdenumStart = 'molybdenum Range Optimal '
       }
       else if ( this.molybdenum <= 25  && this.molybdenum >= 12.1 ){
@@ -204,6 +217,8 @@ onAddMolybdenum(){
         this.molybdenumStart = 'Retest parameter'
       }
     }
+
+
 
         // ==================================================== Nickle ====================================================
 nickleStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
