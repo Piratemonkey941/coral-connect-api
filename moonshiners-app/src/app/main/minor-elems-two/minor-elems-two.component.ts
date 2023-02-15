@@ -50,8 +50,9 @@ ironRegular: number
 
 onAddIron(){
 
-  this.ironRegular = (0.00035 * this.volumeService.volume)  // round to 2 places?
-  this.ironNano = (0.01 * this.volumeService.volume)
+  this.ironRegular = parseFloat((0.00035 * this.volumeService.volume).toFixed(2))  // round to 2 places?
+  this.ironNano = parseFloat((0.01 * this.volumeService.volume).toFixed(2))
+
 
     if (this.iron <= 0.1 && this. iron >= 0 ){
         this.ironStart =
