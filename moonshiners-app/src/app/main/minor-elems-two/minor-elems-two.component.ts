@@ -127,53 +127,34 @@ onAddLithium(){
         // ==================================================== Manganese ====================================================
 manganeseStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 manganese: number
-manganeseAdjustment: any
-manganeseAdjustmentTotal: number
-manganeseDays: number
-manganeseQuantityDivisor: number
+manganeseNano: number
+manganeseRegular: number
 
 onAddManganese(){
-
-    // general boron calculation
-    this.manganeseDays = Math.ceil(410 - this.manganese)   // 2
-    this.manganeseQuantityDivisor = (410 - this.manganese) // 410 - 4.5 = 1.5
-    this.manganeseAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.manganeseQuantityDivisor
-    this.manganeseAdjustment = this.manganeseAdjustmentTotal / this.manganeseDays
+  this.manganeseRegular = parseFloat((0.00037 * this.volumeService.volume).toFixed(2))  // round to 2 places?
+    this.manganeseNano = parseFloat((0.01 * this.volumeService.volume).toFixed(2))
 
 
-      if (this.manganese == 10){
-          this.manganeseStart = 'Ideal  for most reefs'
+      if (this.manganese <= 0.1 && this.manganese >= 0){
+        this.manganeseStart =
+        `Ideal, should remain Low or Undetectable. Recomended dose of ${this.manganeseRegular}ml RM classic iron or ${this.manganeseNano}ml RM NANO per Day`
       }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
-
-      else if ( this.manganese <= 3 && this.manganese >= 0){
-        this.manganeseStart = `Depleted manganese Level, Correct immedietly ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
+      else if ( this.manganese <= 2.5 && this.manganese >= 0.2 ){
+        this.manganeseStart = 'manganese detected at low levels, reduce dose'
       }
-      else if ( this.manganese <= 6 && this.manganese >= 3.1 ){
-        this.manganeseStart = `Low manganese level, adjust  ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
+      else if ( this.manganese <= 5 && this.manganese >= 2.6 ){
+        this.manganeseStart = 'manganese detected at low levels, stop dosing'
       }
-      else if ( this.manganese <= 9 && this.manganese >= 6.1 ){
-        this.manganeseStart = `Reduced manganese, adjust  ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.  `
+      else if ( this.manganese <= 10  && this.manganese >= 5.1){
+        this.manganeseStart = 'manganese detected at medium levels, stop dosing'
       }
-      else if ( this.manganese <= 9.9 && this.manganese >= 9.1 ){
-        this.manganeseStart = `Optimal Range for manganese, adjust ${this.manganeseAdjustment}ml per day for ${this.manganeseDays} days.`
-        }
-
-      //high start
-      else if ( this.manganese <= 12  && this.manganese >= 10.1){
-        this.manganeseStart = 'manganese Range Optimal '
-      }
-      else if ( this.manganese <= 25  && this.manganese >= 12.1 ){
-        this.manganeseStart = 'manganese slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.manganese <= 60  && this.manganese >= 25.1 ){
-        this.manganeseStart = 'manganese critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+      else if ( this.manganese <= 50 && this.manganese >= 10.1 ){
+        this.manganeseStart = 'manganese detected at high levels, stop dosing. Recomendation is to preform 2 10%-20% water changes'
       }
       else {
         this.manganeseStart = 'Retest parameter'
       }
     }
-
         // ==================================================== Molybdenum ====================================================
 molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
 molybdenum: number
