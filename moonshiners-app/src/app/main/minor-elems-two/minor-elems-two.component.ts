@@ -163,17 +163,17 @@ onAddManganese(){
         molybdenumAdjustmentDiv: any;
 
         onAddMolybdenum() {
-            const molybdenumRanges = {
+            const molybdenumRanges = {                   // Define the different molybdenum ranges and their corresponding messages and divisors.
                 15: {
                     message: 'Ideal for most reefs',
-                    divisor: 1,
+                    divisor: 1,                          // divisor is set to 1 since it does not matter in this case
                 },
                 low: [
-                    { range: [0, 2.9], divisor: 5, message: 'Very low molybdenum level' },
-                    { range: [3, 5.9], divisor: 4, message: 'Very low molybdenum level' },
-                    { range: [6, 8.9], divisor: 3, message: 'Very low molybdenum level' },
-                    { range: [9, 11.9], divisor: 2, message: 'Low molybdenum level' },
-                    { range: [12, 14.9], divisor: 1, message: 'Acceptable range for molybdenum' },
+                    { range: [0, 2.9], message: 'Very low molybdenum level', divisor: 5 },
+                    { range: [3, 5.9], message: 'Very low molybdenum level', divisor: 4 },
+                    { range: [6, 8.9], message: 'Very low molybdenum level', divisor: 3 },
+                    { range: [9, 11.9], message: 'Low molybdenum level', divisor: 2 },
+                    { range: [12, 14.9], message: 'Acceptable range for molybdenum', divisor: 1 },
                 ],
                 high: [
                     { range: [15.1, 12], message: 'Molybdenum range optimal' },
@@ -182,7 +182,8 @@ onAddManganese(){
                 ],
             };
 
-            let range: { message: string, divisor?: number } = molybdenumRanges[15];
+            let range: { message: string, divisor?: number } = molybdenumRanges[15];    // Set the range based on the molybdenum value.
+            
             for (const r of molybdenumRanges.low) {
                 if (this.molybdenum >= r.range[0] && this.molybdenum <= r.range[1]) {
                     range = r;
@@ -198,9 +199,9 @@ onAddManganese(){
                 }
             }
 
-            this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * (15 - this.molybdenum);
-            this.molybdenumAdjustmentDiv = `${(this.molybdenumAdjustmentTotal / range.divisor).toFixed(2)} ml`;
-            this.molybdenumStart = `${range.message}, adjust ${this.molybdenumAdjustmentDiv} per day for ${range.divisor} days.`;
+            this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * (15 - this.molybdenum);                           // Calculate the molybdenum adjustment based on the total adjustment and the range divisor.
+            this.molybdenumAdjustmentDiv = `${(this.molybdenumAdjustmentTotal / (range.divisor || 1)).toFixed(2)} ml`;
+            this.molybdenumStart = `${range.message}, adjust ${this.molybdenumAdjustmentDiv} per day for ${range.divisor || 1} days.`;  // Set the molybdenum start message based on the range and the calculated adjustment.
         }
 
 // molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
