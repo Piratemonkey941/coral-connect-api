@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   config;
   fullpage_api: any;
 
-  volume: number
+  volume: number = 100
 
 
   constructor(private renderer: Renderer2) {

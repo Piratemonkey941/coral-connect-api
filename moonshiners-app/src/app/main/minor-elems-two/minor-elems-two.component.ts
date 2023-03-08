@@ -183,7 +183,7 @@ onAddManganese(){
             };
 
             let range: { message: string, divisor?: number } = molybdenumRanges[15];    // Set the range based on the molybdenum value.
-            
+
             for (const r of molybdenumRanges.low) {
                 if (this.molybdenum >= r.range[0] && this.molybdenum <= r.range[1]) {
                     range = r;
@@ -204,146 +204,51 @@ onAddManganese(){
             this.molybdenumStart = `${range.message}, adjust ${this.molybdenumAdjustmentDiv} per day for ${range.divisor || 1} days.`;  // Set the molybdenum start message based on the range and the calculated adjustment.
         }
 
-// molybdenumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-// molybdenum: number
-// molybdenumAdjustment: any
-// molybdenumAdjustmentTotal: number
-// molybdenumQuantityDivisor: number
-// molybdenumAdjustmentDiv: any
 
-// onAddMolybdenum(){
-
-//     this.molybdenumQuantityDivisor = (15 - this.molybdenum) // 410 - 4.5 = 1.5
-//     this.molybdenumAdjustmentTotal = (0.03785 * this.volumeService.volume) * this.molybdenumQuantityDivisor
-
-
-
-//       if (this.molybdenum == 15){
-//           this.molybdenumStart = 'Ideal  for most reefs'
-//       }
-//     //low start
-//       else if ( this.molybdenum <= 2.9 && this.molybdenum >= 0 ){
-//       this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/5).toFixed(2)
-
-//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 5 days.`
-//       }
-//       else if ( this.molybdenum <= 5.9 && this.molybdenum >= 3 ){
-//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/4).toFixed(2)
-//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 4 days.`
-//       }
-//       else if ( this.molybdenum <= 8.9 && this.molybdenum >= 6 ){
-//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/3).toFixed(2)
-//         this.molybdenumStart = `Very Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 3 days.`
-//       }
-//       else if ( this.molybdenum <= 11.9 && this.molybdenum >= 9 ){
-//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal/2).toFixed(2)
-//         this.molybdenumStart = `Low molybdenum level, adjust  ${this.molybdenumAdjustmentDiv}ml per day for 2 days.`
-//       }
-//       else if ( this.molybdenum <= 14.9 && this.molybdenum >= 12){
-//         this.molybdenumAdjustmentDiv = (this.molybdenumAdjustmentTotal).toFixed(2)
-//         this.molybdenumStart = `Acceptable Range for molybdenum, however adjust ${this.molybdenumAdjustmentDiv}ml per day for 1 days.`
-//         }
-
-//       //high start
-//       else if ( this.molybdenum <= 12  && this.molybdenum >= 15.1){
-//         this.molybdenumStart = 'molybdenum Range Optimal '
-//       }
-//       else if ( this.molybdenum <= 25  && this.molybdenum >= 12.1 ){
-//         this.molybdenumStart = 'molybdenum slightly elevated recomendation is to allow level to settle down and watch ICP '
-//       }
-//       else if ( this.molybdenum <= 60  && this.molybdenum >= 25.1 ){
-//         this.molybdenumStart = 'molybdenum critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-//       }
-//       else {
-//         this.molybdenumStart = 'Retest parameter'
-//       }
-//     }
 
 
 
         // ==================================================== Nickle ====================================================
-nickleStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-nickle: number
-nickleAdjustment: any
-nickleAdjustmentTotal: number
-nickleDays: number
-nickleQuantityDivisor: number
 
-onAddNickle(){
+        nickelStart = 'Instead of becoming fireworks, Im going to make your corals glow!';
+        nickel: number;
+        nickelAdjustment: number;
+        nickelAdjustmentTotal: number;
+        nickelDays: number;
+        nickelQuantityDivisor: number;
 
-    // general boron calculation
-    this.nickleDays = Math.ceil(410 - this.nickle)   // 2
-    this.nickleQuantityDivisor = (410 - this.nickle) // 410 - 4.5 = 1.5
-    this.nickleAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.nickleQuantityDivisor
-    this.nickleAdjustment = this.nickleAdjustmentTotal / this.nickleDays
+        onAddNickel() {
+          if (this.nickel >= 2) {
+            this.nickelDays = 1;
+          } else if (this.nickel >= 1.5) {
+            this.nickelDays = 2;
+          } else if (this.nickel >= 1) {
+            this.nickelDays = 3;
+          } else if (this.nickel >= 0.5) {
+            this.nickelDays = 4;
+          } else {
+            this.nickelDays = 5;
+          }
 
+          this.nickelQuantityDivisor = (2.5 - this.nickel) * 10;
+          this.nickelAdjustmentTotal = 0.003785 * this.volumeService.volume * this.nickelQuantityDivisor;
+          this.nickelAdjustment = Number((this.nickelAdjustmentTotal / this.nickelDays).toFixed(2));
 
-      if (this.nickle == 10){
-          this.nickleStart = 'Ideal  for most reefs'
-      }
-    //low start  7.72ml at 100 g for 0.1 ppm increase
-
-      else if ( this.nickle <= 3 && this.nickle >= 0){
-        this.nickleStart = `Depleted nickle Level, Correct immedietly ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
-      }
-      else if ( this.nickle <= 6 && this.nickle >= 3.1 ){
-        this.nickleStart = `Low nickle level, adjust  ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
-      }
-      else if ( this.nickle <= 9 && this.nickle >= 6.1 ){
-        this.nickleStart = `Reduced nickle, adjust  ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.  `
-      }
-      else if ( this.nickle <= 9.9 && this.nickle >= 9.1 ){
-        this.nickleStart = `Optimal Range for nickle, adjust ${this.nickleAdjustment}ml per day for ${this.nickleDays} days.`
+          if (this.nickel == 2.5) {
+            this.nickelStart = 'Ideal for most reefs';
+          } else if (this.nickel === 0 || (this.nickel <= 0.5 && this.nickel >= 0)) {
+            const msg = `Nickel ${this.nickel === 0 ? 'Depleted' : 'depleted or very low'}, adjust ${this.nickelAdjustment}ml per day for ${this.nickelDays} days.`;
+            this.nickelStart = msg;
+          } else if (this.nickel <= 2.4 && this.nickel >= 0.6) {
+            this.nickelStart = `Nickel below target level, adjust ${this.nickelAdjustment}ml per day for ${this.nickelDays} days.`;
+          } else if (this.nickel <= 5 && this.nickel >= 2.6) {
+            this.nickelStart = 'Nickel acceptable, slightly elevated';
+          } else if (this.nickel <= 10 && this.nickel >= 5.1) {
+            this.nickelStart = 'Nickel elevated above target level, allow level to settle down and watch ICP';
+          } else if (this.nickel <= 50 && this.nickel >= 10.1) {
+            this.nickelStart = 'Nickel level critical! Find source of pollution Preform several small water changes. 20% water change to reduce level apx 10%';
+          } else {
+            this.nickelStart = 'Retest parameter';
+          }
         }
-
-      //high start
-      else if ( this.nickle <= 12  && this.nickle >= 10.1){
-        this.nickleStart = 'nickle Range Optimal '
       }
-      else if ( this.nickle <= 25  && this.nickle >= 12.1 ){
-        this.nickleStart = 'nickle slightly elevated recomendation is to allow level to settle down and watch ICP '
-      }
-      else if ( this.nickle <= 60  && this.nickle >= 25.1 ){
-        this.nickleStart = 'nickle critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-      }
-      else {
-        this.nickleStart = 'Retest parameter'
-      }
-    }
-
-}
-
-// rtempStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
-// rtemp: number
-// rtempNano: number
-// rtempRegular: number
-
-// onAddrtemp(){
-
-//   this.rtempRegular = (0.00076 * this.volumeService.volume)  // round to 2 places?
-//   this.rtempNano = (0.01 * this.volumeService.volume)
-
-//     if (this. rtemp == 0){
-//         this. rtempStart =
-//         `Ideal, should remain undetectable. Recomended dose of ${this.rtempRegular}ml RM classic rtemp or ${this.rtempNano}ml RM NANO per Day`
-//     }
-//     else if ( this.rtemp <= 2.5 && this. rtemp >= 0.1 ){
-
-//       this. rtempStart = `rtemp in very low level, if supplementing, stop dosing`
-//     }
-//     else if ( this.rtemp <= 5 && this. rtemp >= 2.6 ){
-
-//       this. rtempStart = `rtemp in low level, if supplementing, stop dosing   `
-//     }
-//     else if ( this.rtemp <= 10 && this. rtemp >= 5.1 ){
-
-//       this. rtempStart = `rtemp in high levels, if supplementing, stop dosing `
-//     }
-
-//     else if ( this. rtemp <= 50 && this. rtemp >= 10.1 ){
-//       this.rtempStart = `rtemp in very high levels, if supplementing, stop dosing recomendation is to check equipment for degredation `
-//       }
-//     else {
-//       this.rtempStart = 'Retest parameter'
-//     }
-//   }
