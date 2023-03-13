@@ -45,44 +45,61 @@ export class MinorElemsThreeComponent implements OnInit {
   rubidiumAdjustment: any
   rubidiumAdjustmentTotal: number
   rubidiumDays: number
+  rubidiumDaysCalc: number
   rubidiumQuantityDivisor: number
 
   onAddRubidium(){
 
       // general boron calculation
-      this.rubidiumDays = Math.ceil(410 - this.rubidium)   // 2
-      this.rubidiumQuantityDivisor = (410 - this.rubidium) // 410 - 4.5 = 1.5
-      this.rubidiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.rubidiumQuantityDivisor
-      this.rubidiumAdjustment = this.rubidiumAdjustmentTotal / this.rubidiumDays
+
+      if (this.rubidium >= 200) {
+        this.rubidiumDays = 1;
+        this.rubidiumDaysCalc = 100 ;
+      }
+      else if (this.rubidium >= 100) {
+        this.rubidiumDays = 2;
+        this.rubidiumDaysCalc =  200 ;
+      }
+      else if (this.rubidium >= 0) {
+        this.rubidiumDays = 3;
+        this.rubidiumDaysCalc = 300 ;
+      }
+       else {
+        this.rubidiumDays = 5;
+      }
+
+      // this.rubidiumDaysCalc = (300 - this.rubidium)   // 2
+      this.rubidiumQuantityDivisor = (300 - this.rubidium) // 410 - 4.5 = 1.5
+      this.rubidiumAdjustmentTotal = (0.3785 * this.volumeService.volume) * this.rubidiumQuantityDivisor
+      this.rubidiumAdjustment = Number((this.rubidiumAdjustmentTotal / this.rubidiumDaysCalc).toFixed(2))
 
 
-        if (this.rubidium == 10){
+        if (this.rubidium == 300){
             this.rubidiumStart = 'Ideal  for most reefs'
         }
-      //low start  7.72ml at 100 g for 0.1 ppm increase
+      //low start
 
-        else if ( this.rubidium <= 3 && this.rubidium >= 0){
-          this.rubidiumStart = `Depleted rubidium Level, Correct immedietly ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.  `
+
+        else if ( this.rubidium <= 150 && this.rubidium >= 0 ){
+          this.rubidiumStart = `Rubidium extremely low, adjust  ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.  `
         }
-        else if ( this.rubidium <= 6 && this.rubidium >= 3.1 ){
-          this.rubidiumStart = `Low rubidium level, adjust  ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.  `
+        else if ( this.rubidium <= 250 && this.rubidium >= 151 ){
+          this.rubidiumStart = `Rubidium close to Sea Water levels, adjust  ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days. for additional benifits`
         }
-        else if ( this.rubidium <= 9 && this.rubidium >= 6.1 ){
-          this.rubidiumStart = `Reduced rubidium, adjust  ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.  `
-        }
-        else if ( this.rubidium <= 9.9 && this.rubidium >= 9.1 ){
-          this.rubidiumStart = `Optimal Range for rubidium, adjust ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.`
+        else if ( this.rubidium <= 299 && this.rubidium >= 251 ){
+          this.rubidiumStart = `Acceptable Range, rubidium, adjust ${this.rubidiumAdjustment}ml per day for ${this.rubidiumDays} days.`
           }
 
         //high start
-        else if ( this.rubidium <= 12  && this.rubidium >= 10.1){
-          this.rubidiumStart = 'rubidium Range Optimal '
+
+        else if ( this.rubidium <= 450  && this.rubidium >= 301 ){
+          this.rubidiumStart = 'Rubidium slightly elevated recomendation is to allow level to settle down and watch ICP '
         }
-        else if ( this.rubidium <= 25  && this.rubidium >= 12.1 ){
-          this.rubidiumStart = 'rubidium slightly elevated recomendation is to allow level to settle down and watch ICP '
+        else if ( this.rubidium <= 1500  && this.rubidium >= 451  ){
+          this.rubidiumStart = 'Rubidium significantly elevated recomendation is to allow level to settle down and watch ICP '
         }
-        else if ( this.rubidium <= 60  && this.rubidium >= 25.1 ){
-          this.rubidiumStart = 'rubidium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+        else if ( this.rubidium <= 2500  && this.rubidium >= 1501 ){
+          this.rubidiumStart = 'Rubidium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
         }
         else {
           this.rubidiumStart = 'Retest parameter'
