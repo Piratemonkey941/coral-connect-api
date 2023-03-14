@@ -110,101 +110,77 @@ export class MinorElemsThreeComponent implements OnInit {
   seleniumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
   selenium: number
   seleniumAdjustment: any
-  seleniumAdjustmentTotal: number
-  seleniumDays: number
-  seleniumQuantityDivisor: number
+  seleniumAdjustmentNano: any
 
   onAddSelenium(){
+  this.seleniumAdjustment = Number(0.00075 * this.volumeService.volume).toFixed(2)
+  this.seleniumAdjustmentNano = Number(0.01 * this.volumeService.volume).toFixed(2)
 
-  // general boron calculation
-  this.seleniumDays = Math.ceil(410 - this.selenium)   // 2
-  this.seleniumQuantityDivisor = (410 - this.selenium) // 410 - 4.5 = 1.5
-  this.seleniumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.seleniumQuantityDivisor
-  this.seleniumAdjustment = this.seleniumAdjustmentTotal / this.seleniumDays
-
-
-    if (this.selenium == 10){
-        this.seleniumStart = 'Ideal  for most reefs'
-    }
-  //low start  7.72ml at 100 g for 0.1 ppm increase
-
-    else if ( this.selenium <= 3 && this.selenium >= 0){
-      this.seleniumStart = `Depleted selenium Level, Correct immedietly ${this.seleniumAdjustment}ml per day for ${this.seleniumDays} days.  `
-    }
-    else if ( this.selenium <= 6 && this.selenium >= 3.1 ){
-      this.seleniumStart = `Low selenium level, adjust  ${this.seleniumAdjustment}ml per day for ${this.seleniumDays} days.  `
-    }
-    else if ( this.selenium <= 9 && this.selenium >= 6.1 ){
-      this.seleniumStart = `Reduced selenium, adjust  ${this.seleniumAdjustment}ml per day for ${this.seleniumDays} days.  `
-    }
-    else if ( this.selenium <= 9.9 && this.selenium >= 9.1 ){
-      this.seleniumStart = `Optimal Range for selenium, adjust ${this.seleniumAdjustment}ml per day for ${this.seleniumDays} days.`
-      }
-
-    //high start
-    else if ( this.selenium <= 12  && this.selenium >= 10.1){
-      this.seleniumStart = 'selenium Range Optimal '
-    }
-    else if ( this.selenium <= 25  && this.selenium >= 12.1 ){
-      this.seleniumStart = 'selenium slightly elevated recomendation is to allow level to settle down and watch ICP '
-    }
-    else if ( this.selenium <= 60  && this.selenium >= 25.1 ){
-      this.seleniumStart = 'selenium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-    }
+    if (this.selenium == 0){
+                              this.seleniumStart = `Depleted selenium Level, Correct with ${this.seleniumAdjustment}ml Reef Moonshiner Classic or
+                                                    ${this.seleniumAdjustmentNano}ml Reef Moonshiner Nano and per day days.  `
+                            }
     else {
-      this.seleniumStart = 'Retest parameter'
-    }
+            this.seleniumStart = 'Selenium Detected Stop Dosing'
+          }
   }
-
+// element has additional instructions for modal
           // ==================================================== Vanadium ====================================================
   vanadiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
   vanadium: number
-  vanadiumAdjustment: any
-  vanadiumAdjustmentTotal: number
-  vanadiumDays: number
-  vanadiumQuantityDivisor: number
 
-  onAddVanadium(){
+  vanadiumDropsToMilliliters: number
+  vanadiumDropsToMillilitersTwoDrops: number
+  vanadiumDropsCalculator:number
+  vanadiumTwoDropsCalculator:number
 
-  // general boron calculation
-  this.vanadiumDays = Math.ceil(410 - this.vanadium)   // 2
-  this.vanadiumQuantityDivisor = (410 - this.vanadium) // 410 - 4.5 = 1.5
-  this.vanadiumAdjustmentTotal = (0.0701 * this.volumeService.volume) * this.vanadiumQuantityDivisor
-  this.vanadiumAdjustment = this.vanadiumAdjustmentTotal / this.vanadiumDays
+  onAddVanadium() {
+    // Add the calculateDropsAndInterval function
+    const calculateDropsAndInterval = (volume) => {
+      const baselineVolume = 100;
+      const baselineDropsPerDay = 1;
 
+      const dropsPerDay = (volume / baselineVolume) * baselineDropsPerDay;
+      let drops = 1;
+      let interval = 1 / dropsPerDay;
 
-    if (this.vanadium == 10){
-        this.vanadiumStart = 'Ideal  for most reefs'
-    }
-  //low start  7.72ml at 100 g for 0.1 ppm increase
+      interval = Math.round(interval);
 
-    else if ( this.vanadium <= 3 && this.vanadium >= 0){
-      this.vanadiumStart = `Depleted vanadium Level, Correct immedietly ${this.vanadiumAdjustment}ml per day for ${this.vanadiumDays} days.  `
-    }
-    else if ( this.vanadium <= 6 && this.vanadium >= 3.1 ){
-      this.vanadiumStart = `Low vanadium level, adjust  ${this.vanadiumAdjustment}ml per day for ${this.vanadiumDays} days.  `
-    }
-    else if ( this.vanadium <= 9 && this.vanadium >= 6.1 ){
-      this.vanadiumStart = `Reduced vanadium, adjust  ${this.vanadiumAdjustment}ml per day for ${this.vanadiumDays} days.  `
-    }
-    else if ( this.vanadium <= 9.9 && this.vanadium >= 9.1 ){
-      this.vanadiumStart = `Optimal Range for vanadium, adjust ${this.vanadiumAdjustment}ml per day for ${this.vanadiumDays} days.`
+      if (interval === 0) {
+        interval = 1;
+      } else if (interval > 1) {
+        drops = Math.round(dropsPerDay * interval);
       }
 
-    //high start
-    else if ( this.vanadium <= 12  && this.vanadium >= 10.1){
-      this.vanadiumStart = 'vanadium Range Optimal '
-    }
-    else if ( this.vanadium <= 25  && this.vanadium >= 12.1 ){
-      this.vanadiumStart = 'vanadium slightly elevated recomendation is to allow level to settle down and watch ICP '
-    }
-    else if ( this.vanadium <= 60  && this.vanadium >= 25.1 ){
-      this.vanadiumStart = 'vanadium critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
-    }
-    else {
-      this.vanadiumStart = 'Retest parameter'
+      return {
+        drops,
+        interval
+      };
+    };
+
+    this.vanadiumDropsCalculator = (this.volume / 100);
+    this.vanadiumTwoDropsCalculator = (this.volume / 100) * 2;
+
+    this.vanadiumDropsToMilliliters = this.vanadiumDropsCalculator / 20;
+    this.vanadiumDropsToMillilitersTwoDrops = this.vanadiumTwoDropsCalculator / 20;
+
+    // Calculate dosing information using the calculateDropsAndInterval function
+    const dosingInfo = calculateDropsAndInterval(this.volume);
+
+    if (this.volume >= 1) {
+      this.vanadiumStart = `Depleted vanadium Level, Begin dosing ${dosingInfo.drops} drop(s) every ${dosingInfo.interval} day(s).`;
+    } else if (this.volume >= 100) {
+      this.vanadiumStart = `Depleted vanadium Level, Begin dosing ${this.vanadiumDropsCalculator} - ${this.vanadiumTwoDropsCalculator} drops per day.`;
+    } else if (this.volume >= 1000) {
+      this.vanadiumStart = `Depleted vanadium Level, Begin dosing ${this.vanadiumDropsCalculator} - ${this.vanadiumTwoDropsCalculator} drops
+                            or ${this.vanadiumDropsToMilliliters}ml - ${this.vanadiumDropsToMillilitersTwoDrops}ml per day.`;
+    } else if (this.vanadium >= 2.1) {
+      this.vanadiumStart = "Reduce dosage by half and continue dosing. Check again at your regular interval or 1-3 months";
+    } else {
+      this.vanadiumStart = 'Retest parameter';
     }
   }
+
 
           // ==================================================== Tin ====================================================
   tinStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
