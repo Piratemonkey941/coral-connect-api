@@ -234,15 +234,18 @@ export class MinorElemsThreeComponent implements OnInit {
 
           // ==================================================== Zinc ====================================================
 
+// Define constant values for low, moderate, and ideal zinc levels
 readonly LOW_ZINC_LEVEL = 1;
 readonly MODERATE_ZINC_LEVEL = 3;
 readonly IDEAL_ZINC_LEVEL = 5;
 
+// Initialize zincStart, zinc, zincAdjustment, and zincDays properties
 zincStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!';
 zinc: number;
 zincAdjustment: any;
 zincDays: number;
 
+// Function that runs when zinc is added
 onAddZinc(){
   // Set the value of zincDays based on the value of zinc
   this.zincDays = this.calculateZincDays(this.zinc);
@@ -286,6 +289,7 @@ onAddZinc(){
   }
 }
 
+// Function to calculate the number of days to adjust zinc levels
 calculateZincDays(zinc: number): number {
   if (zinc >= this.MODERATE_ZINC_LEVEL) {
     return 1;
@@ -296,23 +300,16 @@ calculateZincDays(zinc: number): number {
   }
 }
 
+
+
+
+// Calculate the amount of zinc adjustment needed based on its current value and the volume of the aquarium.
+
+
 calculateZincAdjustment(zinc: number, volumeService: VolumeService): number {
-  const zincQuantityDivisor = 5 - zinc;
-  const zincAdjustmentTotal = (0.003785 * volumeService.volume) * zincQuantityDivisor;
-
-  let zincDays: number;
-
-  if (zinc >= 3) {
-    zincDays = 1;
-  } else if (zinc >= 1) {
-    zincDays = 2;
-  } else {
-    zincDays = 3;
-  }
-
-  const zincAdjustment = zincAdjustmentTotal / zincDays;
-
-  return zincAdjustment;
+ const zincQuantityDivisor = 5 - zinc;
+ const zincAdjustmentTotal = (0.003785 * volumeService.volume) * zincQuantityDivisor;
+ return zincAdjustmentTotal / this.zincDays;
 }
 
   // zincStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
