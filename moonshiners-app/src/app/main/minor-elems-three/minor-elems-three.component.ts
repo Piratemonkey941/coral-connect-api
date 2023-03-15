@@ -40,7 +40,7 @@ export class MinorElemsThreeComponent implements OnInit {
     }
 
   // ==================================================== Rubidium ====================================================
-  rubidiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  rubidiumStart: string = "Rubidium, the colorful coral's mysterious guest, always invited, but never quite understood!"
   rubidium: number
   rubidiumAdjustment: any
   rubidiumAdjustmentTotal: number

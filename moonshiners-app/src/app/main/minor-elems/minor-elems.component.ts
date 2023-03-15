@@ -40,7 +40,7 @@ export class MinorElemsComponent implements OnInit {
     }
 
 // ==================================================== Barium ====================================================
- bariumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+ bariumStart: string = 'Barium, the master of coral skeletons, blending into aragonite and whispering tales of the deep!'
  barium: number
  bariumAdjustment: any
  bariumAdjustmentTotal: number
@@ -96,7 +96,7 @@ onAddBarium(){
 
   // parseFloat(().toFixed(2));
     // ==================================================== Chromium ====================================================
-chromiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+chromiumStart: string = 'Chromium, call me the ultimate makeover artist, turning ordinary corals into glamorous divas!'
 chromium: number
 chromiumNano: number
 chomiumRegular: number
@@ -132,7 +132,7 @@ onAddChromium(){
   }
 
     // ==================================================== Cobalt ====================================================
-    cobaltStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+    cobaltStart: string = "Cobalt the vibrant virtuoso, jazzing up corals with my show-stopping shades of blue!"
     cobalt: number
     cobaltNano: number
     cobaltRegular: number
@@ -167,7 +167,7 @@ onAddChromium(){
         }
       }
     // ==================================================== Copper ====================================================
-copperStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+copperStart: string = "Copper the life of the party, until I overdo it and become the third wheel that just won't leave!"
 copper: number
 
 
@@ -193,7 +193,7 @@ onAddCopper(){
     }
 
     // ==================================================== Flouride ====================================================
-flourideStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+flourideStart: string = "Fluoride, coral's undercover dentist, keeping their skeletons strong and sturdy beneath the waves!"
 flouride: number
 flourideAdjustmentTotal: number
 flourideDays: number
@@ -235,7 +235,7 @@ onAddFlouride(){
     }
 
     // ==================================================== iodine ====================================================
-iodineStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+iodineStart: string = 'Iodine the secret agent, keeping harmful oxidization at bay to maintain a healthy alliance!'
 iodine: number
 iodineAdjustment: any
 iodineAdjustmentTotal: number
