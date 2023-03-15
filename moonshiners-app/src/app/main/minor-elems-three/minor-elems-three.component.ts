@@ -107,7 +107,7 @@ export class MinorElemsThreeComponent implements OnInit {
       }
 
   // ==================================================== Selenium ====================================================
-  seleniumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  seleniumStart: string = 'They say laughter is the best medicine, but for corals, a dash of selenium does the trick!'
   selenium: number
   seleniumAdjustment: any
   seleniumAdjustmentNano: any
@@ -126,7 +126,7 @@ export class MinorElemsThreeComponent implements OnInit {
   }
 // element has additional instructions for modal
           // ==================================================== Vanadium ====================================================
-  vanadiumStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  vanadiumStart: string = "Strengthening steel and fortifying coral skeletons, just another day in my element!"
   vanadium: number
 
   vanadiumDropsToMilliliters: number
@@ -183,49 +183,25 @@ export class MinorElemsThreeComponent implements OnInit {
 
 
           // ==================================================== Tin ====================================================
-  tinStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!'
+  tinStart: string = 'Tired of using lame sad Metal? Introducing Bronze, made with Special Ingredient Tin. From the far lands of Tinland, idk my tin guy wont tell me where he gets it.'
   tin: number
-  tinAdjustment: any
-  tinAdjustmentTotal: number
-  tinDays: number
-  tinQuantityDivisor: number
 
   onAddTin(){
 
-  // general boron calculation
-  this.tinDays = Math.ceil(5 - this.tin)   // 2
-  this.tinQuantityDivisor = (5 - this.tin) // 410 - 4.5 = 1.5
-  this.tinAdjustmentTotal = (0.003785 * this.volumeService.volume) * this.tinQuantityDivisor
-  this.tinAdjustment = this.tinAdjustmentTotal / this.tinDays
-
-
-    if (this.tin == 5){
-        this.tinStart = 'Ideal  for most reefs'
+    if (this.tin <= 1 && this.tin >= 0){
+        this.tinStart = 'Ideal for most reefs, Reef Moonshiner Liquid Mud Recomended for supplementation'
     }
-  //low start  7.72ml at 100 g for 0.1 ppm increase
-
-    else if ( this.tin <= 3 && this.tin >= 0){
-      this.tinStart = `Depleted tin Level, Correct immedietly ${this.tinAdjustment}ml per day for ${this.tinDays} days.  `
+    else if ( this.tin <= 10 && this.tin >= 1.1){
+      this.tinStart = 'Tin level acceptable.'
     }
-    else if ( this.tin <= 6 && this.tin >= 3.1 ){
-      this.tinStart = `Low tin level, adjust  ${this.tinAdjustment}ml per day for ${this.tinDays} days.  `
+    else if ( this.tin <= 40 && this.tin >= 10.1 ){
+      this.tinStart = 'Tin slightly elevated, recomendation is to allow level to settle down and watch ICP. Normal for this element and reduces well naturally'
     }
-    else if ( this.tin <= 9 && this.tin >= 6.1 ){
-      this.tinStart = `Reduced tin, adjust  ${this.tinAdjustment}ml per day for ${this.tinDays} days.  `
+    else if ( this.tin <= 100 && this.tin >= 40.1 ){
+      this.tinStart = 'Tin significantly elevated, recomendation is to allow level to settle down and watch ICP. Investigate for potential source.'
     }
-    else if ( this.tin <= 4.9 && this.tin >= .1 ){
-      this.tinStart = `Optimal Range for tin, adjust ${this.tinAdjustment}ml per day for ${this.tinDays} days.`
-      }
-
-    //high start
-    else if ( this.tin <= 12  && this.tin >= 10.1){
-      this.tinStart = 'tin Range Optimal '
-    }
-    else if ( this.tin <= 25  && this.tin >= 12.1 ){
-      this.tinStart = 'tin slightly elevated recomendation is to allow level to settle down and watch ICP '
-    }
-    else if ( this.tin <= 60  && this.tin >= 25.1 ){
-      this.tinStart = 'tin critical! elevated recomendation is preform several small water changes. 20% water change to reduce level apx 10%'
+    else if ( this.tin <= 250 && this.tin >= 100.1 ){
+      this.tinStart = 'Tin level extremely elevated, recomendation is 2-3 small water changes. Investigate for potential source.'
     }
     else {
       this.tinStart = 'Retest parameter'
@@ -240,7 +216,7 @@ readonly MODERATE_ZINC_LEVEL = 3;
 readonly IDEAL_ZINC_LEVEL = 5;
 
 // Initialize zincStart, zinc, zincAdjustment, and zincDays properties
-zincStart: string = 'Instead of becoming fireworks, Im going to make your corals glow!';
+zincStart: string = 'Captain Sn, superhero of the mineral world, fighting off infections and saving the day.';
 zinc: number;
 zincAdjustment: any;
 zincDays: number;
