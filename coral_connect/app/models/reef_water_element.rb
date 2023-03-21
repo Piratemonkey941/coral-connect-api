@@ -1,0 +1,2 @@
+class ReefWaterElement < ApplicationRecord
+end
