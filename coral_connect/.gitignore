@@ -35,3 +35,5 @@
 /config/credentials/test.key
 
 /config/credentials/develpment.key
+
+/config/credentials/development.key
