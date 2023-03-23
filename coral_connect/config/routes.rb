@@ -27,8 +27,11 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
-      # Add the new route for reef_water_elements
-      resources :reef_water_elements, only: [:index, :show, :create, :update, :destroy]
-    end
+   end
   end
+
+  resources :users do
+    resources :element_measurements, only: [:index, :create]
+  end
+  resources :element_measurements, only: [:show, :update, :destroy]
 end

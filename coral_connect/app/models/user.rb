@@ -22,6 +22,7 @@
 # The model that represents the User
 class User < ApplicationRecord
   has_secure_password validations: true
+  has_many :element_measurements
   has_many :tokens
   has_many :user_roles
   has_many :roles, through: :user_roles
