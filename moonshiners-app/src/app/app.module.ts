@@ -13,6 +13,11 @@ import { MinorElemsTwoComponent } from './main/minor-elems-two/minor-elems-two.c
 import { MinorElemsThreeComponent } from './main/minor-elems-three/minor-elems-three.component';
 import { ShinerSystemComponent } from './main/shiner-system/shiner-system.component';
 import { ModalComponent } from './shared/modal/modal.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { GraphsComponent } from './pages/graphs/graphs.component';
+import { ReactiveFormsModule } from '@angular/forms';
+// import { Chart } from 'chart.js';
 // import { AlkilinityComponent } from './main/big-four/alkilinity/alkilinity.component';
 // import {} from ''
 
@@ -28,6 +33,10 @@ import { ModalComponent } from './shared/modal/modal.component';
     MinorElemsTwoComponent,
     MinorElemsThreeComponent,
     ShinerSystemComponent,
+    SignupComponent,
+    SigninComponent,
+    GraphsComponent,
+
     // AlkilinityComponent,
 
 
@@ -36,7 +45,9 @@ import { ModalComponent } from './shared/modal/modal.component';
     BrowserModule,
     AppRoutingModule,
     AngularFullpageModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    // Chart,
   ],
   providers: [],
   bootstrap: [AppComponent]

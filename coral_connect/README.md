@@ -178,3 +178,14 @@ Nothing on the horizon right now, if you can think of a feature that should be i
       </ul>
 </div>
 <hr>
+
+Notes from Matts class: 
+
+Generate Angular project
+reactive forms module, 
+interactive forms module
+ng g c - auth/signup
+    should go in app componant (main comp)
+ng g c - shared/nav
+    should go in app componant (main comp)
+

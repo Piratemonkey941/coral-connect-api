@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :element_measurements, only: [:index, :create]
   end
+  
   resources :element_measurements, only: [:show, :update, :destroy]
 end
