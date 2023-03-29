@@ -19,10 +19,7 @@ export class BigFourComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("exampleModal")
-    )
-
+  // WILL NEED MODAL
 
   }
 

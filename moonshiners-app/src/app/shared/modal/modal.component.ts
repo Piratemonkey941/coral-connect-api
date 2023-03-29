@@ -32,8 +32,8 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("exampleModal"))
+    // this.formModal = new window.bootstrap.Modal(
+    //   document.getElementById("exampleModal"))
   }
 
   modifiedTextAlk: string

@@ -22,10 +22,7 @@ export class MinorElemsTwoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("exampleModal")
-    )
-
+  
 
   }
 

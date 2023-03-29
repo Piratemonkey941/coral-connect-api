@@ -23,9 +23,7 @@ export class MajorElemsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("exampleModal")
-    )
+
 
 
   }

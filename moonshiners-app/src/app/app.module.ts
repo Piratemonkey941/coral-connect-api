@@ -17,6 +17,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { GraphsComponent } from './pages/graphs/graphs.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { Chart } from 'chart.js';
 // import { AlkilinityComponent } from './main/big-four/alkilinity/alkilinity.component';
 // import {} from ''
@@ -47,9 +48,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFullpageModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     // Chart,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  // BS: [AppComponent]
 })
 export class AppModule { }
