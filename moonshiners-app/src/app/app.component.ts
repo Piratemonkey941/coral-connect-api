@@ -7,49 +7,21 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('fullpageRef') fp_directive: ElementRef;
+  // @ViewChild('fullpageRef') fp_directive: ElementRef;
   config;
-  fullpage_api: any;
+  // fullpage_api: any;
 
   volume: number = 100
 
 
   constructor(private renderer: Renderer2) {
 
-
-
-    // add to anchors if you want more buttons at top
-    this.config = {
-      licenseKey: 'gplv3-license',
-      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage','sixthPage','lastPage'],
-      menu: '#menu',
-      navigation: true,
-      autoScrolling: false,
-      scrollOverflow:true,
-      // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-
-      // events callback
-      afterLoad: (origin: any, destination: any, direction: any) => {
-        // console.log(destination);
-      },
-      afterRender: () => {
-        // console.log('afterRender');
-      },
-      afterResize: (width: any, height: any) => {
-        // console.log('afterResize' + width + ' ' + height);
-      },
-      afterSlideLoad: (section: any, origin: any, destination: any, direction: any) => {
-        // console.log(destination);
-      }
-    };
   }
 
   ngOnInit() {
   }
 
-  getRef(fullPageRef: any) {
-    this.fullpage_api = fullPageRef;
-  }
+ 
 
 }
 

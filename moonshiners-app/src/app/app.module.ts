@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+// import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { GraphsComponent } from './pages/graphs/graphs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './materials/materials.module'
 // import { Chart } from 'chart.js';
 // import { AlkilinityComponent } from './main/big-four/alkilinity/alkilinity.component';
 // import {} from ''
@@ -38,17 +39,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SigninComponent,
     GraphsComponent,
 
+    // CustomSnackBarComponant,
+    // DialogComponent,
     // AlkilinityComponent,
 
 
   ],
+
+
+
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFullpageModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MaterialModule,
+    // AngularFullpageModule,
     // Chart,
   ],
   providers: [],
