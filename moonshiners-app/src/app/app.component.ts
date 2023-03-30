@@ -7,12 +7,10 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  // @ViewChild('fullpageRef') fp_directive: ElementRef;
-  config;
-  // fullpage_api: any;
+
+  config: any;
 
   volume: number = 100
-
 
   constructor(private renderer: Renderer2) {
 
@@ -21,7 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
- 
+
 
 }
 
