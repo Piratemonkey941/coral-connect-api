@@ -24,7 +24,8 @@ default: &default
 development:
   <<: *default
   database: coral_connect_development
-
+  username: piratemonkey941
+  password: cheesedoge5250
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -82,5 +83,5 @@ test:
 production:
   <<: *default
   database: coral_connect_production
-  username: BaseAPI
+  username: piratemonkey941
   password: <%= ENV['BASEAPI_DATABASE_PASSWORD'] %>
