@@ -15,3 +15,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     add_index :users, :email, unique: true
   end
 end
+
+# HOW TO CREATE A USER IN CONSOLE
+# User.create(email: 'example@example.com', first_name: 'John', last_name: 'Doe', phone: '1234567890', 
+# password: 'password', password_confirmation: 'password')

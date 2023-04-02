@@ -1,4 +1,4 @@
 class ElementMeasurement < ApplicationRecord
     belongs_to :user
-    belongs_to :reefwaterelement
+    belongs_to :reef_water_element
 end

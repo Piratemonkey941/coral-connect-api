@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ReefWaterElement.create(number: 1, name: 'salinity')
+ReefWaterElement.create(number: 2, name: 'calcium')
+ReefWaterElement.create(number: 3, name: 'alkilinity')
+ReefWaterElement.create(number: 4, name: 'magnesium')

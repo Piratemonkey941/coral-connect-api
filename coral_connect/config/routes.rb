@@ -27,12 +27,23 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
+
+      resources :users do
+        resources :element_measurements, only: [:index, :create]
+      end
+      
+      resources :element_measurements, only: [:index, :show, :create, :update, :destroy]
+    
    end
   end
-
-  resources :users do
-    resources :element_measurements, only: [:index, :create]
-  end
+  # POST http://localhost:3000/api/v1/users/login
+  # DELETE http://localhost:3000/api/v1/users/logout
+  # GET http://localhost:3000/api/v1/users/me
+  # POST http://localhost:3000/api/v1/users/create
+  # resources :users do
+  #   resources :element_measurements, only: [:index, :create]
+  # end
   
-  resources :element_measurements, only: [:show, :update, :destroy]
+  # resources :element_measurements, only: [:index, :show, :create, :update, :destroy]
+
 end

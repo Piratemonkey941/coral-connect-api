@@ -1,5 +1,19 @@
+Anthonys Notes
+delete dev and then run 
+     EDITOR="nano --wait" bin/rails credentials:edit --environment=development
 
+EDITOR=nano rails credentials:edit --environment=development
+     can be run to retrieve keys
 
+RESOLVES THE  FATAL:  role "piratemonkey941" does not exist ERROR
+     sudo -u postgres createuser --interactive
+[6:51 PM] Enter name of role to add: arhall88
+Shall the new role be a superuser? (y/n) y
+
+generate new migration for reef_water_elements to reef_water_element
+     
+     /mnt/c/Users/Anthony Rodriguez/Documents/codingPrac/code_camp_files/angular_projects/reef-moonshiner-app_main/reef_moonshiner_app/coral_connect/config/initializers/rswag_ui.rb:15:in `block in <main>': undefined method `[]' for nil:NilClass (NoMethodError)
+  c.basic_auth_credentials Rails.application.credentials[:swagger][:username], Rails.application.credentials[:swagger][:password]
       ___  __  ____  ____  ____  __    ____   __   ____  ____     __   ____  __  
      / __)/  \(    \(  __)(  __)(  )  (  _ \ / _\ / ___)(  __)   / _\ (  _ \(  )
     ( (__(  O )) D ( ) _)  ) _)  )(    ) _ (/    \\___ \ ) _)   /    \ ) __/ )(  
