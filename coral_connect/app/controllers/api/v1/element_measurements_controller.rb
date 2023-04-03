@@ -18,18 +18,23 @@ module Api
       end
 
 
-
-      # POST /element_measurements
+      # # POST /element_measurements
       def create
-        @element_measurement = ElementMeasurement.new(qt:params[:qt], reef_water_elements_id:params[:reef_water_elements_id], user_id:params[:user_id])
-        # @element_measurement.user_id = params[:user_id]
-
+        @element_measurement = ElementMeasurement.new(element_measurement_params)
+      
         if @element_measurement.save
-          render json: @element_measurement, status: :created, location: @element_measurement
+          response_json = @element_measurement.as_json
+          
+          response_json["url"] = api_v1_user_element_measurements_url(@element_measurement.user, @element_measurement)
+
+          render json: response_json, status: :created
         else
           render json: @element_measurement.errors, status: :unprocessable_entity
         end
       end
+      
+
+
 
       # PATCH/PUT /element_measurements/:id
       def update
@@ -57,9 +62,12 @@ module Api
 
 
       # Only allow a list of trusted parameters through.
-      # def element_measurement_params
-      #   params.require(:element_measurement).permit(:name, :qt, :element_id, :user_id)
-      # end
+      private
+
+      def element_measurement_params
+        params.require(:element_measurement).permit(:qt, :reef_water_element_id, :user_id)
+      end
+
     end
   end
 end

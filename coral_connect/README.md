@@ -12,12 +12,28 @@ Shall the new role be a superuser? (y/n) y
 
 generate new migration for reef_water_elements to reef_water_element
      
-     /mnt/c/Users/Anthony Rodriguez/Documents/codingPrac/code_camp_files/angular_projects/reef-moonshiner-app_main/reef_moonshiner_app/coral_connect/config/initializers/rswag_ui.rb:15:in `block in <main>': undefined method `[]' for nil:NilClass (NoMethodError)
-  c.basic_auth_credentials Rails.application.credentials[:swagger][:username], Rails.application.credentials[:swagger][:password]
+
+TO START POSTGRESQL SERVER -> sudo service postgresql start
+
+TEMP USER ON DESKTOP
+user = User.create!(
+  email: "johndoe@example.com",
+  first_name: "John",
+  last_name: "Doe",
+  phone: "555-1234",
+  password: "password123",
+  invitation_accepted: false,
+  invitation_token: "abc123",
+  invitation_expiration: DateTime.now + 1.day
+)
+
+TOKEN -> 9dfa70765aef4e233fb5b49c8800aceebb6eb132
+
+
       ___  __  ____  ____  ____  __    ____   __   ____  ____     __   ____  __  
-     / __)/  \(    \(  __)(  __)(  )  (  _ \ / _\ / ___)(  __)   / _\ (  _ \(  )
-    ( (__(  O )) D ( ) _)  ) _)  )(    ) _ (/    \\___ \ ) _)   /    \ ) __/ )(  
-     \___)\__/(____/(____)(__)  (__)  (____/\_/\_/(____/(____)  \_/\_/(__)  (__)
+     / __)/  \(    \(  __)(  __)(  )  (  _ \ / _\  / ___) (  __)   / _\ (  _ \(  )
+    ( (__(  O )) D ( ) _)  ) _)  )(  )   (  _   /    \ \ ___ \ ) _)   /    \ ) __/ )(  
+     \___)\__/(____/(____)(__)  (__)  (____/\_/\_/ (____/(____)  \_/\_/(__)  (__)
 
 <hr>
 

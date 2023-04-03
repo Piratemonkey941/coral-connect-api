@@ -36,7 +36,11 @@ Rails.application.routes.draw do
     
    end
   end
-  # POST http://localhost:3000/api/v1/users/login
+ 
+end
+
+
+ # POST http://localhost:3000/api/v1/users/login
   # DELETE http://localhost:3000/api/v1/users/logout
   # GET http://localhost:3000/api/v1/users/me
   # POST http://localhost:3000/api/v1/users/create
@@ -45,5 +49,3 @@ Rails.application.routes.draw do
   # end
   
   # resources :element_measurements, only: [:index, :show, :create, :update, :destroy]
-
-end

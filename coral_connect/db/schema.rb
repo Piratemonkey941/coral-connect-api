@@ -77,3 +77,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_152116) do
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
+
