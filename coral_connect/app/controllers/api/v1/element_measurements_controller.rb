@@ -7,18 +7,24 @@ module Api
 
       # GET /element_measurements
       def index
-        # debugger
-        @element_measurements = ElementMeasurement.where(user_id: params[:user_id])
+        # If a user_id is provided in the URL, retrieve the element measurements for that user.
+        if params[:user_id]
+          @user = User.find(params[:user_id])
+          @element_measurements = @user.element_measurements
+        else
+          # If no user_id is provided, retrieve all element measurements.
+          @element_measurements = ElementMeasurement.all
+        end
+      
         render json: @element_measurements
       end
 
-      # GET /element_measurements/:id
+    # GET /element_measurements/:id
       def show
         render json: @element_measurement
       end
 
-
-      # # POST /element_measurements
+    # POST /element_measurements
       def create
         @element_measurement = ElementMeasurement.new(element_measurement_params)
       
@@ -33,11 +39,11 @@ module Api
         end
       end
       
-
-
-
-      # PATCH/PUT /element_measurements/:id
+    # PATCH/PUT /users/:user_id/element_measurements/:id
       def update
+        @user = User.find(params[:user_id])
+        @element_measurement = @user.element_measurements.find(params[:id])
+
         if @element_measurement.update(element_measurement_params)
           render json: @element_measurement
         else
@@ -45,17 +51,21 @@ module Api
         end
       end
 
-      # DELETE /element_measurements/:id
+    # DELETE /users/:user_id/element_measurements/:id
       def destroy
+        @user = User.find(params[:user_id])
+        @element_measurement = @user.element_measurements.find(params[:id])
         @element_measurement.destroy
         head :no_content
       end
+
 
       private
 
       # Use callbacks to share common setup or constraints between actions.
       def set_element_measurement
-        @element_measurement = ElementMeasurement.find(params[:id])
+        @user = User.find(params[:user_id])
+        @element_measurement = @user.element_measurements.find(params[:id])
       end
 
 

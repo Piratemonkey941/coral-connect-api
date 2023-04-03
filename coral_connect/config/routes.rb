@@ -27,16 +27,15 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
-
+  
       resources :users do
-        resources :element_measurements, only: [:index, :create]
+        resources :element_measurements, only: [:index, :create, :show, :update, :destroy]
       end
       
-      resources :element_measurements, only: [:index, :show, :create, :update, :destroy]
-    
-   end
+      resources :element_measurements, only: [:index,  :create]
+    end
   end
- 
+  
 end
 
 
