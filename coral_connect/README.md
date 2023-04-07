@@ -27,9 +27,14 @@ user = User.create!(
   invitation_expiration: DateTime.now + 1.day
 )
 
+Start the Redis server:
+sudo systemctl start redis-server
+
+
 TOKEN -> 9dfa70765aef4e233fb5b49c8800aceebb6eb132
 
-
+sudo apt install redis-tool
+redis-server --daemonize yes
       ___  __  ____  ____  ____  __    ____   __   ____  ____     __   ____  __  
      / __)/  \(    \(  __)(  __)(  )  (  _ \ / _\  / ___) (  __)   / _\ (  _ \(  )
     ( (__(  O )) D ( ) _)  ) _)  )(  )   (  _   /    \ \ ___ \ ) _)   /    \ ) __/ )(  

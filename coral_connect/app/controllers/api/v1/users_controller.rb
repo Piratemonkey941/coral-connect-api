@@ -27,13 +27,27 @@ module Api
 
       def create
         result = BaseApi::Users.new_user(params)
-        render_error(errors: 'There was a problem creating a new user', status: 400) and return unless result.success?
-        payload = {
-          user: UserBlueprint.render_as_hash(result.payload, view: :normal)
-        }
-        #  TODO: Invite user to accept invitation via registered email
-        render_success(payload: payload, status: 201)
+        if result.success?
+          payload = {
+            user: UserBlueprint.render_as_hash(result.payload, view: :normal)
+          }
+          # TODO: Invite user to accept invitation via registered email
+          render_success(payload: payload, status: 201)
+        else
+          render_error(errors: result.errors, status: 400)
+        end
       end
+      
+      # def create
+      #   result = BaseApi::Users.new_user(params)
+      #   render_error(errors: 'There was a problem creating a new user', status: 400) and return unless result.success?
+      #   payload = {
+      #     user: UserBlueprint.render_as_hash(result.payload, view: :normal)
+      #   }
+      #   #  TODO: Invite user to accept invitation via registered email
+      #   render_success(payload: payload, status: 201)
+      # end
+
 
       def me
         render_success(payload: UserBlueprint.render_as_hash(@current_user), status: 200)

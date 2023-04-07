@@ -276,6 +276,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4.1)
   redis (>= 4.0)
+  redis-client
   rspec-rails
   rswag
   rswag-specs
