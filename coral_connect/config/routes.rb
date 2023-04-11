@@ -33,6 +33,9 @@ Rails.application.routes.draw do
       end
       
       resources :element_measurements, only: [:index,  :create]
+
+      resources :products
+      resources :cart_items
     end
   end
   

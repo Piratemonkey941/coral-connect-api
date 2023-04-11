@@ -1,24 +1,3 @@
-# frozen_string_literal: true
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id              :bigint           not null, primary key
-#  email           :string
-#  first_name      :string
-#  last_name       :string
-#  password_digest :string
-#  token           :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#
-# Indexes
-#
-#  index_users_on_email  (email)
-#  index_users_on_token  (token)
-#
-
 # The model that represents the User
 class User < ApplicationRecord
   has_secure_password validations: true
@@ -26,7 +5,7 @@ class User < ApplicationRecord
   has_many :tokens
   has_many :user_roles
   has_many :roles, through: :user_roles
-
+  has_many :cart_items
   validates :email, uniqueness: true
 
   scope :invite_not_expired, -> { where('invitation_expiration > ?', DateTime.now) }
@@ -75,3 +54,25 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 end
+
+
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string
+#  first_name      :string
+#  last_name       :string
+#  password_digest :string
+#  token           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email)
+#  index_users_on_token  (token)
+#
