@@ -27,11 +27,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_000929) do
 
   create_table "element_measurements", force: :cascade do |t|
     t.float "qt", null: false
-    t.bigint "reef_water_elements_id", null: false
+    t.bigint "reef_water_element_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["reef_water_elements_id"], name: "index_element_measurements_on_reef_water_elements_id"
+    t.index ["reef_water_element_id"], name: "index_element_measurements_on_reef_water_element_id"
     t.index ["user_id"], name: "index_element_measurements_on_user_id"
   end
 
@@ -93,7 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_000929) do
   end
 
   add_foreign_key "cart_items", "users"
-  add_foreign_key "element_measurements", "reef_water_elements", column: "reef_water_elements_id"
+  add_foreign_key "element_measurements", "reef_water_elements"
   add_foreign_key "element_measurements", "users"
   add_foreign_key "tokens", "users"
   add_foreign_key "user_roles", "roles"
