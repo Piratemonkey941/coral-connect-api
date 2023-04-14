@@ -3,9 +3,18 @@ module Api
 
         class ProductsController < ApplicationController
             def index
-                @products = Product.all
+                if params[:category].present?
+                  @products = Product.where(category: params[:category])
+                else
+                  @products = Product.all
+                end
                 render json: @products
-            end
+              end
+
+            def categories
+                @categories = Product.distinct.pluck(:category)
+                render json: @categories
+              end
         end
     end
 end

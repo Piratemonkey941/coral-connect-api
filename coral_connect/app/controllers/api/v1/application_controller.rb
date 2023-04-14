@@ -1,7 +1,7 @@
 class Api::V1::ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authenticate
+  before_action :authenticate, unless: :public_access
 
   def authenticate
     authenticate_token || render_unauthorized
@@ -56,4 +56,17 @@ class Api::V1::ApplicationController < ActionController::API
       payload: payload
     }, status: status
   end
+
+  def public_access
+    # Define the actions that should be publicly accessible
+    public_actions = {
+      'products' => ['index']
+    }
+
+    controller_name = params[:controller].split('/').last
+    action_name = params[:action]
+
+    public_actions.key?(controller_name) && public_actions[controller_name].include?(action_name)
+  end
+  
 end
