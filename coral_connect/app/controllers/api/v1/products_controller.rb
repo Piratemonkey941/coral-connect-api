@@ -8,8 +8,14 @@ module Api
                 else
                   @products = Product.all
                 end
-                render json: @products
+              
+                products_json = @products.map do |product|
+                  product.as_json.merge("image" => product.full_image_url(request))
+                end
+              
+                render json: products_json
               end
+              
 
             def categories
                 @categories = Product.distinct.pluck(:category)
