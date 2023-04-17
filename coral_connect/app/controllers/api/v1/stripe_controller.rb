@@ -52,13 +52,14 @@ class Api::V1::StripeController < ApplicationController
       end
   
       # Handle the event
-      case event.type
-      when 'checkout.session.completed'
-        # Your logic for handling successful payments
-      else
+    case event.type
+    when 'payment_intent.succeeded'
+        payment_intent = event.data.object
+    # ... handle other event types
+    else
         puts "Unhandled event type: #{event.type}"
-      end
-  
+    end
+    
       status 200
     end
   end
