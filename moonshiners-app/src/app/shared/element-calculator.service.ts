@@ -8,49 +8,49 @@ export class ElementCalculatorService {
   constructor() { }
 
   alkinityCalculator(
-    alkilinityDesired,
-    alkilinityCurrent,
+    alkalinityDesired,
+    alkalinityCurrent,
     additiveSelectedDefault,
     volume,
     alkOptionText
     )
     { // logic here
 
-    const alkilinityChange = (alkilinityDesired - alkilinityCurrent) * 10
+    const alkalinityChange = (alkalinityDesired - alkalinityCurrent) * 10
     let
-      alkilinityAdjustment: any = 0,
-      alkilinityResult: any = 0,
-      alkilinityResultWithString: any = ''
+      alkalinityAdjustment: any = 0,
+      alkalinityResult: any = 0,
+      alkalinityResultWithString: any = ''
 
     if (additiveSelectedDefault === '1')  // sodium bicarb logic here
     {
 
-      alkilinityAdjustment = (0.1429 * volume) // for sodium bicarbonate lower/nuetural ph
-      alkilinityResult = (alkilinityChange * alkilinityAdjustment).toFixed(2)
+      alkalinityAdjustment = (0.1429 * volume) // for sodium bicarbonate lower/nuetural ph
+      alkalinityResult = (alkalinityChange * alkalinityAdjustment).toFixed(2)
 
-      // return alkilinityResult
-       alkilinityResultWithString =  " Dose " + alkilinityResult + " milliLiters "
+      // return alkalinityResult
+       alkalinityResultWithString =  " Dose " + alkalinityResult + " milliLiters "
 
-      return alkilinityResultWithString
+      return alkalinityResultWithString
     }
      else if( additiveSelectedDefault === '2')
     {
-      alkilinityAdjustment = (0.0714 * volume) // for soda ash higher ph
-       alkilinityResult = (alkilinityChange * alkilinityAdjustment).toFixed(2)
+      alkalinityAdjustment = (0.0714 * volume) // for soda ash higher ph
+       alkalinityResult = (alkalinityChange * alkalinityAdjustment).toFixed(2)
       //  console.log('volume', this.volume)
-      // return alkilinityResult
-         alkilinityResultWithString =  " Dose " + alkilinityResult + " milliLiters "
+      // return alkalinityResult
+         alkalinityResultWithString =  " Dose " + alkalinityResult + " milliLiters "
 
-      return alkilinityResultWithString
+      return alkalinityResultWithString
     }
     else if (additiveSelectedDefault === '3' ){
-      alkilinityAdjustment = (3.322 * volume) // for Kalkwasser higher ph
-       alkilinityResult = (alkilinityChange * alkilinityAdjustment).toFixed(2)
+      alkalinityAdjustment = (3.322 * volume) // for Kalkwasser higher ph
+       alkalinityResult = (alkalinityChange * alkalinityAdjustment).toFixed(2)
 
-      // return alkilinityResult
-      alkilinityResultWithString =  " Dose " + alkilinityResult + " milliLiters "
+      // return alkalinityResult
+      alkalinityResultWithString =  " Dose " + alkalinityResult + " milliLiters "
 
-      return alkilinityResultWithString
+      return alkalinityResultWithString
       }
     else {
         return 'Please complete form'

@@ -18,7 +18,7 @@ export class ModalComponent implements OnInit {
   result: any = ''
   formModal:any;
 
-  alkilinityResult: string
+  alkalinityResult: string
   alkOptionText: string = ''
   calciumResult: string
   magnesiumResult: string
@@ -43,9 +43,9 @@ export class ModalComponent implements OnInit {
 
 
   switch (this.elementName) {
-    case 'Alkilinity':
+    case 'Alkalinity':
 
-      this.result = this.alkilinityResult = this.elementCalculator.alkinityCalculator(
+      this.result = this.alkalinityResult = this.elementCalculator.alkinityCalculator(
           this.desired,
           this.current,
           this.additiveSelectedDefault,
@@ -109,14 +109,14 @@ export class ModalComponent implements OnInit {
     // this.additiveSelectedDefault = 0;
 
 
-  // alkilinityChange: number
-  // alkilinityAdjustmentSA: number
-  // alkilinityAdjustmentKW: number
-  // alkilinityAdjustmentSB: number
+  // alkalinityChange: number
+  // alkalinityAdjustmentSA: number
+  // alkalinityAdjustmentKW: number
+  // alkalinityAdjustmentSB: number
 
 
-  // alkilinityDesired: number
-  // alkilinityCurrent: number
+  // alkalinityDesired: number
+  // alkalinityCurrent: number
 
 
 

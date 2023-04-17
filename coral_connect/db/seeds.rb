@@ -8,7 +8,7 @@
 
 ReefWaterElement.create(number: 1, name: 'salinity')
 ReefWaterElement.create(number: 2, name: 'calcium')
-ReefWaterElement.create(number: 3, name: 'alkilinity')
+ReefWaterElement.create(number: 3, name: 'alkalinity')
 ReefWaterElement.create(number: 5, name: 'boron')
 ReefWaterElement.create(number: 6, name: 'bromide')
 ReefWaterElement.create(number: 7, name: 'potassium')

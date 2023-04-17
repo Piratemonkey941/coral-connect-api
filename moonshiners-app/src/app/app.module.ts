@@ -22,7 +22,7 @@ import { MaterialModule } from './materials/materials.module'
 
 
 // import { Chart } from 'chart.js';
-// import { AlkilinityComponent } from './main/big-four/alkilinity/alkilinity.component';
+// import { AlkalinityComponent } from './main/big-four/alkalinity/alkalinity.component';
 // import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 
 @NgModule({
@@ -43,7 +43,7 @@ import { MaterialModule } from './materials/materials.module'
 
     // CustomSnackBarComponant,
     // DialogComponent,
-    // AlkilinityComponent,
+    // AlkalinityComponent,
 
 
   ],
@@ -60,7 +60,7 @@ import { MaterialModule } from './materials/materials.module'
     // AngularFullpageModule,
     // Chart,
   ],
-  
+
   // providers: [],
   // BS: [AppComponent]
 })

@@ -40,11 +40,17 @@ Rails.application.routes.draw do
         end
       end
       resources :cart_items
+
+      post 'stripe/webhook', to: 'stripe#webhook'
+      post 'stripe/create_checkout_session', to: 'stripe#create_checkout_session'
     end
   end
   
 end
 
+# With these changes, the Stripe-related endpoints will be available under the /api/v1/stripe path. 
+# For example, the webhook route would be http://localhost:3000/api/v1/stripe/webhook, 
+# and the create_checkout_session route would be http://localhost:3000/api/v1/stripe/create_checkout_session.
 
  # POST http://localhost:3000/api/v1/users/login
   # DELETE http://localhost:3000/api/v1/users/logout

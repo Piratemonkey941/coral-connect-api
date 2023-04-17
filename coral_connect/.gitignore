@@ -37,3 +37,5 @@
 /config/credentials/develpment.key
 
 /config/credentials/development.key
+
+/config/master.key

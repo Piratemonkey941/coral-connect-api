@@ -39,7 +39,7 @@
           <img src="../../../assets/SoCl.png" alt="">
         </div>
         <span>Salinity</span>
-        <div (click)="selectedElement = 'alkilinity'" data-bs-toggle="modal" data-bs-target="#exampleModal"></div>
+        <div (click)="selectedElement = 'alkalinity'" data-bs-toggle="modal" data-bs-target="#exampleModal"></div>
         <div class="app-card__subtext">{{salinityStart}}</div>
         <mat-form-field class="app-card-buttons">
           <input matInput type="text" placeholder="Salinity in ppm" [(ngModel)]="salinity">
@@ -51,14 +51,14 @@
         <div class="chemImg">
           <img src="../../../assets/sodium bicarb.png" alt="">
         </div>
-        <span>Alkilinity</span>
-        <div (click)="selectedElement = 'Alkilinity'" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span>Alkalinity</span>
+        <div (click)="selectedElement = 'Alkalinity'" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-three-dots-vertical btn text-white"></i>
         </div>
-        <div class="app-card__subtext">{{alkilinityStart}}</div>
+        <div class="app-card__subtext">{{alkalinityStart}}</div>
         <mat-form-field class="app-card-buttons">
-          <input matInput type="text" placeholder="Alkilinity in DKH" [(ngModel)]="alkilinity">
-          <button mat-raised-button color="primary" (click)="onAddAlkilinity()">Submit</button>
+          <input matInput type="text" placeholder="Alkalinity in DKH" [(ngModel)]="alkalinity">
+          <button mat-raised-button color="primary" (click)="onAddAlkalinity()">Submit</button>
         </mat-form-field>
       </div>
 
@@ -150,7 +150,7 @@
         </div>
         Salinity
 
-        <div (click)="selectedElement = 'alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div (click)="selectedElement = 'alkalinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
 
         </div>
 
@@ -191,30 +191,30 @@
           <img src="../../../assets/sodium bicarb.png" alt="" >
         </div>
 
-          Alkilinity
+          Alkalinity
 
-          <div (click)="selectedElement = 'Alkilinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div (click)="selectedElement = 'Alkalinity'" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-three-dots-vertical btn text-white"></i>
           </div>
 
       </span>
 
-      <div class="app-card__subtext">{{alkilinityStart}}</div>
+      <div class="app-card__subtext">{{alkalinityStart}}</div>
 
 
       <div class="app-card-buttons input-group">
         <input
             type="text"
             class="form-control"
-            placeholder="Alkilinity in DKH"
+            placeholder="Alkalinity in DKH"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
-            [(ngModel)]="alkilinity">
+            [(ngModel)]="alkalinity">
         <button
           class="btn btn-primary"
           type="button"
           id="button-addon2"
-          (click)="onAddAlkilinity()"
+          (click)="onAddAlkalinity()"
         >Submit</button>
       </div>
 
