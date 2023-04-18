@@ -128,6 +128,12 @@ redis-server --daemonize yes
 <div id="environment">
 
 ## Environment Variables
+# aws:
+#   access_key_id: 123
+#   secret_access_key: 345
+
+# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+secret_key_base: 7823662aed225b4c5b07f7c4264dbe46903e2aa4b219a6b5df66275f74470b454d6ed619a6ec9deac3fbfb22d858e378e9fe4705a99da66cdf02f55e467eb87e
 
     invitation:
          url: 'https://urlhere'
