@@ -11,7 +11,20 @@ RESOLVES THE  FATAL:  role "piratemonkey941" does not exist ERROR
 Shall the new role be a superuser? (y/n) y
 
 generate new migration for reef_water_elements to reef_water_element
-     
+                        .
+         /^\     .
+    /\   "V"
+   /__\   I      O  o
+  //..\\  I     .                             Poof!
+  \].`[/  I
+  /l\/j\  (]    .  O
+ /. ~~ ,\/I          .               Railway is now installed
+ \\L__j^\/I       o               Run `railway help` for commands
+  \/--v}  I     o   .
+  |    |  I   _________
+  |    |  I c(`       ')o
+  |    l  I   \.     ,/
+_/j  L l\_!  _//^---^\\_
 
 TO START POSTGRESQL SERVER -> sudo service postgresql start
 
