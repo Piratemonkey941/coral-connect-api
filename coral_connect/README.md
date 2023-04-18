@@ -28,6 +28,8 @@ _/j  L l\_!  _//^---^\\_
 
 TO START POSTGRESQL SERVER -> sudo service postgresql start
 
+Nano Editor Command - EDITOR=nano rails credentials:edit
+
 TEMP USER ON DESKTOP
 user = User.create!(
   email: "johndoe@example.com",
@@ -147,8 +149,8 @@ redis-server --daemonize yes
         auth_password: 'password'
 
     workers:
-        max_threads: #
-        min_threads: #
+        max_threads: 5
+        min_threads: 5
 
     swagger:
         username: 'username'
