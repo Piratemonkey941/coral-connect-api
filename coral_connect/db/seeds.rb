@@ -6,31 +6,40 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ReefWaterElement.create(number: 1, name: 'salinity')
-ReefWaterElement.create(number: 2, name: 'calcium')
-ReefWaterElement.create(number: 3, name: 'alkalinity')
-ReefWaterElement.create(number: 4, name: 'magnesium')
-ReefWaterElement.create(number: 5, name: 'boron')
-ReefWaterElement.create(number: 6, name: 'bromide')
-ReefWaterElement.create(number: 7, name: 'potassium')
-ReefWaterElement.create(number: 8, name: 'strontium')
-ReefWaterElement.create(number: 9, name: 'sulfate')
-ReefWaterElement.create(number: 10, name: 'barium')
-ReefWaterElement.create(number: 11, name: 'chromium')
-ReefWaterElement.create(number: 12, name: 'cobalt')
-ReefWaterElement.create(number: 13, name: 'copper')
-ReefWaterElement.create(number: 14, name: 'fluoride')
-ReefWaterElement.create(number: 15, name: 'iodine')
-ReefWaterElement.create(number: 16, name: 'iron')
-ReefWaterElement.create(number: 17, name: 'lithium')
-ReefWaterElement.create(number: 18, name: 'manganese')
-ReefWaterElement.create(number: 19, name: 'molybdenum')
-ReefWaterElement.create(number: 20, name: 'nickel')
-ReefWaterElement.create(number: 21, name: 'rubidium')
-ReefWaterElement.create(number: 22, name: 'selenium')
-ReefWaterElement.create(number: 23, name: 'vanadium')
-ReefWaterElement.create(number: 24, name: 'tin')
-ReefWaterElement.create(number: 25, name: 'zinc')
+ReefWaterElement.create(id: 1,number: 1, name: 'salinity')
+ReefWaterElement.create(id: 2,number: 2, name: 'calcium')
+ReefWaterElement.create(id: 3,number: 3, name: 'alkalinity')
+ReefWaterElement.create(id: 4,number: 4, name: 'magnesium')
+ReefWaterElement.create(id: 5,number: 5, name: 'boron')
+ReefWaterElement.create(id: 6,number: 6, name: 'bromide')
+ReefWaterElement.create(id: 7,number: 7, name: 'potassium')
+ReefWaterElement.create(id: 8,number: 8, name: 'strontium')
+ReefWaterElement.create(id: 9,number: 9, name: 'sulfate')
+ReefWaterElement.create(id: 10,number: 10, name: 'barium')
+ReefWaterElement.create(id: 11,number: 11, name: 'chromium')
+ReefWaterElement.create(id: 12,number: 12, name: 'cobalt')
+ReefWaterElement.create(id: 13,number: 13, name: 'copper')
+ReefWaterElement.create(id: 14,number: 14, name: 'fluoride')
+ReefWaterElement.create(id: 15,number: 15, name: 'iodine')
+ReefWaterElement.create(id: 16,number: 16, name: 'iron')
+ReefWaterElement.create(id: 17,number: 17, name: 'lithium')
+ReefWaterElement.create(id: 18,number: 18, name: 'manganese')
+ReefWaterElement.create(id: 19,number: 19, name: 'molybdenum')
+ReefWaterElement.create(id: 20,number: 20, name: 'nickel')
+ReefWaterElement.create(id: 21,number: 21, name: 'rubidium')
+ReefWaterElement.create(id: 22,number: 22, name: 'selenium')
+ReefWaterElement.create(id: 23,number: 23, name: 'vanadium')
+ReefWaterElement.create(id: 24,number: 24, name: 'tin')
+ReefWaterElement.create(id: 25,number: 25, name: 'zinc')
+
+User.create(
+  email: "piratemonkey941@example.com",
+  first_name: "Anthony",
+  last_name: "Rodriguez",
+  phone: "573-434-9494",
+  password: "password",
+  invitation_accepted: true
+)
 
 12.times do
   ElementMeasurement.create(
@@ -92,7 +101,7 @@ end
   ElementMeasurement.create(
     qt: rand(6.1..25),                
     reef_water_element_id: 8,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -100,7 +109,7 @@ end
   ElementMeasurement.create(
     qt: rand(1201..3300),                
     reef_water_element_id: 9,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -108,7 +117,7 @@ end
   ElementMeasurement.create(
     qt: rand(13.1..30),                
     reef_water_element_id: 10,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -116,7 +125,7 @@ end
   ElementMeasurement.create(
     qt: rand(2.6..10),                
     reef_water_element_id: 11,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -124,7 +133,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..5),                
     reef_water_element_id: 12,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -132,7 +141,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..3),                
     reef_water_element_id: 13,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -140,7 +149,7 @@ end
   ElementMeasurement.create(
     qt: rand(0.6..1.8),                
     reef_water_element_id: 14,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -148,7 +157,7 @@ end
   ElementMeasurement.create(
     qt: rand(26..200),                
     reef_water_element_id: 15,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -156,7 +165,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..2.5),                
     reef_water_element_id: 16,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -164,7 +173,7 @@ end
   ElementMeasurement.create(
     qt: rand(81..600),                
     reef_water_element_id: 17,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -172,7 +181,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..5),                
     reef_water_element_id: 18,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -180,7 +189,7 @@ end
   ElementMeasurement.create(
     qt: rand(6..25),                
     reef_water_element_id: 19,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -188,7 +197,7 @@ end
   ElementMeasurement.create(
     qt: rand(0.6..5),                
     reef_water_element_id: 20,           
-    user_id: 2                           
+    user_id: 1                          
   )
 end
 
@@ -196,7 +205,7 @@ end
   ElementMeasurement.create(
     qt: rand(151..450),                
     reef_water_element_id: 21,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -204,7 +213,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..3),                
     reef_water_element_id: 22,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -212,7 +221,7 @@ end
   ElementMeasurement.create(
     qt: rand(50..150),                
     reef_water_element_id: 23,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -220,7 +229,7 @@ end
   ElementMeasurement.create(
     qt: rand(0..40),                
     reef_water_element_id: 24,           
-    user_id: 2                           
+    user_id: 1                           
   )
 end
 
@@ -228,7 +237,15 @@ end
   ElementMeasurement.create(
     qt: rand(4..15),                
     reef_water_element_id: 25,           
-    user_id: 2                           
+    user_id: 1                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(4..15),
+    reef_water_element_id: 25,
+    user_id: 1
   )
 end
 
