@@ -9,6 +9,7 @@
 ReefWaterElement.create(number: 1, name: 'salinity')
 ReefWaterElement.create(number: 2, name: 'calcium')
 ReefWaterElement.create(number: 3, name: 'alkalinity')
+ReefWaterElement.create(number: 4, name: 'magnesium')
 ReefWaterElement.create(number: 5, name: 'boron')
 ReefWaterElement.create(number: 6, name: 'bromide')
 ReefWaterElement.create(number: 7, name: 'potassium')
@@ -30,6 +31,206 @@ ReefWaterElement.create(number: 22, name: 'selenium')
 ReefWaterElement.create(number: 23, name: 'vanadium')
 ReefWaterElement.create(number: 24, name: 'tin')
 ReefWaterElement.create(number: 25, name: 'zinc')
+
+12.times do
+  ElementMeasurement.create(
+    qt: rand(32..38),         # Generate a random float between numbers for the qt field
+    reef_water_element_id: 1,   # Get the ReefWaterElement ID from the database
+    user_id: 1                  # Get the User ID from the database
+  )
+end
+
+12.times do
+  ElementMeasurement.create(
+    qt: rand(401..520),                
+    reef_water_element_id: 2,           
+    user_id: 1                           
+  )
+end
+
+45.times do
+  ElementMeasurement.create(
+    qt: rand(6.6..11.9),                                 
+    reef_water_element_id: 3,            
+    user_id: 1                           
+  )
+end
+
+12.times do
+  ElementMeasurement.create(
+    qt: rand(1000..1600),                
+    reef_water_element_id: 4,           
+    user_id: 1                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(2..8),                
+    reef_water_element_id: 5,           
+    user_id: 1                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(81..100),                
+    reef_water_element_id: 6,           
+    user_id: 1                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(401..420),                
+    reef_water_element_id: 7,           
+    user_id: 1                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(6.1..25),                
+    reef_water_element_id: 8,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(1201..3300),                
+    reef_water_element_id: 9,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(13.1..30),                
+    reef_water_element_id: 10,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(2.6..10),                
+    reef_water_element_id: 11,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..5),                
+    reef_water_element_id: 12,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..3),                
+    reef_water_element_id: 13,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0.6..1.8),                
+    reef_water_element_id: 14,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(26..200),                
+    reef_water_element_id: 15,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..2.5),                
+    reef_water_element_id: 16,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(81..600),                
+    reef_water_element_id: 17,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..5),                
+    reef_water_element_id: 18,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(6..25),                
+    reef_water_element_id: 19,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0.6..5),                
+    reef_water_element_id: 20,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(151..450),                
+    reef_water_element_id: 21,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..3),                
+    reef_water_element_id: 22,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(50..150),                
+    reef_water_element_id: 23,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(0..40),                
+    reef_water_element_id: 24,           
+    user_id: 2                           
+  )
+end
+
+4.times do
+  ElementMeasurement.create(
+    qt: rand(4..15),                
+    reef_water_element_id: 25,           
+    user_id: 2                           
+  )
+end
 
 
 Product.create(
@@ -277,3 +478,6 @@ Product.create(
     description: 'A set of reusable tools and resources for individuals or groups to organize their own reef cleanup events, including gloves, mesh bags, and educational materials about the impact of marine debris on coral reefs.',
     image: '/seed_images/product_11.png'
     )
+
+
+    
