@@ -26,13 +26,14 @@ Rails.application.routes.draw do
         delete :logout
         get :me
         post :create
+        get :validate_invitation
       end
   
-      resources :users do
+      resources :users, only: [:destroy] do
         resources :element_measurements, only: [:index, :create, :show, :update, :destroy]
       end
       
-      resources :element_measurements, only: [:index,  :create]
+      resources :element_measurements, only: [:index, :create]
 
       resources :products, only: [:index] do
         collection do

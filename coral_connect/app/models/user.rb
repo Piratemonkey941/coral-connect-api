@@ -2,7 +2,7 @@
 class User < ApplicationRecord
   has_secure_password validations: true
   has_many :element_measurements
-  has_many :tokens
+  has_many :tokens, dependent: :destroy
   has_many :user_roles
   has_many :roles, through: :user_roles
   has_many :cart_items

@@ -17,7 +17,8 @@ generate new migration for reef_water_elements to reef_water_element
    /__\   I      O  o
   //..\\  I     .                             Poof!
   \].`[/  I
-  /l\/j\  (]    .  O
+  /l\/j\  (]   
+   .  O
  /. ~~ ,\/I          .               Railway is now installed
  \\L__j^\/I       o               Run `railway help` for commands
   \/--v}  I     o   .

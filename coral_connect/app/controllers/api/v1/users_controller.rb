@@ -37,6 +37,15 @@ module Api
           render_error(errors: result.errors, status: 400)
         end
       end
+
+      def destroy
+        result = BaseApi::Users.delete_user(@current_user)
+        if result.success?
+          render_success(payload: 'User account successfully deleted', status: 200)
+        else
+          render_error(errors: result.errors, status: 400)
+        end
+      end
       
       def me
         render_success(payload: UserBlueprint.render_as_hash(@current_user), status: 200)

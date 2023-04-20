@@ -21,11 +21,15 @@ module BaseApi
       ServiceContract.success(user)
     end
 
-    def self.destroy_user(user_id)
-      user = User.find(user_id)
-      return ServiceContract.error('Error deleting user') unless user.destroy
-
-      ServiceContract.success(payload: user)
+  def self.delete_user(user)
+      return ServiceContract.error('User not found') if user.nil?
+    
+      if user.destroy
+        ServiceContract.success(payload: user)
+      else
+        ServiceContract.error(user.errors.full_messages)
+      end
     end
   end
+    
 end

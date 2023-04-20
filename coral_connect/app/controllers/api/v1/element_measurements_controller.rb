@@ -77,7 +77,7 @@ module Api
       def element_measurement_params
         params.require(:element_measurement).permit(:qt, :reef_water_element_id, :user_id)
       end
-
+              
     end
   end
 end
