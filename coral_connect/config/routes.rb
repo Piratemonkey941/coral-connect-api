@@ -29,7 +29,7 @@ Rails.application.routes.draw do
         get :validate_invitation
       end
   
-      resources :users, only: [:destroy] do
+      resources :users, only: [:destroy, :update] do
         resources :element_measurements, only: [:index, :create, :show, :update, :destroy]
       end
       
@@ -57,6 +57,7 @@ end
   # DELETE http://localhost:3000/api/v1/users/logout
   # GET http://localhost:3000/api/v1/users/me
   # POST http://localhost:3000/api/v1/users/create
+  # PATCH http://localhost:3000/api/v1/users/:id
   # resources :users do
   #   resources :element_measurements, only: [:index, :create]
   # end

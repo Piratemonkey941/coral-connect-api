@@ -38,6 +38,19 @@ module Api
         end
       end
 
+      def update
+        result = BaseApi::Users.update_user(@current_user, params)
+        if result.success?
+          payload = {
+            user: UserBlueprint.render_as_hash(result.payload, view: :normal)
+          }
+          render_success(payload: payload, status: 200)
+        else
+          render_error(errors: result.errors, status: 400)
+        end
+      end
+      
+
       def destroy
         result = BaseApi::Users.delete_user(@current_user)
         if result.success?
